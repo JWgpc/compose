@@ -1,0 +1,2978 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "Citylight Heartbeat",
+    "composer": "Song Creator Prototype",
+    "tempoBpm": 116,
+    "timeSignature": "4/4",
+    "key": "G",
+    "genre": "Mainstream Pop",
+    "mood": "Uplifting",
+    "tags": [
+      "Title Hook",
+      "Mainstream Pop",
+      "Major"
+    ]
+  },
+  "sections": [
+    {
+      "id": "intro-1",
+      "label": "Intro",
+      "startBar": 1,
+      "barCount": 4,
+      "type": "intro",
+      "description": "Support phrase",
+      "energyLevel": 1,
+      "hookFocus": false
+    },
+    {
+      "id": "verse-1-2",
+      "label": "Verse 1",
+      "startBar": 5,
+      "barCount": 8,
+      "type": "verse",
+      "description": "Support phrase",
+      "energyLevel": 2,
+      "hookFocus": false
+    },
+    {
+      "id": "pre-chorus-3",
+      "label": "Pre-Chorus",
+      "startBar": 13,
+      "barCount": 4,
+      "type": "pre_chorus",
+      "description": "Tension build",
+      "energyLevel": 3,
+      "hookFocus": false
+    },
+    {
+      "id": "chorus-4",
+      "label": "Chorus",
+      "startBar": 17,
+      "barCount": 8,
+      "type": "chorus",
+      "description": "Main hook",
+      "energyLevel": 5,
+      "hookFocus": true
+    },
+    {
+      "id": "post-chorus-5",
+      "label": "Post-Chorus",
+      "startBar": 25,
+      "barCount": 4,
+      "type": "drop",
+      "description": "Main hook",
+      "energyLevel": 4,
+      "hookFocus": true
+    },
+    {
+      "id": "verse-2-6",
+      "label": "Verse 2",
+      "startBar": 29,
+      "barCount": 8,
+      "type": "verse",
+      "description": "Support phrase",
+      "energyLevel": 2,
+      "hookFocus": false
+    },
+    {
+      "id": "bridge-7",
+      "label": "Bridge",
+      "startBar": 37,
+      "barCount": 4,
+      "type": "bridge",
+      "description": "Support phrase",
+      "energyLevel": 4,
+      "hookFocus": false
+    },
+    {
+      "id": "final-chorus-8",
+      "label": "Final Chorus",
+      "startBar": 41,
+      "barCount": 8,
+      "type": "chorus",
+      "description": "Main hook",
+      "energyLevel": 5,
+      "hookFocus": true
+    },
+    {
+      "id": "outro-9",
+      "label": "Outro",
+      "startBar": 49,
+      "barCount": 4,
+      "type": "outro",
+      "description": "Support phrase",
+      "energyLevel": 1,
+      "hookFocus": false
+    }
+  ],
+  "tracks": [
+    {
+      "id": "melody",
+      "name": "Melody",
+      "role": "melody",
+      "instrumentHint": "piano",
+      "color": "#8ccfff"
+    }
+  ],
+  "chords": [
+    {
+      "bar": 1,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "intro-1"
+    },
+    {
+      "bar": 2,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "intro-1"
+    },
+    {
+      "bar": 3,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "intro-1"
+    },
+    {
+      "bar": 4,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "intro-1"
+    },
+    {
+      "bar": 5,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 6,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 7,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 8,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 9,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 10,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 11,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 12,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "verse-1-2"
+    },
+    {
+      "bar": 13,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "pre-chorus-3"
+    },
+    {
+      "bar": 14,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "pre-chorus-3"
+    },
+    {
+      "bar": 15,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "pre-chorus-3"
+    },
+    {
+      "bar": 16,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "pre-chorus-3"
+    },
+    {
+      "bar": 17,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 18,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 19,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 20,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 21,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 22,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 23,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 24,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "chorus-4"
+    },
+    {
+      "bar": 25,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "post-chorus-5"
+    },
+    {
+      "bar": 26,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "post-chorus-5"
+    },
+    {
+      "bar": 27,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "post-chorus-5"
+    },
+    {
+      "bar": 28,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "post-chorus-5"
+    },
+    {
+      "bar": 29,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 30,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 31,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 32,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 33,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 34,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 35,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 36,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "verse-2-6"
+    },
+    {
+      "bar": 37,
+      "beat": 1,
+      "symbol": "Bm",
+      "durationBeats": 4,
+      "sectionId": "bridge-7"
+    },
+    {
+      "bar": 38,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "bridge-7"
+    },
+    {
+      "bar": 39,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "bridge-7"
+    },
+    {
+      "bar": 40,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "bridge-7"
+    },
+    {
+      "bar": 41,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 42,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 43,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 44,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 45,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 46,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 47,
+      "beat": 1,
+      "symbol": "Em",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 48,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "final-chorus-8"
+    },
+    {
+      "bar": 49,
+      "beat": 1,
+      "symbol": "G",
+      "durationBeats": 4,
+      "sectionId": "outro-9"
+    },
+    {
+      "bar": 50,
+      "beat": 1,
+      "symbol": "D",
+      "durationBeats": 4,
+      "sectionId": "outro-9"
+    },
+    {
+      "bar": 51,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "outro-9"
+    },
+    {
+      "bar": 52,
+      "beat": 1,
+      "symbol": "C",
+      "durationBeats": 4,
+      "sectionId": "outro-9"
+    }
+  ],
+  "notes": [
+    {
+      "sectionId": "intro-1",
+      "startBeat": 0,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 1.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 2.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 3.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 4,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 5.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 6.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 7.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 8,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 9.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 10.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 11.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 12,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 13.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 14.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "intro-1",
+      "startBeat": 15.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 16,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 17.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 18.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 19.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 20,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 21.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 22.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 23.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 24,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 25.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 26.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 27.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 28,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 29.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 30.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 31.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 32,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 33.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 34.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 35.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 36,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 37.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 38.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 39.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 40,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 41.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 42.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 43.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 44,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 45.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 46.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-1-2",
+      "startBeat": 47.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 48,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 49.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 50.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 51.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 52,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 53.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 54.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 55.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 56,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 57.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 58.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 59.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 60,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "G#4",
+      "midi": 68,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 61.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 62.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "pre-chorus-3",
+      "startBeat": 63.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 64,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 65.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 66.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 67.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 68,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 69.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 70.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 71.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 72,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 73.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 74.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 75.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 76,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 77.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 78.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 79.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 80,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 81.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 82.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 83.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 84,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 85.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 86.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 87.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 88,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 89.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 90.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 91.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 92,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 93.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 94.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "chorus-4",
+      "startBeat": 95.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 96,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 97.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 98.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 99.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 96.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "D4",
+      "midi": 62,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 98.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "G4",
+      "midi": 67,
+      "velocity": 104,
+      "lyricSyllable": "oh",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 100,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 101.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 102.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 103.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 100.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "D4",
+      "midi": 62,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 102.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "G4",
+      "midi": 67,
+      "velocity": 104,
+      "lyricSyllable": "oh",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 104,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 105.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 106.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 107.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 104.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "D4",
+      "midi": 62,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 106.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "G4",
+      "midi": 67,
+      "velocity": 104,
+      "lyricSyllable": "oh",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 108,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 109.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 110.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 111.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 108.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "D4",
+      "midi": 62,
+      "velocity": 104,
+      "lyricSyllable": "",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "post-chorus-5",
+      "startBeat": 110.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "G4",
+      "midi": 67,
+      "velocity": 104,
+      "lyricSyllable": "oh",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 112,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 113.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 114.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 115.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 116,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 117.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 118.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 119.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 120,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 121.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 122.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 123.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 124,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 125.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 126.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 127.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 128,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 129.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 130.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 131.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 132,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 133.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 134.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 135.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 136,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 137.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 138.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 139.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 140,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 141.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 142.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "verse-2-6",
+      "startBeat": 143.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 144,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 145.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 146.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "G#4",
+      "midi": 68,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 147.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 148,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 149.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 150.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "G#4",
+      "midi": 68,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 151.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 152,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 153.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 154.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "G#4",
+      "midi": 68,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 155.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 156,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 157.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 158.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "G#4",
+      "midi": 68,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "bridge-7",
+      "startBeat": 159.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 90,
+      "lyricSyllable": "",
+      "accent": "medium"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 160,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 161.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 162.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 163.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 164,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 165.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 166.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 167.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 168,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 169.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 170.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 171.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 172,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 173.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 174.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 175.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "A#4",
+      "midi": 70,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 176,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 177.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 178.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 179.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 180,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 181.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 182.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 183.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 184,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 185.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 186.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 187.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 188,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "B4",
+      "midi": 71,
+      "velocity": 82,
+      "lyricSyllable": "Citylight",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 189.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 82,
+      "lyricSyllable": "Heartbeat",
+      "accent": "light"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 190.5,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Citylight",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "final-chorus-8",
+      "startBeat": 191.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "D5",
+      "midi": 74,
+      "velocity": 104,
+      "lyricSyllable": "Heartbeat",
+      "accent": "strong"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 192,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 193.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 194.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 195.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 196,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 197.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 198.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 199.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 200,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "E4",
+      "midi": 64,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 201.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 202.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 203.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 204,
+      "durationBeats": 1.5,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 205.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "F#4",
+      "midi": 66,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 206.5,
+      "durationBeats": 1,
+      "trackId": "melody",
+      "pitch": "A4",
+      "midi": 69,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    },
+    {
+      "sectionId": "outro-9",
+      "startBeat": 207.5,
+      "durationBeats": 0.5,
+      "trackId": "melody",
+      "pitch": "F4",
+      "midi": 65,
+      "velocity": 82,
+      "lyricSyllable": "",
+      "accent": "light"
+    }
+  ],
+  "annotations": [
+    {
+      "type": "section_description",
+      "targetSectionId": "intro-1",
+      "text": "Support phrase"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "intro-1",
+      "text": "Support phrase"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "verse-1-2",
+      "text": "Support phrase"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "verse-1-2",
+      "text": "Support phrase"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "pre-chorus-3",
+      "text": "Tension build"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "pre-chorus-3",
+      "text": "Tension build"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "chorus-4",
+      "text": "Main hook"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "chorus-4",
+      "text": "Main hook"
+    },
+    {
+      "type": "hook_hint",
+      "targetSectionId": "chorus-4",
+      "text": "Push the hook higher and clearer"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "post-chorus-5",
+      "text": "Main hook"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "post-chorus-5",
+      "text": "Main hook"
+    },
+    {
+      "type": "hook_hint",
+      "targetSectionId": "post-chorus-5",
+      "text": "Push the hook higher and clearer"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "verse-2-6",
+      "text": "Support phrase"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "verse-2-6",
+      "text": "Support phrase"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "bridge-7",
+      "text": "Support phrase"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "bridge-7",
+      "text": "Support phrase"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "final-chorus-8",
+      "text": "Main hook"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "final-chorus-8",
+      "text": "Main hook"
+    },
+    {
+      "type": "hook_hint",
+      "targetSectionId": "final-chorus-8",
+      "text": "Push the hook higher and clearer"
+    },
+    {
+      "type": "section_description",
+      "targetSectionId": "outro-9",
+      "text": "Support phrase"
+    },
+    {
+      "type": "arrangement_hint",
+      "targetSectionId": "outro-9",
+      "text": "Support phrase"
+    }
+  ],
+  "renderHints": {
+    "defaultInstruments": {
+      "melody": "realistic-piano"
+    },
+    "preferredPreviewInstrument": "realistic-piano",
+    "humanizeAmount": 0.12
+  },
+  "sourceFormat": "json",
+  "sourceText": "Preset: Pop Chorus | Theme: Late-night drive turning into a fearless confession"
+}

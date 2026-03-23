@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "meta": {
+    "title": "初霁 (First Light)",
+    "composer": "AI Composer",
+    "tempoBpm": 72,
+    "timeSignature": "4/4",
+    "key": "C",
+    "unitNoteLength": "1/8",
+    "genre": "piano_ballad",
+    "mood": "gentle",
+    "tags": ["piano", "cinematic", "lyrical"]
+  },
+  "sections": [
+    {
+      "id": "intro",
+      "label": "前奏",
+      "type": "intro",
+      "startBar": 1,
+      "barCount": 4,
+      "description": "模仿雨滴",
+      "energyLevel": 1,
+      "hookFocus": false
+    },
+    {
+      "id": "themeA",
+      "label": "主题 A",
+      "type": "verse",
+      "startBar": 5,
+      "barCount": 8,
+      "description": "左手流动，右手旋律",
+      "energyLevel": 2,
+      "hookFocus": false
+    },
+    {
+      "id": "transition",
+      "label": "过渡",
+      "type": "bridge",
+      "startBar": 13,
+      "barCount": 4,
+      "description": "色彩变化",
+      "energyLevel": 3,
+      "hookFocus": false
+    },
+    {
+      "id": "climax",
+      "label": "高潮",
+      "type": "chorus",
+      "startBar": 17,
+      "barCount": 4,
+      "description": "阳光普照",
+      "energyLevel": 5,
+      "hookFocus": true
+    },
+    {
+      "id": "outro",
+      "label": "尾声",
+      "type": "outro",
+      "startBar": 21,
+      "barCount": 5,
+      "description": "回归宁静",
+      "energyLevel": 1,
+      "hookFocus": false
+    }
+  ],
+  "tracks": [
+    {
+      "id": "melody",
+      "name": "Melody",
+      "role": "melody",
+      "instrumentHint": "piano"
+    },
+    {
+      "id": "leftHand",
+      "name": "Left Hand",
+      "role": "chords",
+      "instrumentHint": "piano"
+    }
+  ],
+  "chords": [
+    { "bar": 1, "beat": 1, "symbol": "Csus2", "durationBeats": 4, "sectionId": "intro" },
+    { "bar": 2, "beat": 1, "symbol": "C", "durationBeats": 4, "sectionId": "intro" },
+    { "bar": 3, "beat": 1, "symbol": "Am", "durationBeats": 4, "sectionId": "intro" },
+    { "bar": 4, "beat": 1, "symbol": "G", "durationBeats": 4, "sectionId": "intro" },
+    { "bar": 5, "beat": 1, "symbol": "CG/B", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 6, "beat": 1, "symbol": "Am7", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 7, "beat": 1, "symbol": "F", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 8, "beat": 1, "symbol": "G7", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 9, "beat": 1, "symbol": "C", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 10, "beat": 1, "symbol": "Am", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 11, "beat": 1, "symbol": "Dm7", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 12, "beat": 1, "symbol": "G7", "durationBeats": 4, "sectionId": "themeA" },
+    { "bar": 13, "beat": 1, "symbol": "Em", "durationBeats": 4, "sectionId": "transition" },
+    { "bar": 14, "beat": 1, "symbol": "C/G", "durationBeats": 4, "sectionId": "transition" },
+    { "bar": 15, "beat": 1, "symbol": "Fmaj7", "durationBeats": 4, "sectionId": "transition" },
+    { "bar": 16, "beat": 1, "symbol": "Gsus4", "durationBeats": 4, "sectionId": "transition" },
+    { "bar": 17, "beat": 1, "symbol": "C", "durationBeats": 4, "sectionId": "climax" },
+    { "bar": 18, "beat": 1, "symbol": "F", "durationBeats": 4, "sectionId": "climax" },
+    { "bar": 19, "beat": 1, "symbol": "G", "durationBeats": 4, "sectionId": "climax" },
+    { "bar": 20, "beat": 1, "symbol": "C", "durationBeats": 4, "sectionId": "climax" },
+    { "bar": 21, "beat": 1, "symbol": "Am", "durationBeats": 4, "sectionId": "outro" },
+    { "bar": 22, "beat": 1, "symbol": "G", "durationBeats": 4, "sectionId": "outro" },
+    { "bar": 23, "beat": 1, "symbol": "F", "durationBeats": 4, "sectionId": "outro" },
+    { "bar": 24, "beat": 1, "symbol": "G", "durationBeats": 4, "sectionId": "outro" },
+    { "bar": 25, "beat": 1, "symbol": "C", "durationBeats": 4, "sectionId": "outro" }
+  ],
+  "notes": [
+    { "isRest": true, "startBeat": 0, "durationBeats": 2, "trackId": "melody", "sectionId": "intro" },
+    { "isRest": true, "startBeat": 2, "durationBeats": 2, "trackId": "melody", "sectionId": "intro" },
+    { "isRest": true, "startBeat": 4, "durationBeats": 2, "trackId": "melody", "sectionId": "intro" },
+    { "pitch": "E5", "midi": 76, "startBeat": 6, "durationBeats": 2, "trackId": "melody", "sectionId": "intro", "velocity": 82 },
+    { "isRest": true, "startBeat": 8, "durationBeats": 2, "trackId": "melody", "sectionId": "intro" },
+    { "pitch": "G5", "midi": 79, "startBeat": 10, "durationBeats": 2, "trackId": "melody", "sectionId": "intro", "velocity": 86 },
+    { "isRest": true, "startBeat": 12, "durationBeats": 2, "trackId": "melody", "sectionId": "intro" },
+    { "pitch": "E5", "midi": 76, "startBeat": 14, "durationBeats": 2, "trackId": "melody", "sectionId": "intro", "velocity": 84 },
+
+    { "pitch": "E4", "midi": 64, "startBeat": 16, "durationBeats": 2, "trackId": "leftHand", "sectionId": "themeA", "velocity": 72 },
+    { "pitch": "G4", "midi": 67, "startBeat": 18, "durationBeats": 2, "trackId": "leftHand", "sectionId": "themeA", "velocity": 72 },
+    { "pitch": "C5", "midi": 72, "startBeat": 20, "durationBeats": 2, "trackId": "leftHand", "sectionId": "themeA", "velocity": 72 },
+    { "pitch": "E5", "midi": 76, "startBeat": 22, "durationBeats": 2, "trackId": "leftHand", "sectionId": "themeA", "velocity": 72 },
+
+    { "pitch": "E5", "midi": 76, "startBeat": 32, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 92 },
+    { "pitch": "G5", "midi": 79, "startBeat": 33, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 92 },
+    { "pitch": "C6", "midi": 84, "startBeat": 34, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 94 },
+    { "pitch": "E6", "midi": 88, "startBeat": 35, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 94 },
+    { "pitch": "G5", "midi": 79, "startBeat": 36, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 88 },
+    { "pitch": "F5", "midi": 77, "startBeat": 37, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 86 },
+    { "pitch": "E5", "midi": 76, "startBeat": 38, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 84 },
+    { "pitch": "D5", "midi": 74, "startBeat": 39, "durationBeats": 1, "trackId": "melody", "sectionId": "themeA", "velocity": 82 },
+
+    { "pitch": "C5", "midi": 72, "startBeat": 64, "durationBeats": 2, "trackId": "melody", "sectionId": "transition", "velocity": 86 },
+    { "pitch": "E5", "midi": 76, "startBeat": 66, "durationBeats": 2, "trackId": "melody", "sectionId": "transition", "velocity": 86 },
+    { "pitch": "G5", "midi": 79, "startBeat": 68, "durationBeats": 2, "trackId": "melody", "sectionId": "transition", "velocity": 88 },
+    { "pitch": "B5", "midi": 83, "startBeat": 70, "durationBeats": 2, "trackId": "melody", "sectionId": "transition", "velocity": 88 },
+
+    { "pitch": "C6", "midi": 84, "startBeat": 80, "durationBeats": 2, "trackId": "melody", "sectionId": "climax", "velocity": 102 },
+    { "pitch": "E6", "midi": 88, "startBeat": 82, "durationBeats": 2, "trackId": "melody", "sectionId": "climax", "velocity": 104 },
+    { "pitch": "G6", "midi": 91, "startBeat": 84, "durationBeats": 2, "trackId": "melody", "sectionId": "climax", "velocity": 106 },
+    { "pitch": "C7", "midi": 96, "startBeat": 86, "durationBeats": 2, "trackId": "melody", "sectionId": "climax", "velocity": 108 },
+
+    { "pitch": "E5", "midi": 76, "startBeat": 96, "durationBeats": 2, "trackId": "melody", "sectionId": "outro", "velocity": 80 },
+    { "pitch": "D5", "midi": 74, "startBeat": 98, "durationBeats": 2, "trackId": "melody", "sectionId": "outro", "velocity": 78 },
+    { "pitch": "C5", "midi": 72, "startBeat": 100, "durationBeats": 2, "trackId": "melody", "sectionId": "outro", "velocity": 76 },
+    { "pitch": "B4", "midi": 71, "startBeat": 102, "durationBeats": 2, "trackId": "melody", "sectionId": "outro", "velocity": 74 },
+    { "pitch": "C5", "midi": 72, "startBeat": 112, "durationBeats": 4, "trackId": "melody", "sectionId": "outro", "velocity": 72 },
+    { "isRest": true, "startBeat": 116, "durationBeats": 4, "trackId": "melody", "sectionId": "outro" }
+  ],
+  "annotations": [
+    { "type": "section_description", "targetSectionId": "intro", "text": "模仿雨滴" },
+    { "type": "section_description", "targetSectionId": "themeA", "text": "左手流动，右手旋律" },
+    { "type": "section_description", "targetSectionId": "transition", "text": "色彩变化" },
+    { "type": "section_description", "targetSectionId": "climax", "text": "阳光普照" },
+    { "type": "section_description", "targetSectionId": "outro", "text": "回归宁静" },
+    { "type": "hook_hint", "targetSectionId": "climax", "text": "副歌通过更高音区和更长音符形成释放感" }
+  ],
+  "renderHints": {
+    "defaultInstruments": {
+      "melody": "realistic-piano",
+      "leftHand": "realistic-piano"
+    },
+    "preferredPreviewInstrument": "realistic-piano",
+    "humanizeAmount": 0.18
+  },
+  "sourceFormat": "abc",
+  "sourceText": "Example derived from an ABC-like symbolic score draft."
+}

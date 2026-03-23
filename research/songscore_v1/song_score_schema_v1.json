@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openclaw.local/schemas/song-score-v1.json",
+  "title": "SongScore v1",
+  "description": "Canonical internal score model for Song Creator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "meta",
+    "sections",
+    "tracks",
+    "chords",
+    "notes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "meta": {
+      "$ref": "#/$defs/meta"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/section"
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/track"
+      }
+    },
+    "chords": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/chordEvent"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/noteEvent"
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/annotation"
+      },
+      "default": []
+    },
+    "lyricPlan": {
+      "$ref": "#/$defs/lyricPlan"
+    },
+    "renderHints": {
+      "$ref": "#/$defs/renderHints"
+    },
+    "sourceFormat": {
+      "type": "string",
+      "enum": ["json", "abc", "midi", "musicxml", "text", "unknown"]
+    },
+    "sourceText": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "idString": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "composer", "tempoBpm", "timeSignature", "key"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "composer": { "type": "string", "minLength": 1 },
+        "arranger": { "type": "string" },
+        "tempoBpm": { "type": "number", "exclusiveMinimum": 0 },
+        "timeSignature": {
+          "type": "string",
+          "pattern": "^[0-9]+/[0-9]+$"
+        },
+        "key": { "type": "string", "minLength": 1 },
+        "unitNoteLength": {
+          "type": "string",
+          "pattern": "^[0-9]+/[0-9]+$"
+        },
+        "genre": { "type": "string" },
+        "mood": { "type": "string" },
+        "swing": { "type": "number", "minimum": 0, "maximum": 1 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "startBar", "barCount"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idString" },
+        "label": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "intro",
+            "verse",
+            "pre_chorus",
+            "chorus",
+            "bridge",
+            "outro",
+            "interlude",
+            "drop",
+            "custom"
+          ]
+        },
+        "startBar": { "type": "integer", "minimum": 1 },
+        "barCount": { "type": "integer", "minimum": 1 },
+        "description": { "type": "string" },
+        "energyLevel": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "hookFocus": { "type": "boolean" }
+      }
+    },
+    "track": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "role"],
+      "properties": {
+        "id": { "$ref": "#/$defs/idString" },
+        "name": { "type": "string", "minLength": 1 },
+        "role": {
+          "type": "string",
+          "enum": [
+            "melody",
+            "chords",
+            "bass",
+            "arp",
+            "strings",
+            "pad",
+            "drums",
+            "countermelody",
+            "custom"
+          ]
+        },
+        "instrumentHint": { "type": "string" },
+        "mute": { "type": "boolean", "default": false },
+        "solo": { "type": "boolean", "default": false },
+        "color": {
+          "type": "string",
+          "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$"
+        }
+      }
+    },
+    "chordEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bar", "beat", "symbol"],
+      "properties": {
+        "bar": { "type": "integer", "minimum": 1 },
+        "beat": { "type": "number", "minimum": 1 },
+        "symbol": { "type": "string", "minLength": 1 },
+        "durationBeats": { "type": "number", "exclusiveMinimum": 0 },
+        "sectionId": { "$ref": "#/$defs/idString" },
+        "romanNumeral": { "type": "string" },
+        "function": { "type": "string" },
+        "voicingHint": { "type": "string" }
+      }
+    },
+    "noteEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startBeat", "durationBeats", "trackId"],
+      "properties": {
+        "pitch": {
+          "type": "string",
+          "pattern": "^[A-G](#|b)?[0-9]$"
+        },
+        "midi": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 127
+        },
+        "startBeat": { "type": "number", "minimum": 0 },
+        "durationBeats": { "type": "number", "exclusiveMinimum": 0 },
+        "trackId": { "$ref": "#/$defs/idString" },
+        "sectionId": { "$ref": "#/$defs/idString" },
+        "velocity": { "type": "integer", "minimum": 1, "maximum": 127 },
+        "tieStart": { "type": "boolean" },
+        "tieEnd": { "type": "boolean" },
+        "isRest": { "type": "boolean", "default": false },
+        "lyricSyllable": { "type": "string" },
+        "accent": { "type": "string", "enum": ["none", "light", "medium", "strong"] }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "isRest": { "const": true } },
+            "required": ["isRest"]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                { "required": ["pitch"] },
+                { "required": ["midi"] }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "isRest": { "const": false } }
+          },
+          "then": {
+            "anyOf": [
+              { "required": ["pitch"] },
+              { "required": ["midi"] }
+            ]
+          }
+        }
+      ]
+    },
+    "annotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "text"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "section_description",
+            "arrangement_hint",
+            "performance_hint",
+            "mood_hint",
+            "hook_hint",
+            "custom"
+          ]
+        },
+        "text": { "type": "string", "minLength": 1 },
+        "targetSectionId": { "$ref": "#/$defs/idString" },
+        "bar": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "lyricPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "language": { "type": "string" },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sectionId"],
+            "properties": {
+              "sectionId": { "$ref": "#/$defs/idString" },
+              "titlePositionBeats": {
+                "type": "array",
+                "items": { "type": "number", "minimum": 0 }
+              },
+              "syllablesPerBar": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 0 }
+              },
+              "stressPattern": {
+                "type": "array",
+                "items": { "type": "string", "enum": ["weak", "medium", "strong"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "renderHints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaultInstruments": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "preferredPreviewInstrument": { "type": "string" },
+        "swingFeel": { "type": "number", "minimum": 0, "maximum": 1 },
+        "humanizeAmount": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+dist
+.dev
+.home
+.npm-cache
+.pnpm-store
+.pnpm-home
+node_modules
+.vite
+pnpm-workspace.yaml
