@@ -8,7 +8,7 @@ import { getPreferredPreviewInstrument, getProjectSections } from './songscore/a
 import { MODAL, SCREEN } from './types.ts';
 
 export function createInitialState() {
-  const project = createProject('test-demo4');
+  const project = createProject('test-demo5');
   const sections = getProjectSections(project);
   return {
     language: getInitialLanguage(),

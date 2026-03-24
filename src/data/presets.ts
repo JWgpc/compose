@@ -68,6 +68,23 @@ export const quickPresets = [
     hookSummary: 'A bright playful piano piece based on a joyful childhood summer memory',
   },
   {
+    id: 'test-demo5',
+    label: '测试demo5',
+    title: '风把那句话吹远',
+    style: 'Youth Ballad',
+    mood: 'Tender / Youthful / Nostalgic',
+    bpm: 82,
+    key: 'G',
+    mode: 'Major',
+    hookType: 'Title Hook',
+    sectionTemplate: 'Mainstream Pop',
+    phraseLength: 4,
+    chorusLift: 'More Repetition',
+    theme: '夏末放学后的操场和没说出口的话，从故事同时生成歌词与曲子',
+    lyricIdea: 'story to lyrics + song demo',
+    hookSummary: 'A youthful song demo generated from a campus-at-dusk story, with lyrics and melody aligned',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -155,6 +172,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-00000',
+    title: '测试demo5',
+    subtitle: 'Youth Ballad · 82 BPM · story to lyrics and song',
+    presetId: 'test-demo5',
+  },
   {
     id: 'recent-0000',
     title: '测试demo4',
