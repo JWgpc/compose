@@ -17,6 +17,23 @@ export const quickPresets = [
     hookSummary: 'A short four-bar melody for import verification',
   },
   {
+    id: 'test-demo2',
+    label: '测试demo2',
+    title: '冬去之后的怀念（回忆强化版）',
+    style: 'Memorial Piano',
+    mood: 'Tender',
+    bpm: 66,
+    key: 'C',
+    mode: 'Major',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Mainstream Pop',
+    phraseLength: 4,
+    chorusLift: 'More Repetition',
+    theme: '外婆家回忆主题更明确的纪念性钢琴曲',
+    lyricIdea: 'Instrumental memorial theme',
+    hookSummary: 'A memorial piano piece with a more singable childhood-memory theme',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -104,6 +121,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-00',
+    title: '测试demo2',
+    subtitle: 'Memorial Piano · 66 BPM · memory theme revision',
+    presetId: 'test-demo2',
+  },
   {
     id: 'recent-0',
     title: '测试demo1',
