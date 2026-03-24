@@ -192,7 +192,7 @@ export const recentProjects = [
   {
     id: 'recent-000000',
     title: '测试demo6',
-    subtitle: 'Ancient Frontier War Song · 76 BPM · longer border-war expansion',
+    subtitle: 'Ancient Frontier War Song · 76 BPM · heavier desert-cavalry rewrite',
     presetId: 'test-demo6',
   },
   {

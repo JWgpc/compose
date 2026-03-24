@@ -17,7 +17,7 @@ const sections = [
     startBar: 9,
     barCount: 8,
     type: SONG_SCORE_SECTION_TYPE.VERSE,
-    description: '鼓声低催，旌旗渐起，军阵在黄沙与寒气里缓缓铺开。',
+    description: '鼓声低催，旌旗渐起，像大漠深处万骑将动，地面先于人声震起来。',
     energyLevel: 3,
     hookFocus: false,
   },
@@ -117,21 +117,28 @@ function addPattern(trackId, sectionId, bar, pattern) {
 
 function addDrumBar(sectionId, bar, rootMidi, upperMidi, velocityBase = 64, dense = false) {
   const startBeat = (bar - 1) * 4;
+  const massive = sectionId === 'battle' || sectionId === 'finale';
   if (dense) {
     [
-      [0, rootMidi - 12, velocityBase + 18, 'strong'],
-      [0, rootMidi, velocityBase + 12, 'strong'],
-      [0.5, rootMidi + 12, velocityBase + 7, 'medium'],
-      [1, upperMidi, velocityBase + 10, 'strong'],
-      [1.5, rootMidi, velocityBase + 8, 'medium'],
-      [2, rootMidi - 12, velocityBase + 16, 'strong'],
-      [2, rootMidi, velocityBase + 10, 'strong'],
-      [2.5, rootMidi + 12, velocityBase + 7, 'medium'],
-      [3, upperMidi + 12, velocityBase + 10, 'strong'],
-      [3.5, rootMidi, velocityBase + 8, 'medium'],
+      [0, rootMidi - 24, velocityBase + 24, 'strong'],
+      [0, rootMidi - 12, velocityBase + 20, 'strong'],
+      [0, rootMidi, velocityBase + 14, 'strong'],
+      [0.5, rootMidi + 12, velocityBase + 8, 'medium'],
+      [1, upperMidi, velocityBase + 12, 'strong'],
+      [1.5, rootMidi, velocityBase + 10, 'medium'],
+      [2, rootMidi - 24, velocityBase + 22, 'strong'],
+      [2, rootMidi - 12, velocityBase + 18, 'strong'],
+      [2, rootMidi, velocityBase + 12, 'strong'],
+      [2.5, rootMidi + 12, velocityBase + 8, 'medium'],
+      [3, upperMidi + 12, velocityBase + 12, 'strong'],
+      [3.5, rootMidi, velocityBase + 10, 'medium'],
     ].forEach(([offset, midi, velocity, accent]) => {
       pushNote('leftHand', sectionId, midi, startBeat + offset, 0.5, velocity, accent);
     });
+    if (massive) {
+      pushNote('leftHand', sectionId, rootMidi - 24, startBeat + 1.75, 0.25, velocityBase + 18, 'strong');
+      pushNote('leftHand', sectionId, rootMidi - 24, startBeat + 3.75, 0.25, velocityBase + 18, 'strong');
+    }
     return;
   }
 
@@ -223,14 +230,14 @@ const marchPatterns = [
 marchPatterns.forEach((pattern, i) => addPattern('rightHand', 'march', i + 9, pattern));
 
 const hornPatterns = [
-  [{ offset: 0, midi: 74, duration: 2, velocity: 82 }, { offset: 2, midi: 77, duration: 2, velocity: 84 }],
-  [{ offset: 0, midi: 81, duration: 4, velocity: 86, accent: 'medium' }],
-  [{ offset: 0, midi: 79, duration: 2, velocity: 84 }, { offset: 2, midi: 82, duration: 2, velocity: 88, accent: 'medium' }],
-  [{ offset: 0, midi: 84, duration: 4, velocity: 90, accent: 'strong' }],
-  [{ offset: 0, midi: 82, duration: 2, velocity: 86 }, { offset: 2, midi: 79, duration: 2, velocity: 82 }],
-  [{ offset: 0, midi: 77, duration: 1, velocity: 82 }, { offset: 1, midi: 81, duration: 1, velocity: 88 }, { offset: 2, midi: 84, duration: 2, velocity: 92, accent: 'strong' }],
-  [{ offset: 0, midi: 82, duration: 2, velocity: 88 }, { offset: 2, midi: 79, duration: 1, velocity: 82 }, { offset: 3, midi: 77, duration: 1, velocity: 80 }],
-  [{ offset: 0, midi: 81, duration: 4, velocity: 90, accent: 'strong' }],
+  [{ offset: 0, midi: 69, duration: 4, velocity: 84, accent: 'medium' }],
+  [{ offset: 0, midi: 74, duration: 2, velocity: 86, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 88, accent: 'medium' }],
+  [{ offset: 0, midi: 77, duration: 4, velocity: 88, accent: 'medium' }],
+  [{ offset: 0, midi: 81, duration: 4, velocity: 92, accent: 'strong' }],
+  [{ offset: 0, midi: 79, duration: 2, velocity: 88, accent: 'medium' }, { offset: 2, midi: 82, duration: 2, velocity: 92, accent: 'strong' }],
+  [{ offset: 0, midi: 77, duration: 1, velocity: 86, accent: 'medium' }, { offset: 1, midi: 81, duration: 1, velocity: 92, accent: 'strong' }, { offset: 2, midi: 84, duration: 2, velocity: 96, accent: 'strong' }],
+  [{ offset: 0, midi: 82, duration: 2, velocity: 90, accent: 'strong' }, { offset: 2, midi: 79, duration: 1, velocity: 84, accent: 'medium' }, { offset: 3, midi: 77, duration: 1, velocity: 82, accent: 'medium' }],
+  [{ offset: 0, midi: 81, duration: 4, velocity: 94, accent: 'strong' }],
 ];
 hornPatterns.forEach((pattern, i) => addPattern('rightHand', 'horn', i + 17, pattern));
 
@@ -271,14 +278,14 @@ const finalePatterns = [
 finalePatterns.forEach((pattern, i) => addPattern('rightHand', 'finale', i + 41, pattern));
 
 const warLayerEvents = [
-  [9, 'march', [{ offset: 0, midi: 62, duration: 2, velocity: 68 }, { offset: 2, midi: 65, duration: 2, velocity: 70 }]],
-  [10, 'march', [{ offset: 0, midi: 64, duration: 2, velocity: 68 }, { offset: 2, midi: 67, duration: 2, velocity: 70 }]],
-  [11, 'march', [{ offset: 0, midi: 65, duration: 4, velocity: 72, accent: 'medium' }]],
-  [12, 'march', [{ offset: 0, midi: 69, duration: 4, velocity: 74, accent: 'medium' }]],
-  [13, 'march', [{ offset: 0, midi: 62, duration: 2, velocity: 70 }, { offset: 2, midi: 65, duration: 2, velocity: 72 }]],
-  [14, 'march', [{ offset: 0, midi: 64, duration: 2, velocity: 70 }, { offset: 2, midi: 67, duration: 2, velocity: 72 }]],
-  [15, 'march', [{ offset: 0, midi: 70, duration: 4, velocity: 76, accent: 'medium' }]],
-  [16, 'march', [{ offset: 0, midi: 69, duration: 4, velocity: 78, accent: 'medium' }]],
+  [9, 'march', [{ offset: 0, midi: 57, duration: 2, velocity: 72, accent: 'medium' }, { offset: 2, midi: 62, duration: 2, velocity: 74, accent: 'medium' }]],
+  [10, 'march', [{ offset: 0, midi: 59, duration: 2, velocity: 72, accent: 'medium' }, { offset: 2, midi: 64, duration: 2, velocity: 74, accent: 'medium' }]],
+  [11, 'march', [{ offset: 0, midi: 60, duration: 4, velocity: 76, accent: 'medium' }]],
+  [12, 'march', [{ offset: 0, midi: 64, duration: 4, velocity: 78, accent: 'medium' }]],
+  [13, 'march', [{ offset: 0, midi: 57, duration: 2, velocity: 74, accent: 'medium' }, { offset: 2, midi: 62, duration: 2, velocity: 76, accent: 'medium' }]],
+  [14, 'march', [{ offset: 0, midi: 59, duration: 2, velocity: 74, accent: 'medium' }, { offset: 2, midi: 64, duration: 2, velocity: 76, accent: 'medium' }]],
+  [15, 'march', [{ offset: 0, midi: 65, duration: 4, velocity: 80, accent: 'strong' }]],
+  [16, 'march', [{ offset: 0, midi: 64, duration: 4, velocity: 82, accent: 'strong' }]],
   [17, 'horn', [{ offset: 0, midi: 69, duration: 4, velocity: 78, accent: 'medium' }]],
   [18, 'horn', [{ offset: 0, midi: 72, duration: 4, velocity: 80, accent: 'medium' }]],
   [19, 'horn', [{ offset: 0, midi: 74, duration: 2, velocity: 82, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 84, accent: 'medium' }]],
@@ -320,8 +327,8 @@ export const testDemo6SongScore = {
     key: 'D minor',
     unitNoteLength: '1/8',
     genre: 'Ancient Frontier War Song',
-    mood: '边塞 / 角鼓 / 肃杀 / 壮烈',
-    tags: ['war', 'frontier', 'xiao-inspired', 'ancient-china', 'horn-calls', 'war-drums', 'instrumental'],
+    mood: '边塞 / 角鼓 / 雄浑 / 万骑卷沙',
+    tags: ['war', 'frontier', 'xiao-inspired', 'ancient-china', 'horn-calls', 'war-drums', 'desert-cavalry', 'instrumental'],
   },
   sections,
   tracks: [
@@ -358,17 +365,17 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'march',
-      text: '不要像西式铜管齐奏，要更像低鼓催行、军旗展开、长阵出塞。',
+      text: '这一段要更雄浑：低鼓像地面起震，阵线像从大漠深处整片推来。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'horn',
-      text: '这一段的核心是角声：粗粝、辽远、带命令感，不要太抒情。',
+      text: '角声要更苍劲厚重，像在大漠天边发令，带出万骑将起的气势。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'battle',
-      text: '高潮是古战场横向展开：鼓点压地、角声穿空、铁骑并进，不是西式大片和声堆叠。',
+      text: '高潮要像大漠起兵、万骑卷沙：不是华丽堆叠，而是厚重、整片、不可挡地推进。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
@@ -378,7 +385,7 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'finale',
-      text: '尾段要像边关长歌：不炫胜利，而是把军魂和苍凉一起写进去。',
+      text: '尾段要更厚重，像万骑过后大地仍在回响；把军魂、黄沙与天边余角一起写进去。',
     },
   ],
   renderHints: {
