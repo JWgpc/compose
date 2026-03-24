@@ -51,6 +51,23 @@ export const quickPresets = [
     hookSummary: 'A fuller cinematic memorial arrangement with thicker harmony and stronger dynamic arc',
   },
   {
+    id: 'test-demo4',
+    label: '测试demo4',
+    title: '夏天的玻璃弹珠',
+    style: 'Playful Childhood Piano',
+    mood: 'Bright / Playful',
+    bpm: 104,
+    key: 'C',
+    mode: 'Major',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Mainstream Pop',
+    phraseLength: 4,
+    chorusLift: 'More Repetition',
+    theme: '一个欢快的童年夏日故事，带玻璃弹珠、追逐、晚霞和回家前最后一阵笑声',
+    lyricIdea: 'Instrumental childhood story theme',
+    hookSummary: 'A bright playful piano piece based on a joyful childhood summer memory',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -138,6 +155,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-0000',
+    title: '测试demo4',
+    subtitle: 'Playful Childhood Piano · 104 BPM · brand new story composition',
+    presetId: 'test-demo4',
+  },
   {
     id: 'recent-000',
     title: '测试demo3',
