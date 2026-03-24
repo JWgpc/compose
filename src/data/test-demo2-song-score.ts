@@ -148,7 +148,8 @@ export const testDemo2SongScore = {
     { pitch: 'G5', midi: 79, startBeat: 9, durationBeats: 1, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 61, accent: 'light' },
     { pitch: 'E5', midi: 76, startBeat: 10, durationBeats: 1, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 60, accent: 'light' },
     { pitch: 'D5', midi: 74, startBeat: 11, durationBeats: 1, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 58, accent: 'light' },
-    { pitch: 'D5', midi: 74, startBeat: 14, durationBeats: 2, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 60, accent: 'light' },
+    { pitch: 'D5', midi: 74, startBeat: 14, durationBeats: 1, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 60, accent: 'light' },
+    { pitch: 'E5', midi: 76, startBeat: 15, durationBeats: 1, trackId: 'rightHand', sectionId: 'sunlight_heavy_heart', velocity: 58, accent: 'light' },
 
     { pitch: 'A2', midi: 45, startBeat: 16, durationBeats: 1.5, trackId: 'leftHand', sectionId: 'hospital_room', velocity: 58, accent: 'light' },
     { pitch: 'E3', midi: 52, startBeat: 17.5, durationBeats: 1, trackId: 'leftHand', sectionId: 'hospital_room', velocity: 54, accent: 'light' },
@@ -174,7 +175,8 @@ export const testDemo2SongScore = {
     { pitch: 'G5', midi: 79, startBeat: 26, durationBeats: 2, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 66, accent: 'light' },
     { pitch: 'D5', midi: 74, startBeat: 28, durationBeats: 1, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 66, accent: 'light' },
     { pitch: 'G5', midi: 79, startBeat: 29, durationBeats: 1, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 68, accent: 'medium' },
-    { pitch: 'A5', midi: 81, startBeat: 30, durationBeats: 2, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 70, accent: 'medium' },
+    { pitch: 'A5', midi: 81, startBeat: 30, durationBeats: 1, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 70, accent: 'medium' },
+    { pitch: 'G5', midi: 79, startBeat: 31, durationBeats: 1, trackId: 'rightHand', sectionId: 'hospital_room', velocity: 68, accent: 'light' },
 
     { pitch: 'A2', midi: 45, startBeat: 32, durationBeats: 1, trackId: 'leftHand', sectionId: 'alarm_and_goodbye', velocity: 72, accent: 'medium' },
     { pitch: 'E3', midi: 52, startBeat: 33, durationBeats: 1, trackId: 'leftHand', sectionId: 'alarm_and_goodbye', velocity: 68, accent: 'light' },
@@ -208,7 +210,8 @@ export const testDemo2SongScore = {
     { pitch: 'F6', midi: 89, startBeat: 44, durationBeats: 1, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 88, accent: 'strong' },
     { pitch: 'E6', midi: 88, startBeat: 45, durationBeats: 1, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 84, accent: 'medium' },
     { pitch: 'D6', midi: 86, startBeat: 46, durationBeats: 1, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 82, accent: 'medium' },
-    { pitch: 'C6', midi: 84, startBeat: 47, durationBeats: 1, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 80, accent: 'medium' },
+    { pitch: 'C6', midi: 84, startBeat: 47, durationBeats: 0.5, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 80, accent: 'medium' },
+    { pitch: 'G5', midi: 79, startBeat: 47.5, durationBeats: 0.5, trackId: 'rightHand', sectionId: 'alarm_and_goodbye', velocity: 72, accent: 'light' },
 
     { pitch: 'C3', midi: 48, startBeat: 48, durationBeats: 1.5, trackId: 'leftHand', sectionId: 'childhood_memory', velocity: 64, accent: 'light' },
     { pitch: 'G3', midi: 55, startBeat: 49.5, durationBeats: 1, trackId: 'leftHand', sectionId: 'childhood_memory', velocity: 60, accent: 'light' },
@@ -261,8 +264,9 @@ export const testDemo2SongScore = {
     { pitch: 'B5', midi: 83, startBeat: 73, durationBeats: 1, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 82, accent: 'medium' },
     { pitch: 'D6', midi: 86, startBeat: 74, durationBeats: 1, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 84, accent: 'strong' },
     { pitch: 'G6', midi: 91, startBeat: 75, durationBeats: 1, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 86, accent: 'strong' },
-    { pitch: 'E6', midi: 88, startBeat: 76, durationBeats: 4, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 80, accent: 'medium' },
-    { pitch: 'G6', midi: 91, startBeat: 76, durationBeats: 4, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 72, accent: 'light' },
+    { pitch: 'E6', midi: 88, startBeat: 76, durationBeats: 3, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 80, accent: 'medium' },
+    { pitch: 'G6', midi: 91, startBeat: 76, durationBeats: 3, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 72, accent: 'light' },
+    { pitch: 'E6', midi: 88, startBeat: 79, durationBeats: 1, trackId: 'rightHand', sectionId: 'childhood_memory', velocity: 68, accent: 'light' },
 
     { pitch: 'A2', midi: 45, startBeat: 80, durationBeats: 1.5, trackId: 'leftHand', sectionId: 'winter_farewell', velocity: 58, accent: 'light' },
     { pitch: 'E3', midi: 52, startBeat: 81.5, durationBeats: 1, trackId: 'leftHand', sectionId: 'winter_farewell', velocity: 54, accent: 'light' },
@@ -284,7 +288,8 @@ export const testDemo2SongScore = {
     { pitch: 'D5', midi: 74, startBeat: 88, durationBeats: 2, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 62, accent: 'light' },
     { pitch: 'E5', midi: 76, startBeat: 90, durationBeats: 2, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 64, accent: 'light' },
     { pitch: 'G5', midi: 79, startBeat: 92, durationBeats: 2, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 66, accent: 'light' },
-    { pitch: 'D5', midi: 74, startBeat: 94, durationBeats: 2, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 62, accent: 'light' },
+    { pitch: 'D5', midi: 74, startBeat: 94, durationBeats: 1, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 62, accent: 'light' },
+    { pitch: 'E5', midi: 76, startBeat: 95, durationBeats: 1, trackId: 'rightHand', sectionId: 'winter_farewell', velocity: 60, accent: 'light' },
 
     { pitch: 'A2', midi: 45, startBeat: 96, durationBeats: 1.5, trackId: 'leftHand', sectionId: 'memory_after', velocity: 54, accent: 'light' },
     { pitch: 'E3', midi: 52, startBeat: 97.5, durationBeats: 1, trackId: 'leftHand', sectionId: 'memory_after', velocity: 50, accent: 'light' },
