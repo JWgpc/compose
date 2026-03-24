@@ -2,6 +2,7 @@ import { quickPresets } from './presets.ts';
 import { firstLightSongScore } from './first-light-song-score.ts';
 import { testDemo1SongScore } from './test-demo1-song-score.ts';
 import { testDemo2SongScore } from './test-demo2-song-score.ts';
+import { testDemo3SongScore } from './test-demo3-song-score.ts';
 import { clamp, noteName, uid } from '../utils.ts';
 import {
   SONG_SCORE_ACCENT,
@@ -251,6 +252,10 @@ export function createSongScore(presetId, overrides = {}) {
 
   if (presetId === 'test-demo2' && Object.keys(overrides).length === 0) {
     return structuredClone(testDemo2SongScore);
+  }
+
+  if (presetId === 'test-demo3' && Object.keys(overrides).length === 0) {
+    return structuredClone(testDemo3SongScore);
   }
 
   const template = sectionTemplates[preset.sectionTemplate] || sectionTemplates['Mainstream Pop'];

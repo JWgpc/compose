@@ -34,6 +34,23 @@ export const quickPresets = [
     hookSummary: 'A memorial piano piece with a more singable childhood-memory theme',
   },
   {
+    id: 'test-demo3',
+    label: '测试demo3',
+    title: '冬去之后的怀念（饱满版）',
+    style: 'Cinematic Memorial Piano',
+    mood: 'Deep / Tender',
+    bpm: 64,
+    key: 'C',
+    mode: 'Major',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Mainstream Pop',
+    phraseLength: 4,
+    chorusLift: 'Bigger Arrangement',
+    theme: '更丰富、更饱满、更有电影感的纪念性钢琴曲',
+    lyricIdea: 'Instrumental memorial piano with fuller texture',
+    hookSummary: 'A fuller cinematic memorial arrangement with thicker harmony and stronger dynamic arc',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -121,6 +138,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-000',
+    title: '测试demo3',
+    subtitle: 'Cinematic Memorial Piano · 64 BPM · fuller arrangement',
+    presetId: 'test-demo3',
+  },
   {
     id: 'recent-00',
     title: '测试demo2',
