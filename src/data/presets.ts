@@ -85,6 +85,23 @@ export const quickPresets = [
     hookSummary: 'A youthful song demo generated from a campus-at-dusk story, with lyrics and melody aligned',
   },
   {
+    id: 'test-demo6',
+    label: '测试demo6',
+    title: '朔风战歌',
+    style: 'Cinematic War Elegy',
+    mood: 'Solemn / Cold / Martial',
+    bpm: 72,
+    key: 'D',
+    mode: 'Minor',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Ballad',
+    phraseLength: 4,
+    chorusLift: 'Bigger Arrangement',
+    theme: '战争之歌，箫杀肃穆，像边塞寒风、列阵、交锋与残照后的军魂回响',
+    lyricIdea: 'instrumental xiao-inspired war theme',
+    hookSummary: 'A 32-bar solemn war piece with xiao-like melody and restrained martial weight',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -172,6 +189,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-000000',
+    title: '测试demo6',
+    subtitle: 'Cinematic War Elegy · 72 BPM · xiao-inspired war piece',
+    presetId: 'test-demo6',
+  },
   {
     id: 'recent-00000',
     title: '测试demo5',

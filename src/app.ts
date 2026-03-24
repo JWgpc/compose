@@ -8,7 +8,7 @@ import { getPreferredPreviewInstrument, getProjectLyricNotes, getProjectSections
 import { MODAL, SCREEN } from './types.ts';
 
 export function createInitialState() {
-  const project = createProject('test-demo5');
+  const project = createProject('test-demo6');
   const sections = getProjectSections(project);
   const hasLyrics = getProjectLyricNotes(project).length > 0;
   return {
