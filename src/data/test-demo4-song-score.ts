@@ -253,7 +253,7 @@ export const testDemo4SongScore = {
     { pitch: 'F6', midi: 89, startBeat: 50, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 94, accent: 'strong' },
     { pitch: 'A6', midi: 93, startBeat: 50, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 82, accent: 'medium' },
     { pitch: 'G6', midi: 91, startBeat: 51, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 92, accent: 'strong' },
-    { pitch: 'B5', midi: 83, startBeat: 52, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 88, accent: 'medium' },
+    { pitch: 'E6', midi: 88, startBeat: 52, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 88, accent: 'medium' },
     { pitch: 'D6', midi: 86, startBeat: 52, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 78, accent: 'light' },
     { pitch: 'D6', midi: 86, startBeat: 53, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 90, accent: 'medium' },
     { pitch: 'G6', midi: 91, startBeat: 54, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 94, accent: 'strong' },
@@ -266,7 +266,7 @@ export const testDemo4SongScore = {
     { pitch: 'E6', midi: 88, startBeat: 58, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 94, accent: 'strong' },
     { pitch: 'G6', midi: 91, startBeat: 58, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 82, accent: 'medium' },
     { pitch: 'E6', midi: 88, startBeat: 59, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 90, accent: 'medium' },
-    { pitch: 'A5', midi: 81, startBeat: 60, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 88, accent: 'medium' },
+    { pitch: 'G5', midi: 79, startBeat: 60, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 88, accent: 'medium' },
     { pitch: 'C6', midi: 84, startBeat: 60, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 78, accent: 'light' },
     { pitch: 'C6', midi: 84, startBeat: 61, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 90, accent: 'medium' },
     { pitch: 'E6', midi: 88, startBeat: 62, durationBeats: 1, trackId: 'rightHand', sectionId: 'chasing_theme', velocity: 94, accent: 'strong' },
@@ -339,7 +339,7 @@ export const testDemo4SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'chasing_theme',
-      text: '主主题要像一群孩子追着晚风和影子跑，但不是纯闹腾，而是带一点长大后回望时的发光感。',
+      text: '主主题要更能记住：保留追跑感，但用更清楚的重复轮廓和回归音，让人听完能哼出一句。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
