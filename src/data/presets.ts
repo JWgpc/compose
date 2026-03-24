@@ -192,7 +192,7 @@ export const recentProjects = [
   {
     id: 'recent-000000',
     title: '测试demo6',
-    subtitle: 'Cinematic War Elegy · 78 BPM · heavier war-drum rewrite',
+    subtitle: 'Cinematic War Elegy · 78 BPM · drums, horns, and cavalry spread',
     presetId: 'test-demo6',
   },
   {

@@ -132,6 +132,22 @@ function addMelodyPhrase(sectionId, bar, pattern) {
   });
 }
 
+function addLayerPhrase(trackId, sectionId, bar, pattern) {
+  const startBeat = (bar - 1) * 4;
+  pattern.forEach((note) => {
+    pushNote(
+      trackId,
+      sectionId,
+      midiToPitch(note.midi),
+      note.midi,
+      startBeat + note.offset,
+      note.duration,
+      note.velocity,
+      note.accent,
+    );
+  });
+}
+
 function midiToPitch(midi) {
   const names = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
   const octave = Math.floor(midi / 12) - 1;
@@ -344,6 +360,33 @@ const finalePatterns = [
 ];
 finalePatterns.forEach((pattern, idx) => addMelodyPhrase('finale', idx + 25, pattern));
 
+[
+  [5, 'march', [{ offset: 0, midi: 62, duration: 2, velocity: 70, accent: 'light' }, { offset: 2, midi: 65, duration: 2, velocity: 72, accent: 'light' }]],
+  [6, 'march', [{ offset: 0, midi: 64, duration: 2, velocity: 70, accent: 'light' }, { offset: 2, midi: 67, duration: 2, velocity: 72, accent: 'light' }]],
+  [7, 'march', [{ offset: 0, midi: 65, duration: 4, velocity: 74, accent: 'medium' }]],
+  [8, 'march', [{ offset: 0, midi: 69, duration: 4, velocity: 76, accent: 'medium' }]],
+  [9, 'march', [{ offset: 0, midi: 62, duration: 2, velocity: 72, accent: 'light' }, { offset: 2, midi: 65, duration: 2, velocity: 74, accent: 'light' }]],
+  [10, 'march', [{ offset: 0, midi: 64, duration: 2, velocity: 72, accent: 'light' }, { offset: 2, midi: 67, duration: 2, velocity: 74, accent: 'light' }]],
+  [11, 'march', [{ offset: 0, midi: 70, duration: 4, velocity: 78, accent: 'medium' }]],
+  [12, 'march', [{ offset: 0, midi: 69, duration: 4, velocity: 80, accent: 'medium' }]],
+  [13, 'battle', [{ offset: 0, midi: 74, duration: 2, velocity: 82, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 84, accent: 'medium' }]],
+  [14, 'battle', [{ offset: 0, midi: 79, duration: 4, velocity: 86, accent: 'strong' }]],
+  [15, 'battle', [{ offset: 0, midi: 77, duration: 2, velocity: 84, accent: 'medium' }, { offset: 2, midi: 81, duration: 2, velocity: 88, accent: 'strong' }]],
+  [16, 'battle', [{ offset: 0, midi: 81, duration: 4, velocity: 90, accent: 'strong' }]],
+  [17, 'battle', [{ offset: 0, midi: 74, duration: 2, velocity: 84, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 86, accent: 'strong' }]],
+  [18, 'battle', [{ offset: 0, midi: 76, duration: 2, velocity: 84, accent: 'medium' }, { offset: 2, midi: 79, duration: 2, velocity: 88, accent: 'strong' }]],
+  [19, 'battle', [{ offset: 0, midi: 77, duration: 2, velocity: 86, accent: 'strong' }, { offset: 2, midi: 81, duration: 2, velocity: 90, accent: 'strong' }]],
+  [20, 'battle', [{ offset: 0, midi: 81, duration: 4, velocity: 92, accent: 'strong' }]],
+  [25, 'finale', [{ offset: 0, midi: 74, duration: 2, velocity: 84, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 86, accent: 'strong' }]],
+  [26, 'finale', [{ offset: 0, midi: 79, duration: 4, velocity: 88, accent: 'strong' }]],
+  [27, 'finale', [{ offset: 0, midi: 77, duration: 2, velocity: 86, accent: 'strong' }, { offset: 2, midi: 81, duration: 2, velocity: 90, accent: 'strong' }]],
+  [28, 'finale', [{ offset: 0, midi: 81, duration: 4, velocity: 92, accent: 'strong' }]],
+  [29, 'finale', [{ offset: 0, midi: 86, duration: 2, velocity: 94, accent: 'strong' }, { offset: 2, midi: 89, duration: 2, velocity: 96, accent: 'strong' }]],
+  [30, 'finale', [{ offset: 0, midi: 84, duration: 2, velocity: 92, accent: 'strong' }, { offset: 2, midi: 86, duration: 2, velocity: 94, accent: 'strong' }]],
+  [31, 'finale', [{ offset: 0, midi: 81, duration: 2, velocity: 88, accent: 'medium' }, { offset: 2, midi: 77, duration: 2, velocity: 84, accent: 'medium' }]],
+  [32, 'finale', [{ offset: 0, midi: 74, duration: 4, velocity: 82, accent: 'medium' }]],
+].forEach(([bar, sectionId, pattern]) => addLayerPhrase('warLayer', sectionId, bar, pattern));
+
 export const testDemo6SongScore = {
   schemaVersion: SONG_SCORE_SCHEMA_VERSION,
   meta: {
@@ -354,8 +397,8 @@ export const testDemo6SongScore = {
     key: 'D minor',
     unitNoteLength: '1/8',
     genre: 'War Elegy / Cinematic Chinese',
-    mood: '肃杀 / 壮烈 / 威压',
-    tags: ['war', 'xiao-inspired', 'solemn', 'cinematic', 'instrumental'],
+    mood: '肃杀 / 壮烈 / 威压 / 宏大战场',
+    tags: ['war', 'xiao-inspired', 'solemn', 'cinematic', 'instrumental', 'horn-calls', 'cavalry'],
   },
   sections,
   tracks: [
@@ -373,6 +416,13 @@ export const testDemo6SongScore = {
       instrumentHint: 'low piano / war drum feel',
       color: '#ffd38c',
     },
+    {
+      id: 'warLayer',
+      name: 'War Layer',
+      role: SONG_SCORE_TRACK_ROLE.COUNTERMELODY,
+      instrumentHint: 'horn / cavalry line / open-field calls',
+      color: '#ff9fb3',
+    },
   ],
   chords,
   notes,
@@ -385,12 +435,12 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'march',
-      text: '左手改成更重的低音八分脉冲与八度砸点，像战鼓压阵。',
+      text: '左手保留重鼓式低音脉冲，同时让中高层声部像号角在阵后此起彼伏。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'battle',
-      text: '高潮要像军阵正面压来：更高音区、更密集重拍、更强烈压迫感。',
+      text: '高潮除了正面压迫，还要有横向铺开感：像鼓、号、千骑在同一片战场上同时推进。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
@@ -400,17 +450,18 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'finale',
-      text: '尾段要更壮烈，像血战之后旌旗再起；最后仍落回 D 小调，把胜意压成军魂。',
+      text: '尾段加入更开阔的号角线条，像旌旗、鼓点、骑阵一同展开；最后仍落回 D 小调，把胜意压成军魂。',
     },
   ],
   renderHints: {
     defaultInstruments: {
       rightHand: 'realistic-piano',
       leftHand: 'realistic-piano',
+      warLayer: 'realistic-piano',
     },
     preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.1,
   },
   sourceFormat: 'story',
-  sourceText: '战争主题器乐曲：箫杀肃穆。32 小节，偏国风肃杀感，用钢琴模拟箫与战鼓的气质。',
+  sourceText: '战争主题器乐曲：箫杀肃穆，并进一步扩成鼓、号、千骑并进的横向战场感。32 小节，用钢琴模拟箫、战鼓与号角层次。',
 };
