@@ -1,5 +1,22 @@
 export const quickPresets = [
   {
+    id: 'test-demo1',
+    label: '测试demo1',
+    title: '测试demo1',
+    style: 'Demo',
+    mood: 'Neutral',
+    bpm: 90,
+    key: 'C',
+    mode: 'Major',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Mainstream Pop',
+    phraseLength: 4,
+    chorusLift: 'Higher Register',
+    theme: '四小节最小导入示例',
+    lyricIdea: 'Instrumental demo import test',
+    hookSummary: 'A short four-bar melody for import verification',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -87,6 +104,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-0',
+    title: '测试demo1',
+    subtitle: 'Demo · 90 BPM · imported just now',
+    presetId: 'test-demo1',
+  },
   {
     id: 'recent-1',
     title: '初霁 (First Light)',
