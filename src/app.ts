@@ -4,12 +4,13 @@ import { DEFAULT_INSTRUMENT_ID } from './audio/webAudioPlayer.ts';
 import { quickPresets, recentProjects } from './data/presets.ts';
 import { createProject } from './data/songFactory.ts';
 import { getInitialLanguage } from './i18n.ts';
-import { getPreferredPreviewInstrument, getProjectSections } from './songscore/adapters.ts';
+import { getPreferredPreviewInstrument, getProjectLyricNotes, getProjectSections } from './songscore/adapters.ts';
 import { MODAL, SCREEN } from './types.ts';
 
 export function createInitialState() {
   const project = createProject('test-demo5');
   const sections = getProjectSections(project);
+  const hasLyrics = getProjectLyricNotes(project).length > 0;
   return {
     language: getInitialLanguage(),
     screen: SCREEN.LANDING,
@@ -24,9 +25,13 @@ export function createInitialState() {
     currentBar: 0,
     playheadBeat: 0,
     selectedInstrumentId: getPreferredPreviewInstrument(project) || DEFAULT_INSTRUMENT_ID,
+    hasLyrics,
+    lyricRollEnabled: hasLyrics,
+    lyricPlaybackMode: 'mix',
     laneHeights: {
       timeline: 170,
       chords: 92,
+      lyrics: 138,
       piano: 420,
     },
     toast: '',

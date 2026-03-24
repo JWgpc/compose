@@ -223,13 +223,20 @@ export function getProjectNote(project, noteId) {
   return getProjectNotes(project).find((note) => note.id === noteId) || null;
 }
 
-export function getPlayableNotes(project) {
-  return getProjectNotes(project).map((note) => ({
+export function getProjectLyricNotes(project) {
+  return getProjectNotes(project).filter((note) => Boolean(note.lyric));
+}
+
+export function getPlayableNotes(project, options = {}) {
+  const sourceNotes = options.lyricsOnly ? getProjectLyricNotes(project) : getProjectNotes(project);
+  return sourceNotes.map((note) => ({
     pitch: note.pitch,
     startBeat: note.startBeat,
     duration: note.duration,
     emphasis: note.emphasis,
     velocity: note.velocity,
+    lyric: note.lyric,
+    trackId: note.trackId,
   }));
 }
 

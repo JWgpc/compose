@@ -3,6 +3,7 @@ import { renderSidebar } from './sidebar.ts';
 import { renderTimeline } from './timeline.ts';
 import { renderChordLane } from './chordLane.ts';
 import { renderPianoRoll } from './pianoRoll.ts';
+import { renderLyricRoll } from './lyricRoll.ts';
 import { renderInspector } from './inspector.ts';
 import { renderTransport } from './transport.ts';
 import { renderModal } from './modals.ts';
@@ -64,6 +65,11 @@ export function renderComposer(state) {
             ${renderChordLane(state)}
             <div class="panel-edge-resizer" data-resize-target="chords" title="Resize chord panel" aria-label="Resize chord panel"></div>
           </div>
+          ${state.hasLyrics && state.lyricRollEnabled ? `
+          <div class="panel-stack-item panel-stack-item--fixed" data-panel-target="lyrics" style="--panel-height:${state.laneHeights.lyrics}px">
+            ${renderLyricRoll(state)}
+            <div class="panel-edge-resizer" data-resize-target="lyrics" title="Resize lyric roll panel" aria-label="Resize lyric roll panel"></div>
+          </div>` : ''}
           <div class="panel-stack-item panel-stack-item--fill" data-panel-target="piano" style="--panel-height:${state.laneHeights.piano}px">
             ${renderPianoRoll(state)}
             <div class="panel-edge-resizer" data-resize-target="piano" title="Resize piano roll panel" aria-label="Resize piano roll panel"></div>

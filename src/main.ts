@@ -51,10 +51,9 @@ function getDisplayBarFromBeat(beat) {
 }
 
 function syncPlaybackUI() {
-  const playhead = root.querySelector('[data-playhead]');
-  if (playhead) {
+  root.querySelectorAll('[data-playhead]').forEach((playhead) => {
     playhead.style.left = `${getBeatOffset(state.playheadBeat)}px`;
-  }
+  });
 
   const slider = root.querySelector('[data-transport-slider]');
   if (slider) {
@@ -215,6 +214,7 @@ async function startPlayback() {
       loopEnabled: state.loopEnabled,
       selectedSectionId: state.selectedSectionId,
       startBeat: state.playheadBeat,
+      lyricsOnly: state.lyricPlaybackMode === 'solo',
     });
 
     if (!started) {
@@ -253,6 +253,9 @@ function rebuildProject(presetId) {
   state.playheadBeat = 0;
   state.currentBar = 0;
   state.selectedInstrumentId = getPreferredPreviewInstrument(state.project) || state.selectedInstrumentId;
+  state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
+  state.lyricRollEnabled = state.hasLyrics;
+  state.lyricPlaybackMode = 'mix';
   stopPlayback();
 }
 
@@ -263,6 +266,9 @@ function applyPreset(presetId) {
   state.playheadBeat = 0;
   state.currentBar = 0;
   state.selectedInstrumentId = getPreferredPreviewInstrument(state.project) || state.selectedInstrumentId;
+  state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
+  state.lyricRollEnabled = state.hasLyrics;
+  state.lyricPlaybackMode = 'mix';
   stopPlayback();
 }
 
@@ -280,10 +286,26 @@ function applyRegeneratePreview() {
   rerender();
 }
 
-function applyExport() {
+async function applyExport() {
   state.activeModal = MODAL.NONE;
-  showToast(t(state.language, 'exportToast'));
+  showToast(t(state.language, 'exportPreparingToast'));
   rerender();
+
+  try {
+    const wavBlob = await exportProjectToWav(state.project, 'realistic-piano');
+    const url = URL.createObjectURL(wavBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${state.project.title || 'song-sketch'}.wav`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast(t(state.language, 'exportReadyToast'));
+  } catch (error) {
+    console.error('Export failed:', error);
+    showToast(t(state.language, 'exportFailedToast'));
+  }
 }
 
 function updateSetting(name, value) {
@@ -390,6 +412,21 @@ async function handleAction(action, source) {
     return;
   }
 
+  if (action === 'toggle-lyric-roll') {
+    state.lyricRollEnabled = !state.lyricRollEnabled;
+    rerender();
+    return;
+  }
+
+  if (action === 'toggle-lyrics-solo') {
+    state.lyricPlaybackMode = state.lyricPlaybackMode === 'solo' ? 'mix' : 'solo';
+    await restartPlaybackIfNeeded();
+    if (!state.isPlaying) {
+      rerender();
+    }
+    return;
+  }
+
   if (action === 'select-instrument') {
     state.selectedInstrumentId = source.value;
     player.setInstrument(state.selectedInstrumentId);
@@ -424,7 +461,7 @@ async function handleAction(action, source) {
   }
 
   if (action === 'apply-export') {
-    applyExport();
+    await applyExport();
     return;
   }
 
@@ -446,6 +483,7 @@ function getLaneResizeHeight(target, nextHeight) {
   const limits = {
     timeline: { min: 120, max: 320 },
     chords: { min: 72, max: 220 },
+    lyrics: { min: 92, max: 260 },
     piano: { min: 240, max: 900 },
   };
 

@@ -20,6 +20,8 @@ export function renderTransport(state) {
           <button class="transport-button" data-action="toggle-play">${state.isPlaying ? t(lang, 'pause') : t(lang, 'play')}</button>
           <button class="transport-button" data-action="stop-playback">${t(lang, 'stop')}</button>
           <button class="transport-button ${state.loopEnabled ? 'transport-button--active' : ''}" data-action="toggle-loop">${t(lang, 'loopSection')}</button>
+          ${state.hasLyrics ? `<button class="transport-button ${state.lyricRollEnabled ? 'transport-button--active' : ''}" data-action="toggle-lyric-roll">${t(lang, 'lyricRoll')}</button>` : ''}
+          ${state.hasLyrics ? `<button class="transport-button ${state.lyricPlaybackMode === 'solo' ? 'transport-button--active' : ''}" data-action="toggle-lyrics-solo">${state.lyricPlaybackMode === 'solo' ? t(lang, 'lyricsSolo') : t(lang, 'lyricsFollowSong')}</button>` : ''}
         </div>
         <label class="transport-select-group">
           <span>${t(lang, 'instrument')}</span>

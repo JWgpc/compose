@@ -791,7 +791,8 @@ button {
   outline: 2px solid rgba(255, 255, 255, 0.26);
 }
 
-.piano-panel {
+.piano-panel,
+.lyric-panel {
   min-height: 0;
   height: 100%;
   display: grid;
@@ -811,7 +812,8 @@ button {
   overscroll-behavior: contain;
 }
 
-.piano-grid {
+.piano-grid,
+.lyric-grid {
   position: relative;
   border-radius: 24px;
   overflow: hidden;
@@ -835,7 +837,10 @@ button {
 .section-band,
 .playhead,
 .note-layer,
-.note-block {
+.note-block,
+.lyric-layer,
+.lyric-block,
+.lyric-row-label {
   position: absolute;
 }
 
@@ -925,6 +930,47 @@ button {
 
 .note-block--active {
   outline: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.lyric-row-label {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--track-gutter);
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0.55rem;
+  background: rgba(9, 14, 26, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  z-index: 3;
+}
+
+.lyric-layer {
+  inset: 0 0 0 var(--track-gutter);
+}
+
+.lyric-block {
+  min-height: 28px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.45rem;
+  background: color-mix(in srgb, var(--section-accent) 22%, rgba(255, 255, 255, 0.06));
+  border: 1px solid color-mix(in srgb, var(--section-accent) 38%, rgba(255, 255, 255, 0.12));
+  color: var(--text);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.lyric-block--solo {
+  box-shadow: 0 0 0 1px rgba(255, 212, 125, 0.28), 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.lyric-block span {
+  font-size: 0.82rem;
 }
 
 .selection-caption {

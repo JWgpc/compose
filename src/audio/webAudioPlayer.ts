@@ -1,4 +1,4 @@
-import { getPlayableNotes, getProjectSection, getProjectSections, getTempoBpm } from '../songscore/adapters.ts';
+import { getPlayableNotes, getProjectSection, getProjectSections, getSongScoreSummary, getTempoBpm } from '../songscore/adapters.ts';
 
 export const DEFAULT_INSTRUMENT_ID = 'piano';
 
@@ -135,6 +135,10 @@ function getAudioContextConstructor() {
   return window.AudioContext || window.webkitAudioContext || null;
 }
 
+function getOfflineAudioContextConstructor() {
+  return window.OfflineAudioContext || window.webkitOfflineAudioContext || null;
+}
+
 function getInstrumentById(id) {
   return instrumentCatalog.find((instrument) => instrument.id === id) || instrumentCatalog[0];
 }
@@ -181,33 +185,47 @@ async function loadSampleBank(audioContext, bankId) {
     return cached.promise;
   }
 
-  const promise = (bankDefinition.samples
-    ? Promise.all(
-        bankDefinition.samples.map(async (sample) => {
-          const response = await fetch(sample.url);
-          if (!response.ok) {
-            throw new Error(`Unable to load sample: ${sample.url}`);
-          }
-          const arrayBuffer = await response.arrayBuffer();
-          const buffer = await audioContext.decodeAudioData(arrayBuffer.slice(0));
-          return { ...sample, buffer };
-        }),
-      ).then((samples) => ({ ...bankDefinition, samples }))
-    : Promise.all([bankDefinition.leftUrl, bankDefinition.rightUrl].map(loadBuffer(audioContext))).then(([leftBuffer, rightBuffer]) => {
-        const frameCount = Math.max(leftBuffer.length, rightBuffer.length);
-        const stereoBuffer = audioContext.createBuffer(2, frameCount, audioContext.sampleRate);
-        stereoBuffer.copyToChannel(leftBuffer.getChannelData(0), 0, 0);
-        stereoBuffer.copyToChannel(rightBuffer.getChannelData(0), 1, 0);
-        return {
-          samples: [
-            {
-              rootNote: bankDefinition.rootNote,
-              buffer: stereoBuffer,
-            },
-          ],
-        };
-      })
-  ).then((loaded) => {
+  const promise = (async () => {
+    if (bankDefinition.samples) {
+      const loadedSamples = [];
+      const batchSize = 5;
+      for (let i = 0; i < bankDefinition.samples.length; i += batchSize) {
+        const batch = bankDefinition.samples.slice(i, i + batchSize);
+        const results = await Promise.all(
+          batch.map(async (sample) => {
+            const response = await fetch(sample.url);
+            if (!response.ok) {
+              throw new Error(`Unable to load sample: ${sample.url}`);
+            }
+            const arrayBuffer = await response.arrayBuffer();
+            const buffer = await new Promise((resolve, reject) => {
+              const result = audioContext.decodeAudioData(arrayBuffer.slice(0), resolve, reject);
+              if (result && result.then) {
+                result.then(resolve).catch(reject);
+              }
+            });
+            return { ...sample, buffer };
+          })
+        );
+        loadedSamples.push(...results);
+      }
+      return { ...bankDefinition, samples: loadedSamples };
+    } else {
+      const [leftBuffer, rightBuffer] = await Promise.all([bankDefinition.leftUrl, bankDefinition.rightUrl].map(loadBuffer(audioContext)));
+      const frameCount = Math.max(leftBuffer.length, rightBuffer.length);
+      const stereoBuffer = audioContext.createBuffer(2, frameCount, audioContext.sampleRate);
+      stereoBuffer.copyToChannel(leftBuffer.getChannelData(0), 0, 0);
+      stereoBuffer.copyToChannel(rightBuffer.getChannelData(0), 1, 0);
+      return {
+        samples: [
+          {
+            rootNote: bankDefinition.rootNote,
+            buffer: stereoBuffer,
+          },
+        ],
+      };
+    }
+  })().then((loaded) => {
     bankCache.set(bankId, loaded);
     return loaded;
   });
@@ -223,7 +241,12 @@ function loadBuffer(audioContext) {
       throw new Error(`Unable to load sample: ${url}`);
     }
     const arrayBuffer = await response.arrayBuffer();
-    return audioContext.decodeAudioData(arrayBuffer.slice(0));
+    return new Promise((resolve, reject) => {
+      const result = audioContext.decodeAudioData(arrayBuffer.slice(0), resolve, reject);
+      if (result && result.then) {
+        result.then(resolve).catch(reject);
+      }
+    });
   };
 }
 
@@ -396,7 +419,7 @@ function encodeWav(audioBuffer) {
   return buffer;
 }
 
-async function renderProjectBuffer(project, instrumentId, { loopEnabled = false, selectedSectionId = null } = {}) {
+async function renderProjectBuffer(project, instrumentId, { loopEnabled = false, selectedSectionId = null, lyricsOnly = false } = {}) {
   const OfflineAudioContextConstructor = getOfflineAudioContextConstructor();
   if (!OfflineAudioContextConstructor) {
     throw new Error('Offline audio rendering is not supported in this browser.');
@@ -432,7 +455,7 @@ async function renderProjectBuffer(project, instrumentId, { loopEnabled = false,
 
   const buses = { masterGain, reverbInput, convolver, wetGain };
   const bank = await loadSampleBank(offlineContext, instrument.bankId);
-  const notes = getPlayableNotes(project).filter(
+  const notes = getPlayableNotes(project, { lyricsOnly }).filter(
     (note) => note.startBeat < renderEndBeat && note.startBeat + note.duration > renderStartBeat,
   );
 
@@ -444,7 +467,14 @@ async function renderProjectBuffer(project, instrumentId, { loopEnabled = false,
     scheduleSampleVoice(offlineContext, buses, instrument, bank, note, relativeStartSeconds, durationSeconds);
   });
 
-  return offlineContext.startRendering();
+  return new Promise((resolve, reject) => {
+    offlineContext.oncomplete = (event) => resolve(event.renderedBuffer);
+    offlineContext.onerror = (error) => reject(error);
+    const result = offlineContext.startRendering();
+    if (result && result.then) {
+      result.then(resolve).catch(reject);
+    }
+  });
 }
 
 export async function exportProjectToWav(project, instrumentId, options = {}) {
@@ -559,7 +589,7 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
     const instrument = getInstrumentById(instrumentId);
     const bank = await loadSampleBank(audioContext, instrument.bankId);
 
-    getPlayableNotes(project)
+    getPlayableNotes(project, { lyricsOnly: playback.lyricsOnly })
       .filter((note) => note.startBeat < endBeat && note.startBeat + note.duration > startBeat)
       .forEach((note) => {
         const clippedStartBeat = Math.max(note.startBeat, startBeat);
@@ -637,6 +667,7 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
       loopEnabled,
       loopStartBeat,
       loopEndBeat,
+      lyricsOnly: Boolean(options.lyricsOnly),
     };
 
     const firstSegmentEndBeat = loopEnabled ? loopEndBeat : totalBeats;
