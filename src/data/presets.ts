@@ -90,7 +90,7 @@ export const quickPresets = [
     title: '朔风战歌',
     style: 'Cinematic War Elegy',
     mood: 'Solemn / Cold / Martial',
-    bpm: 72,
+    bpm: 78,
     key: 'D',
     mode: 'Minor',
     hookType: 'Melodic Hook',
@@ -192,7 +192,7 @@ export const recentProjects = [
   {
     id: 'recent-000000',
     title: '测试demo6',
-    subtitle: 'Cinematic War Elegy · 72 BPM · xiao-inspired war piece',
+    subtitle: 'Cinematic War Elegy · 78 BPM · heavier war-drum rewrite',
     presetId: 'test-demo6',
   },
   {

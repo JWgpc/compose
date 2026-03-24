@@ -27,7 +27,7 @@ const sections = [
     startBar: 13,
     barCount: 8,
     type: SONG_SCORE_SECTION_TYPE.CHORUS,
-    description: '短兵相接，金石并作，但仍保持庄严克制。',
+    description: '短兵相接，金石并作，压迫感层层推进，像千军迎面压来。',
     energyLevel: 5,
     hookFocus: true,
   },
@@ -47,7 +47,7 @@ const sections = [
     startBar: 25,
     barCount: 8,
     type: SONG_SCORE_SECTION_TYPE.OUTRO,
-    description: '不写喧闹凯旋，只写战意未散、军魂未灭。',
+    description: '尾段抬成壮烈史诗感，像浴血之后列阵再起，军魂逼天而立。',
     energyLevel: 4,
     hookFocus: true,
   },
@@ -93,6 +93,23 @@ function pushNote(trackId, sectionId, pitch, midi, startBeat, durationBeats, vel
 
 function addLeftHandBar(sectionId, bar, rootMidi, upperMidi, velocityBase = 64) {
   const startBeat = (bar - 1) * 4;
+  const isBattle = sectionId === 'battle';
+  const isFinale = sectionId === 'finale';
+
+  if (isBattle || isFinale) {
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi - 12), rootMidi - 12, startBeat, 0.5, velocityBase + 18, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi), rootMidi, startBeat, 0.5, velocityBase + 12, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi + 12), rootMidi + 12, startBeat + 0.5, 0.5, velocityBase + 6, 'medium');
+    pushNote('leftHand', sectionId, midiToPitch(upperMidi), upperMidi, startBeat + 1, 0.5, velocityBase + 10, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi), rootMidi, startBeat + 1.5, 0.5, velocityBase + 8, 'medium');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi - 12), rootMidi - 12, startBeat + 2, 0.5, velocityBase + 16, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi), rootMidi, startBeat + 2, 0.5, velocityBase + 10, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi + 12), rootMidi + 12, startBeat + 2.5, 0.5, velocityBase + 6, 'medium');
+    pushNote('leftHand', sectionId, midiToPitch(upperMidi + 12), upperMidi + 12, startBeat + 3, 0.5, velocityBase + 10, 'strong');
+    pushNote('leftHand', sectionId, midiToPitch(rootMidi), rootMidi, startBeat + 3.5, 0.5, velocityBase + 8, 'medium');
+    return;
+  }
+
   pushNote('leftHand', sectionId, midiToPitch(rootMidi), rootMidi, startBeat, 1, velocityBase + 6, 'medium');
   pushNote('leftHand', sectionId, midiToPitch(upperMidi), upperMidi, startBeat + 1, 1, velocityBase, 'light');
   pushNote('leftHand', sectionId, midiToPitch(rootMidi + 12), rootMidi + 12, startBeat + 2, 1, velocityBase + 2, 'light');
@@ -211,51 +228,60 @@ const marchMotifD = [
 
 const battlePatterns = [
   [
-    { offset: 0, midi: 81, duration: 0.5, velocity: 96, accent: 'strong' },
+    { offset: 0, midi: 81, duration: 0.5, velocity: 102, accent: 'strong' },
+    { offset: 0.5, midi: 77, duration: 0.5, velocity: 96, accent: 'strong' },
+    { offset: 1, midi: 74, duration: 0.5, velocity: 92, accent: 'medium' },
+    { offset: 1.5, midi: 79, duration: 0.5, velocity: 98, accent: 'strong' },
+    { offset: 2, midi: 82, duration: 1, velocity: 102, accent: 'strong' },
+    { offset: 3, midi: 86, duration: 1, velocity: 104, accent: 'strong' },
+  ],
+  [
+    { offset: 0, midi: 89, duration: 1, velocity: 106, accent: 'strong' },
+    { offset: 1, midi: 86, duration: 1, velocity: 100, accent: 'strong' },
+    { offset: 2, midi: 84, duration: 1, velocity: 98, accent: 'strong' },
+    { offset: 3, midi: 81, duration: 1, velocity: 94, accent: 'medium' },
+  ],
+  [
+    { offset: 0, midi: 82, duration: 0.5, velocity: 96, accent: 'strong' },
+    { offset: 0.5, midi: 79, duration: 0.5, velocity: 92, accent: 'medium' },
+    { offset: 1, midi: 77, duration: 1, velocity: 90, accent: 'medium' },
+    { offset: 2, midi: 81, duration: 1, velocity: 96, accent: 'strong' },
+    { offset: 3, midi: 84, duration: 1, velocity: 100, accent: 'strong' },
+  ],
+  [
+    { offset: 0, midi: 81, duration: 0.5, velocity: 94, accent: 'strong' },
     { offset: 0.5, midi: 77, duration: 0.5, velocity: 90, accent: 'medium' },
-    { offset: 1, midi: 74, duration: 1, velocity: 86, accent: 'medium' },
-    { offset: 2, midi: 79, duration: 1, velocity: 92, accent: 'strong' },
-    { offset: 3, midi: 82, duration: 1, velocity: 94, accent: 'strong' },
+    { offset: 1, midi: 74, duration: 0.5, velocity: 88, accent: 'medium' },
+    { offset: 1.5, midi: 73, duration: 0.5, velocity: 92, accent: 'strong' },
+    { offset: 2, midi: 76, duration: 1, velocity: 90, accent: 'medium' },
+    { offset: 3, midi: 81, duration: 1, velocity: 98, accent: 'strong' },
   ],
   [
-    { offset: 0, midi: 86, duration: 1, velocity: 98, accent: 'strong' },
-    { offset: 1, midi: 82, duration: 1, velocity: 92, accent: 'medium' },
-    { offset: 2, midi: 81, duration: 2, velocity: 96, accent: 'strong' },
+    { offset: 0, midi: 86, duration: 1, velocity: 104, accent: 'strong' },
+    { offset: 1, midi: 89, duration: 1, velocity: 108, accent: 'strong' },
+    { offset: 2, midi: 91, duration: 1, velocity: 110, accent: 'strong' },
+    { offset: 3, midi: 89, duration: 1, velocity: 102, accent: 'strong' },
   ],
   [
-    { offset: 0, midi: 77, duration: 1, velocity: 86, accent: 'medium' },
-    { offset: 1, midi: 81, duration: 1, velocity: 90, accent: 'strong' },
-    { offset: 2, midi: 79, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 3, midi: 76, duration: 1, velocity: 80, accent: 'light' },
+    { offset: 0, midi: 84, duration: 0.5, velocity: 98, accent: 'strong' },
+    { offset: 0.5, midi: 81, duration: 0.5, velocity: 94, accent: 'strong' },
+    { offset: 1, midi: 79, duration: 1, velocity: 92, accent: 'medium' },
+    { offset: 2, midi: 84, duration: 1, velocity: 98, accent: 'strong' },
+    { offset: 3, midi: 86, duration: 1, velocity: 102, accent: 'strong' },
   ],
   [
-    { offset: 0, midi: 77, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 1, midi: 74, duration: 1, velocity: 80, accent: 'medium' },
-    { offset: 2, midi: 73, duration: 1, velocity: 86, accent: 'strong' },
-    { offset: 3, midi: 69, duration: 1, velocity: 72, accent: 'light' },
+    { offset: 0, midi: 82, duration: 0.5, velocity: 96, accent: 'strong' },
+    { offset: 0.5, midi: 79, duration: 0.5, velocity: 92, accent: 'medium' },
+    { offset: 1, midi: 77, duration: 0.5, velocity: 90, accent: 'medium' },
+    { offset: 1.5, midi: 81, duration: 0.5, velocity: 96, accent: 'strong' },
+    { offset: 2, midi: 84, duration: 1, velocity: 100, accent: 'strong' },
+    { offset: 3, midi: 86, duration: 1, velocity: 104, accent: 'strong' },
   ],
   [
-    { offset: 0, midi: 81, duration: 1, velocity: 94, accent: 'strong' },
-    { offset: 1, midi: 84, duration: 1, velocity: 98, accent: 'strong' },
-    { offset: 2, midi: 86, duration: 1, velocity: 100, accent: 'strong' },
-    { offset: 3, midi: 84, duration: 1, velocity: 92, accent: 'medium' },
-  ],
-  [
-    { offset: 0, midi: 79, duration: 1, velocity: 88, accent: 'medium' },
-    { offset: 1, midi: 84, duration: 1, velocity: 92, accent: 'strong' },
-    { offset: 2, midi: 81, duration: 1, velocity: 88, accent: 'medium' },
-    { offset: 3, midi: 77, duration: 1, velocity: 82, accent: 'light' },
-  ],
-  [
-    { offset: 0, midi: 77, duration: 1, velocity: 86, accent: 'medium' },
-    { offset: 1, midi: 74, duration: 1, velocity: 82, accent: 'medium' },
-    { offset: 2, midi: 81, duration: 1, velocity: 90, accent: 'strong' },
-    { offset: 3, midi: 82, duration: 1, velocity: 92, accent: 'strong' },
-  ],
-  [
-    { offset: 0, midi: 86, duration: 1, velocity: 96, accent: 'strong' },
-    { offset: 1, midi: 82, duration: 1, velocity: 90, accent: 'medium' },
-    { offset: 2, midi: 81, duration: 2, velocity: 94, accent: 'strong' },
+    { offset: 0, midi: 89, duration: 1, velocity: 108, accent: 'strong' },
+    { offset: 1, midi: 86, duration: 1, velocity: 102, accent: 'strong' },
+    { offset: 2, midi: 84, duration: 1, velocity: 100, accent: 'strong' },
+    { offset: 3, midi: 81, duration: 1, velocity: 96, accent: 'medium' },
   ],
 ];
 
@@ -270,48 +296,50 @@ battlePatterns.forEach((pattern, idx) => addMelodyPhrase('battle', idx + 13, pat
 
 const finalePatterns = [
   [
-    { offset: 0, midi: 74, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 1, midi: 77, duration: 1, velocity: 88, accent: 'medium' },
-    { offset: 2, midi: 81, duration: 1, velocity: 90, accent: 'strong' },
-    { offset: 3, midi: 84, duration: 1, velocity: 92, accent: 'strong' },
-  ],
-  [
-    { offset: 0, midi: 82, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 1, midi: 79, duration: 1, velocity: 80, accent: 'medium' },
-    { offset: 2, midi: 77, duration: 1, velocity: 78, accent: 'light' },
-    { offset: 3, midi: 74, duration: 1, velocity: 76, accent: 'light' },
-  ],
-  [
-    { offset: 0, midi: 79, duration: 1, velocity: 82, accent: 'medium' },
-    { offset: 1, midi: 82, duration: 1, velocity: 86, accent: 'medium' },
-    { offset: 2, midi: 86, duration: 1, velocity: 92, accent: 'strong' },
-    { offset: 3, midi: 82, duration: 1, velocity: 84, accent: 'medium' },
-  ],
-  [
-    { offset: 0, midi: 81, duration: 1, velocity: 86, accent: 'strong' },
-    { offset: 1, midi: 84, duration: 1, velocity: 90, accent: 'strong' },
-    { offset: 2, midi: 81, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 3, midi: 77, duration: 1, velocity: 80, accent: 'light' },
+    { offset: 0, midi: 77, duration: 1, velocity: 92, accent: 'strong' },
+    { offset: 1, midi: 81, duration: 1, velocity: 96, accent: 'strong' },
+    { offset: 2, midi: 86, duration: 1, velocity: 102, accent: 'strong' },
+    { offset: 3, midi: 89, duration: 1, velocity: 106, accent: 'strong' },
   ],
   [
     { offset: 0, midi: 86, duration: 1, velocity: 94, accent: 'strong' },
-    { offset: 1, midi: 84, duration: 1, velocity: 90, accent: 'strong' },
-    { offset: 2, midi: 81, duration: 1, velocity: 86, accent: 'medium' },
-    { offset: 3, midi: 77, duration: 1, velocity: 82, accent: 'medium' },
+    { offset: 1, midi: 84, duration: 1, velocity: 90, accent: 'medium' },
+    { offset: 2, midi: 82, duration: 1, velocity: 88, accent: 'medium' },
+    { offset: 3, midi: 79, duration: 1, velocity: 84, accent: 'medium' },
   ],
   [
-    { offset: 0, midi: 79, duration: 1, velocity: 82, accent: 'medium' },
-    { offset: 1, midi: 84, duration: 1, velocity: 88, accent: 'strong' },
-    { offset: 2, midi: 81, duration: 1, velocity: 84, accent: 'medium' },
-    { offset: 3, midi: 76, duration: 1, velocity: 78, accent: 'light' },
+    { offset: 0, midi: 82, duration: 1, velocity: 92, accent: 'strong' },
+    { offset: 1, midi: 86, duration: 1, velocity: 98, accent: 'strong' },
+    { offset: 2, midi: 89, duration: 1, velocity: 104, accent: 'strong' },
+    { offset: 3, midi: 86, duration: 1, velocity: 96, accent: 'strong' },
   ],
   [
-    { offset: 0, midi: 77, duration: 2, velocity: 76, accent: 'medium' },
-    { offset: 2, midi: 74, duration: 1, velocity: 72, accent: 'light' },
-    { offset: 3, midi: 69, duration: 1, velocity: 68, accent: 'light' },
+    { offset: 0, midi: 84, duration: 1, velocity: 96, accent: 'strong' },
+    { offset: 1, midi: 89, duration: 1, velocity: 102, accent: 'strong' },
+    { offset: 2, midi: 86, duration: 1, velocity: 98, accent: 'strong' },
+    { offset: 3, midi: 81, duration: 1, velocity: 92, accent: 'medium' },
   ],
   [
-    { offset: 0, midi: 74, duration: 4, velocity: 66, accent: 'medium' },
+    { offset: 0, midi: 91, duration: 1, velocity: 110, accent: 'strong' },
+    { offset: 1, midi: 89, duration: 1, velocity: 106, accent: 'strong' },
+    { offset: 2, midi: 86, duration: 1, velocity: 102, accent: 'strong' },
+    { offset: 3, midi: 84, duration: 1, velocity: 98, accent: 'strong' },
+  ],
+  [
+    { offset: 0, midi: 86, duration: 0.5, velocity: 98, accent: 'strong' },
+    { offset: 0.5, midi: 84, duration: 0.5, velocity: 94, accent: 'strong' },
+    { offset: 1, midi: 81, duration: 1, velocity: 92, accent: 'medium' },
+    { offset: 2, midi: 86, duration: 1, velocity: 98, accent: 'strong' },
+    { offset: 3, midi: 82, duration: 1, velocity: 90, accent: 'medium' },
+  ],
+  [
+    { offset: 0, midi: 81, duration: 1, velocity: 86, accent: 'medium' },
+    { offset: 1, midi: 77, duration: 1, velocity: 82, accent: 'medium' },
+    { offset: 2, midi: 74, duration: 1, velocity: 78, accent: 'light' },
+    { offset: 3, midi: 69, duration: 1, velocity: 74, accent: 'light' },
+  ],
+  [
+    { offset: 0, midi: 74, duration: 4, velocity: 72, accent: 'medium' },
   ],
 ];
 finalePatterns.forEach((pattern, idx) => addMelodyPhrase('finale', idx + 25, pattern));
@@ -321,12 +349,12 @@ export const testDemo6SongScore = {
   meta: {
     title: '朔风战歌',
     composer: 'OpenClaw',
-    tempoBpm: 72,
+    tempoBpm: 78,
     timeSignature: '4/4',
     key: 'D minor',
     unitNoteLength: '1/8',
     genre: 'War Elegy / Cinematic Chinese',
-    mood: '肃杀 / 庄严 / 冷峻',
+    mood: '肃杀 / 壮烈 / 威压',
     tags: ['war', 'xiao-inspired', 'solemn', 'cinematic', 'instrumental'],
   },
   sections,
@@ -357,12 +385,12 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'march',
-      text: '左手稳定四拍推进，像压低声势的行军鼓点。',
+      text: '左手改成更重的低音八分脉冲与八度砸点，像战鼓压阵。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'battle',
-      text: '高潮不是狂躁，而是肃杀、紧绷、带威压感。',
+      text: '高潮要像军阵正面压来：更高音区、更密集重拍、更强烈压迫感。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
@@ -372,7 +400,7 @@ export const testDemo6SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'finale',
-      text: '尾段重新聚拢军魂，最后落回 D 小调，不写欢呼，只写余威。',
+      text: '尾段要更壮烈，像血战之后旌旗再起；最后仍落回 D 小调，把胜意压成军魂。',
     },
   ],
   renderHints: {
