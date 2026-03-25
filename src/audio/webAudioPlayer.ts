@@ -66,6 +66,24 @@ const sampleBankCatalog = {
       url: new URL(`./samples/philharmonia/bass-drum/${rootNote}.mp3`, import.meta.url).href,
     })),
   },
+  'philharmonia-mandolin': {
+    samples: [60, 67, 74, 81, 88].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/mandolin/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
+  'philharmonia-violin': {
+    samples: [57, 62, 69, 74, 81].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/violin/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
+  'philharmonia-guitar': {
+    samples: [40, 45, 50, 55, 60].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/guitar/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
 };
 
 const instrumentCatalog = [
@@ -112,6 +130,39 @@ const instrumentCatalog = [
     filterFrequency: 3000,
     filterQ: 0.76,
     reverbSend: 0.06,
+  },
+  {
+    id: 'philharmonia-mandolin',
+    labelKey: 'instrumentPhilharmoniaMandolin',
+    bankId: 'philharmonia-mandolin',
+    gain: 0.24,
+    attack: 0.004,
+    release: 0.85,
+    filterFrequency: 8200,
+    filterQ: 0.46,
+    reverbSend: 0.12,
+  },
+  {
+    id: 'philharmonia-violin',
+    labelKey: 'instrumentPhilharmoniaViolin',
+    bankId: 'philharmonia-violin',
+    gain: 0.26,
+    attack: 0.012,
+    release: 1.05,
+    filterFrequency: 7600,
+    filterQ: 0.5,
+    reverbSend: 0.18,
+  },
+  {
+    id: 'philharmonia-guitar',
+    labelKey: 'instrumentPhilharmoniaGuitar',
+    bankId: 'philharmonia-guitar',
+    gain: 0.24,
+    attack: 0.006,
+    release: 1.0,
+    filterFrequency: 6800,
+    filterQ: 0.54,
+    reverbSend: 0.14,
   },
 ];
 
