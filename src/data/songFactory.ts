@@ -392,8 +392,3 @@ export function createProject(presetId, overrides = {}) {
     songScore,
   };
 }
-rection: preset.sectionTemplate,
-    },
-    songScore,
-  };
-}

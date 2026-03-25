@@ -307,11 +307,3 @@ export const controlOptions = {
   chorusLift: ['Higher Register', 'Longer Notes', 'More Repetition', 'Denser Rhythm', 'Bigger Arrangement'],
 };
 
-', 'Romantic', 'Driven', 'Warm'],
-  key: ['C', 'D', 'E', 'E♭', 'F', 'G', 'A'],
-  mode: ['Major', 'Minor'],
-  hookType: ['Title Hook', 'Riff Hook', 'Melodic Hook', 'Rhythmic Hook', 'Post Chorus Hook'],
-  sectionTemplate: ['Mainstream Pop', 'Compact Pop', 'Ballad', 'Post-Chorus Pop', 'Riff-First Track'],
-  chorusLift: ['Higher Register', 'Longer Notes', 'More Repetition', 'Denser Rhythm', 'Bigger Arrangement'],
-};
-
