@@ -112,7 +112,7 @@ const instrumentCatalog = [
     id: 'realistic-piano',
     labelKey: 'instrumentRealisticPiano',
     bankId: 'realistic-piano',
-    gain: 0.3,
+    gain: 0.22,
     attack: 0.003,
     release: 1.25,
     filterFrequency: 9600,
@@ -145,34 +145,34 @@ const instrumentCatalog = [
     id: 'philharmonia-cello',
     labelKey: 'instrumentPhilharmoniaCello',
     bankId: 'philharmonia-cello',
-    gain: 0.34,
+    gain: 0.42,
     attack: 0.018,
     release: 0.95,
     filterFrequency: 4600,
     filterQ: 0.72,
-    reverbSend: 0.2,
+    reverbSend: 0.18,
   },
   {
     id: 'philharmonia-flute',
     labelKey: 'instrumentPhilharmoniaFlute',
     bankId: 'philharmonia-flute',
-    gain: 0.26,
-    attack: 0.022,
+    gain: 0.46,
+    attack: 0.02,
     release: 0.82,
-    filterFrequency: 7200,
-    filterQ: 0.58,
-    reverbSend: 0.26,
+    filterFrequency: 7800,
+    filterQ: 0.5,
+    reverbSend: 0.22,
   },
   {
     id: 'philharmonia-bass-drum',
     labelKey: 'instrumentPhilharmoniaBassDrum',
     bankId: 'philharmonia-bass-drum',
-    gain: 0.5,
+    gain: 0.52,
     attack: 0.002,
     release: 1.8,
-    filterFrequency: 2400,
-    filterQ: 0.9,
-    reverbSend: 0.12,
+    filterFrequency: 2600,
+    filterQ: 0.82,
+    reverbSend: 0.08,
   },
 ];
 
@@ -421,6 +421,84 @@ export function getAvailableInstruments() {
   return instrumentCatalog.map(({ id, labelKey }) => ({ id, labelKey }));
 }
 
+function normalizeInstrumentCandidate(candidateId) {
+  if (typeof candidateId !== 'string') {
+    return null;
+  }
+
+  const normalizedId = candidateId.trim();
+  if (!normalizedId) {
+    return null;
+  }
+
+  const exactMatch = instrumentCatalog.find((instrument) => instrument.id === normalizedId);
+  if (exactMatch) {
+    return exactMatch.id;
+  }
+
+  return instrumentCatalog.find((instrument) => instrument.bankId === normalizedId)?.id || null;
+}
+
+export function resolveInstrumentId(candidateId, fallbackInstrumentId = DEFAULT_INSTRUMENT_ID) {
+  return normalizeInstrumentCandidate(candidateId) || normalizeInstrumentCandidate(fallbackInstrumentId) || DEFAULT_INSTRUMENT_ID;
+}
+
+export function resolveTrackInstrumentId(project, trackId, fallbackInstrumentId = DEFAULT_INSTRUMENT_ID) {
+  const renderHints = project?.songScore?.renderHints || {};
+  const trackDefaults = renderHints.defaultInstruments || {};
+  const declaredTrack = project?.songScore?.tracks?.find((track) => track.id === trackId) || null;
+
+  return resolveInstrumentId(
+    trackDefaults[trackId] || declaredTrack?.instrumentHint || renderHints.preferredPreviewInstrument || fallbackInstrumentId,
+    fallbackInstrumentId,
+  );
+}
+
+export function getProjectTrackInstrumentIds(project, fallbackInstrumentId = DEFAULT_INSTRUMENT_ID) {
+  const trackIds = new Set((project?.songScore?.tracks || []).map((track) => track.id));
+
+  (project?.songScore?.notes || []).forEach((note) => {
+    if (typeof note?.trackId === 'string' && note.trackId) {
+      trackIds.add(note.trackId);
+    }
+  });
+
+  return Object.fromEntries(
+    [...trackIds].map((trackId) => [trackId, resolveTrackInstrumentId(project, trackId, fallbackInstrumentId)]),
+  );
+}
+
+function getTrackInstrumentDefinitions(project, notes, fallbackInstrumentId = DEFAULT_INSTRUMENT_ID) {
+  const instrumentByTrackId = new Map();
+
+  notes.forEach((note) => {
+    const trackKey = note.trackId || '';
+    if (instrumentByTrackId.has(trackKey)) {
+      return;
+    }
+
+    instrumentByTrackId.set(trackKey, getInstrumentById(resolveTrackInstrumentId(project, note.trackId, fallbackInstrumentId)));
+  });
+
+  if (!instrumentByTrackId.size) {
+    instrumentByTrackId.set('', getInstrumentById(resolveInstrumentId(project?.songScore?.renderHints?.preferredPreviewInstrument, fallbackInstrumentId)));
+  }
+
+  return instrumentByTrackId;
+}
+
+async function loadBanksForTrackInstruments(audioContext, instrumentByTrackId) {
+  const bankByBankId = new Map();
+
+  await Promise.all(
+    [...new Set([...instrumentByTrackId.values()].map((instrument) => instrument.bankId))].map(async (bankId) => {
+      bankByBankId.set(bankId, await loadSampleBank(audioContext, bankId));
+    }),
+  );
+
+  return bankByBankId;
+}
+
 function floatTo16BitPCM(output, offset, input) {
   for (let index = 0; index < input.length; index += 1, offset += 2) {
     const sample = Math.max(-1, Math.min(1, input[index]));
@@ -470,13 +548,12 @@ function encodeWav(audioBuffer) {
   return buffer;
 }
 
-async function renderProjectBuffer(project, instrumentId, { loopEnabled = false, selectedSectionId = null, lyricsOnly = false } = {}) {
+async function renderProjectBuffer(project, fallbackInstrumentId, { loopEnabled = false, selectedSectionId = null, lyricsOnly = false } = {}) {
   const OfflineAudioContextConstructor = getOfflineAudioContextConstructor();
   if (!OfflineAudioContextConstructor) {
     throw new Error('Offline audio rendering is not supported in this browser.');
   }
 
-  const instrument = getInstrumentById(instrumentId);
   const tempo = getTempoBpm(project);
   const beatsPerSecond = tempo / 60;
   const sections = getProjectSections(project);
@@ -505,16 +582,20 @@ async function renderProjectBuffer(project, instrumentId, { loopEnabled = false,
   masterGain.connect(offlineContext.destination);
 
   const buses = { masterGain, reverbInput, convolver, wetGain };
-  const bank = await loadSampleBank(offlineContext, instrument.bankId);
   const notes = getPlayableNotes(project, { lyricsOnly }).filter(
     (note) => note.startBeat < renderEndBeat && note.startBeat + note.duration > renderStartBeat,
   );
+  const instrumentByTrackId = getTrackInstrumentDefinitions(project, notes, fallbackInstrumentId);
+  const bankByBankId = await loadBanksForTrackInstruments(offlineContext, instrumentByTrackId);
 
   notes.forEach((note) => {
     const clippedStartBeat = Math.max(note.startBeat, renderStartBeat);
     const clippedEndBeat = Math.min(note.startBeat + note.duration, renderEndBeat);
     const relativeStartSeconds = (clippedStartBeat - renderStartBeat) / beatsPerSecond + PRE_ROLL_SECONDS;
     const durationSeconds = Math.max((clippedEndBeat - clippedStartBeat) / beatsPerSecond, 0.06);
+    const instrument = instrumentByTrackId.get(note.trackId || '') || getInstrumentById(resolveTrackInstrumentId(project, note.trackId, fallbackInstrumentId));
+    const bank = bankByBankId.get(instrument.bankId);
+
     scheduleSampleVoice(offlineContext, buses, instrument, bank, note, relativeStartSeconds, durationSeconds);
   });
 
@@ -528,8 +609,8 @@ async function renderProjectBuffer(project, instrumentId, { loopEnabled = false,
   });
 }
 
-export async function exportProjectToWav(project, instrumentId, options = {}) {
-  const rendered = await renderProjectBuffer(project, instrumentId, options);
+export async function exportProjectToWav(project, fallbackInstrumentId, options = {}) {
+  const rendered = await renderProjectBuffer(project, fallbackInstrumentId, options);
   const wav = encodeWav(rendered);
   return new Blob([wav], { type: 'audio/wav' });
 }
@@ -538,7 +619,7 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
   let audioContext = null;
   let buses = null;
   let playback = null;
-  let instrumentId = DEFAULT_INSTRUMENT_ID;
+  let previewInstrumentId = DEFAULT_INSTRUMENT_ID;
   let animationFrameId = 0;
   let finishTimerId = 0;
   const loopTimerIds = new Set();
@@ -637,21 +718,24 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
       return;
     }
 
-    const instrument = getInstrumentById(instrumentId);
-    const bank = await loadSampleBank(audioContext, instrument.bankId);
+    const notes = getPlayableNotes(project, { lyricsOnly: playback.lyricsOnly }).filter(
+      (note) => note.startBeat < endBeat && note.startBeat + note.duration > startBeat,
+    );
+    const instrumentByTrackId = getTrackInstrumentDefinitions(project, notes, previewInstrumentId);
+    const bankByBankId = await loadBanksForTrackInstruments(audioContext, instrumentByTrackId);
 
-    getPlayableNotes(project, { lyricsOnly: playback.lyricsOnly })
-      .filter((note) => note.startBeat < endBeat && note.startBeat + note.duration > startBeat)
-      .forEach((note) => {
-        const clippedStartBeat = Math.max(note.startBeat, startBeat);
-        const clippedEndBeat = Math.min(note.startBeat + note.duration, endBeat);
-        const relativeStartSeconds = (clippedStartBeat - startBeat) / playback.beatsPerSecond;
-        const durationSeconds = Math.max((clippedEndBeat - clippedStartBeat) / playback.beatsPerSecond, 0.06);
-        const voice = scheduleSampleVoice(audioContext, buses, instrument, bank, note, startTime + relativeStartSeconds, durationSeconds);
-        if (voice) {
-          scheduledVoices.push(voice);
-        }
-      });
+    notes.forEach((note) => {
+      const instrument = instrumentByTrackId.get(note.trackId || '') || getInstrumentById(resolveTrackInstrumentId(project, note.trackId, previewInstrumentId));
+      const bank = bankByBankId.get(instrument.bankId);
+      const clippedStartBeat = Math.max(note.startBeat, startBeat);
+      const clippedEndBeat = Math.min(note.startBeat + note.duration, endBeat);
+      const relativeStartSeconds = (clippedStartBeat - startBeat) / playback.beatsPerSecond;
+      const durationSeconds = Math.max((clippedEndBeat - clippedStartBeat) / playback.beatsPerSecond, 0.06);
+      const voice = scheduleSampleVoice(audioContext, buses, instrument, bank, note, startTime + relativeStartSeconds, durationSeconds);
+      if (voice) {
+        scheduledVoices.push(voice);
+      }
+    });
   }
 
   function scheduleLoopCycle(project, startBeat, endBeat, startTime, token) {
@@ -689,8 +773,12 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
 
     await context.resume();
 
-    const instrument = getInstrumentById(instrumentId);
-    await loadSampleBank(context, instrument.bankId);
+    const projectTrackInstrumentIds = getProjectTrackInstrumentIds(project, previewInstrumentId);
+    await Promise.all(
+      [...new Set(Object.values(projectTrackInstrumentIds).map((instrumentId) => getInstrumentById(instrumentId).bankId))].map((bankId) =>
+        loadSampleBank(context, bankId),
+      ),
+    );
 
     const totalBeats = project.totalBars * 4;
     const sections = getProjectSections(project);
@@ -760,7 +848,7 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
   }
 
   function setInstrument(nextInstrumentId) {
-    instrumentId = getInstrumentById(nextInstrumentId).id;
+    previewInstrumentId = resolveInstrumentId(nextInstrumentId);
   }
 
   function dispose() {
