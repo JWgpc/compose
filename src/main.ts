@@ -3,11 +3,19 @@ import { createInitialState, renderApp } from './app.ts';
 import { createAudioPlayer, exportProjectToWav } from './audio/webAudioPlayer.ts';
 import { createProject } from './data/songFactory.ts';
 import { persistLanguage, syncDocumentLanguage, t } from './i18n.ts';
-import { getPreferredPreviewInstrument, getProjectSections, getSongScoreSummary } from './songscore/adapters.ts';
+import {
+  getPreferredPreviewInstrument,
+  getProjectLyricNotes,
+  getProjectSections,
+  getSongScoreSummary,
+} from './songscore/adapters.ts';
 import { TRACK_GUTTER, getBeatOffset } from './components/workstationGrid.ts';
 import { MODAL, SCREEN } from './types.ts';
 
 const root = document.querySelector('#app');
+if (!root) {
+  throw new Error('my_compose: #app container not found');
+}
 const state = createInitialState();
 let toastTimer = null;
 let scrollSyncLocked = false;
@@ -329,6 +337,13 @@ function updateSetting(name, value) {
   }
 }
 
+function getActionName(source) {
+  if (!source || !source.getAttribute) {
+    return '';
+  }
+  return source.dataset.action || source.getAttribute('data-action') || '';
+}
+
 async function handleAction(action, source) {
   if (action === 'go-home') {
     stopPlayback();
@@ -604,15 +619,40 @@ function bindEvents() {
     );
   }
 
-  root.querySelectorAll('[data-action]').forEach((element) => {
-    if (element.tagName === 'SELECT') {
-      return;
-    }
-    element.addEventListener('click', (event) => {
-      const source = event.currentTarget;
-      handleAction(source.dataset.action, source);
+  if (!root.dataset.actionDelegateBound) {
+    root.dataset.actionDelegateBound = '1';
+    root.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      const actionable = target.closest('[data-action]');
+      if (!actionable || !root.contains(actionable)) {
+        return;
+      }
+      if (actionable.tagName === 'SELECT') {
+        return;
+      }
+      if (actionable.matches('input[type="range"]')) {
+        return;
+      }
+      if (
+        actionable.classList.contains('modal-backdrop') &&
+        target !== actionable &&
+        target.closest('.modal-card')
+      ) {
+        return;
+      }
+      const action = getActionName(actionable);
+      if (!action) {
+        return;
+      }
+      void handleAction(action, actionable).catch((err) => {
+        console.error('handleAction', action, err);
+        showToast(t(state.language, 'audioStartError'));
+      });
     });
-  });
+  }
 
   root.querySelectorAll('select[data-action]').forEach((element) => {
     element.addEventListener('change', (event) => {

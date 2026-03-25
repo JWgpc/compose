@@ -15,7 +15,7 @@ export function renderModal(state) {
   if (state.activeModal === MODAL.REGENERATE) {
     return `
       <div class="modal-backdrop" data-action="close-modal">
-        <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-card">
           <div class="modal-header">
             <div>
               <span class="eyebrow">${escapeHtml(t(lang, 'regenerateModalEyebrow'))}</span>
@@ -59,7 +59,7 @@ export function renderModal(state) {
 
   return `
     <div class="modal-backdrop" data-action="close-modal">
-      <div class="modal-card" onclick="event.stopPropagation()">
+      <div class="modal-card">
         <div class="modal-header">
           <div>
             <span class="eyebrow">${escapeHtml(t(lang, 'exportModalEyebrow'))}</span>

@@ -394,6 +394,8 @@ button {
 }
 
 .workspace-center {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
@@ -810,6 +812,15 @@ button {
   overflow: auto;
   padding-top: 0.55rem;
   overscroll-behavior: contain;
+}
+
+/* Lyric roll: same horizontal lane as piano; fills the panel grid row so scroll/sync works */
+.lyric-panel .workstation-lane-scroll {
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .piano-grid,
@@ -1247,113 +1258,6 @@ button {
   .workspace-inspector {
     grid-column: 1 / -1;
     min-height: 280px;
-  }
-}
-
-@media (max-width: 1040px) {
-  .hero-panel,
-  .landing-grid,
-  .workspace-layout,
-  .transport-bar,
-  .landing-topbar {
-    grid-template-columns: 1fr;
-  }
-
-  .step-list,
-  .preset-grid,
-  .field-grid,
-  .modal-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .workspace-shell {
-    padding: 0.85rem;
-  }
-
-  .workspace-center {
-    grid-template-rows: repeat(4, auto);
-  }
-
-  .workspace-topbar {
-    grid-template-columns: 1fr;
-  }
-
-  .topbar-meta {
-    justify-items: start;
-  }
-
-  .transport-controls,
-  .transport-readout {
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 1280px) {
-  .workspace-shell {
-    height: auto;
-    overflow: visible;
-  }
-
-  .workspace-layout {
-    grid-template-columns: 300px minmax(0, 1fr);
-  }
-
-  .workspace-inspector {
-    grid-column: 1 / -1;
-    min-height: 280px;
-  }
-}
-
-@media (max-width: 1040px) {
-  .hero-panel,
-  .landing-grid,
-  .workspace-layout,
-  .transport-bar,
-  .landing-topbar {
-    grid-template-columns: 1fr;
-  }
-
-  .step-list,
-  .preset-grid,
-  .field-grid,
-  .modal-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .workspace-shell {
-    padding: 0.85rem;
-  }
-
-  .workspace-center {
-    grid-template-rows: repeat(4, auto);
-  }
-
-  .workspace-topbar {
-    grid-template-columns: 1fr;
-  }
-
-  .topbar-meta {
-    justify-items: start;
-  }
-
-  .transport-controls,
-  .transport-readout {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 1280px) {
-  .workspace-shell {
-    height: auto;
-    overflow: visible;
-  }
-
-  .workspace-layout {
-    grid-template-columns: 300px minmax(0, 1fr);
-  }
-
-  .workspace-inspector {
-    grid-column: 1 / -1;
-    min-height: 280px;
     height: auto;
     max-height: none;
   }
@@ -1403,14 +1307,6 @@ button {
 
   .workspace-center {
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 0;
-  }
-}
-ng-bottom: 0;
-  }
-}
     margin-left: 0;
     margin-right: 0;
     padding-bottom: 0;

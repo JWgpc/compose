@@ -1,4 +1,4 @@
-import { formatCount, t } from '../i18n.ts';
+import { formatCount, localizeValue, t } from '../i18n.ts';
 import { getProjectLyricNotes, getProjectSections } from '../songscore/adapters.ts';
 import { sectionColor } from '../utils.ts';
 import { BEAT_WIDTH, TRACK_GUTTER, getBeatOffset, getWorkstationContentWidth } from './workstationGrid.ts';
@@ -19,7 +19,7 @@ export function renderLyricRoll(state) {
       return `
         <div class="section-band ${selectedSection && selectedSection.id === section.id ? 'section-band--active' : ''}"
           style="left:${left}px;width:${bandWidth}px;--section-accent:${sectionColor(section.kind)}">
-          <span>${section.label}</span>
+          <span>${localizeValue(lang, section.label)}</span>
         </div>
       `;
     })
