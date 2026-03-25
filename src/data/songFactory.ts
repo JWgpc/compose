@@ -8,6 +8,7 @@ import { testDemo5SongScore } from './test-demo5-song-score.ts';
 import { testDemo6SongScore } from './test-demo6-song-score.ts';
 import { testDemo7SongScore } from './test-demo7-song-score.ts';
 import { testDemo8SongScore } from './test-demo8-song-score.ts';
+import { testDemo9SongScore } from './test-demo9-song-score.ts';
 import { clamp, noteName, uid } from '../utils.ts';
 import {
   SONG_SCORE_ACCENT,
@@ -387,6 +388,11 @@ export function createProject(presetId, overrides = {}) {
       melodyRule: preset.hookType === 'Riff Hook' ? 'Keep vocals tight around the riff pocket' : 'Land chorus strong beats on stable tones',
       harmonyRule: preset.mode === 'Minor' ? 'Keep verses conservative and let the chorus widen the register' : 'Use looped harmony and let the hook sell the payoff',
       referenceDirection: preset.sectionTemplate,
+    },
+    songScore,
+  };
+}
+rection: preset.sectionTemplate,
     },
     songScore,
   };

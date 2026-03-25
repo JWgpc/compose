@@ -224,6 +224,12 @@ export const quickPresets = [
 
 export const recentProjects = [
   {
+    id: 'recent-000000000',
+    title: '测试demo9',
+    subtitle: 'Nylon Guitar Sketch · 92 BPM · warm evening walk-home idea',
+    presetId: 'test-demo9',
+  },
+  {
     id: 'recent-00000000',
     title: '测试demo8',
     subtitle: 'Childhood Spring Piano · 108 BPM · rain, growth, and bright morning light',
@@ -294,6 +300,14 @@ export const recentProjects = [
 export const controlOptions = {
   style: ['Mainstream Pop', 'Ballad', 'Dance Pop', 'Mandopop', 'Synth Pop'],
   mood: ['Uplifting', 'Bittersweet', 'Electric', 'Romantic', 'Driven', 'Warm'],
+  key: ['C', 'D', 'E', 'E♭', 'F', 'G', 'A'],
+  mode: ['Major', 'Minor'],
+  hookType: ['Title Hook', 'Riff Hook', 'Melodic Hook', 'Rhythmic Hook', 'Post Chorus Hook'],
+  sectionTemplate: ['Mainstream Pop', 'Compact Pop', 'Ballad', 'Post-Chorus Pop', 'Riff-First Track'],
+  chorusLift: ['Higher Register', 'Longer Notes', 'More Repetition', 'Denser Rhythm', 'Bigger Arrangement'],
+};
+
+', 'Romantic', 'Driven', 'Warm'],
   key: ['C', 'D', 'E', 'E♭', 'F', 'G', 'A'],
   mode: ['Major', 'Minor'],
   hookType: ['Title Hook', 'Riff Hook', 'Melodic Hook', 'Rhythmic Hook', 'Post Chorus Hook'],
