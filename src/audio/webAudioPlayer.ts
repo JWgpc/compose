@@ -1,6 +1,6 @@
 import { getPlayableNotes, getProjectSection, getProjectSections, getSongScoreSummary, getTempoBpm } from '../songscore/adapters.ts';
 
-export const DEFAULT_INSTRUMENT_ID = 'piano';
+export const DEFAULT_INSTRUMENT_ID = 'realistic-piano';
 
 const PRE_ROLL_SECONDS = 0.05;
 const LOOP_SCHEDULE_EARLY_MS = 250;
@@ -45,25 +45,8 @@ const realisticPianoSamples = [
 ];
 
 const sampleBankCatalog = {
-  piano: {
-    samples: [48, 55, 62, 69, 76].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/piano/${rootNote}.wav`, import.meta.url).href,
-    })),
-  },
-  strings: {
-    samples: [48, 55, 62, 69, 76].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/strings/${rootNote}.wav`, import.meta.url).href,
-    })),
-  },
   'realistic-piano': {
     samples: realisticPianoSamples,
-  },
-  'soft-piano-test': {
-    rootNote: 72,
-    leftUrl: new URL('../../download_voice/soft-piano-export/Soft Piano 1L.wav', import.meta.url).href,
-    rightUrl: new URL('../../download_voice/soft-piano-export/Soft Piano 1R.wav', import.meta.url).href,
   },
   'philharmonia-cello': {
     samples: [45, 50, 55, 60, 65].map((rootNote) => ({
@@ -87,28 +70,6 @@ const sampleBankCatalog = {
 
 const instrumentCatalog = [
   {
-    id: 'piano',
-    labelKey: 'instrumentPiano',
-    bankId: 'piano',
-    gain: 0.42,
-    attack: 0.004,
-    release: 1.15,
-    filterFrequency: 8600,
-    filterQ: 0.6,
-    reverbSend: 0.14,
-  },
-  {
-    id: 'felt-piano',
-    labelKey: 'instrumentFeltPiano',
-    bankId: 'piano',
-    gain: 0.36,
-    attack: 0.008,
-    release: 1.55,
-    filterFrequency: 4200,
-    filterQ: 0.9,
-    reverbSend: 0.2,
-  },
-  {
     id: 'realistic-piano',
     labelKey: 'instrumentRealisticPiano',
     bankId: 'realistic-piano',
@@ -118,28 +79,6 @@ const instrumentCatalog = [
     filterFrequency: 9600,
     filterQ: 0.45,
     reverbSend: 0.16,
-  },
-  {
-    id: 'soft-piano-test',
-    labelKey: 'instrumentSoftPianoTest',
-    bankId: 'soft-piano-test',
-    gain: 0.32,
-    attack: 0.006,
-    release: 1.4,
-    filterFrequency: 5200,
-    filterQ: 0.78,
-    reverbSend: 0.18,
-  },
-  {
-    id: 'soft-strings',
-    labelKey: 'instrumentSoftStrings',
-    bankId: 'strings',
-    gain: 0.34,
-    attack: 0.06,
-    release: 1.1,
-    filterFrequency: 5400,
-    filterQ: 0.7,
-    reverbSend: 0.28,
   },
   {
     id: 'philharmonia-cello',
