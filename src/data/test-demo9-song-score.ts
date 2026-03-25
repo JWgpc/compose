@@ -220,19 +220,15 @@ const pianoPatterns = [
 
 for (let bar = 1; bar <= 4; bar += 1) {
   addPattern('guitarLead', 'porch', bar, guitarPatterns[bar - 1]);
-  addPattern('pianoBed', 'porch', bar, pianoPatterns[bar - 1]);
 }
 for (let bar = 5; bar <= 8; bar += 1) {
   addPattern('guitarLead', 'lane', bar, guitarPatterns[bar - 1]);
-  addPattern('pianoBed', 'lane', bar, pianoPatterns[bar - 1]);
 }
 for (let bar = 9; bar <= 12; bar += 1) {
   addPattern('guitarLead', 'light', bar, guitarPatterns[bar - 1]);
-  addPattern('pianoBed', 'light', bar, pianoPatterns[bar - 1]);
 }
 for (let bar = 13; bar <= 16; bar += 1) {
   addPattern('guitarLead', 'home', bar, guitarPatterns[bar - 1]);
-  addPattern('pianoBed', 'home', bar, pianoPatterns[bar - 1]);
 }
 
 export const testDemo9SongScore = {
@@ -254,15 +250,8 @@ export const testDemo9SongScore = {
       id: 'guitarLead',
       name: 'Guitar Lead',
       role: SONG_SCORE_TRACK_ROLE.MELODY,
-      instrumentHint: 'nylon guitar sings the whole tune',
+      instrumentHint: 'solo nylon guitar carries both tune and motion',
       color: '#ffd38c',
-    },
-    {
-      id: 'pianoBed',
-      name: 'Piano Bed',
-      role: SONG_SCORE_TRACK_ROLE.CHORDS,
-      instrumentHint: 'soft piano support only, never stealing focus',
-      color: '#8ccfff',
     },
   ],
   chords,
@@ -299,4 +288,7 @@ export const testDemo9SongScore = {
   },
   sourceFormat: 'story',
   sourceText: '傍晚、巷口、小路、灯慢慢亮起来。主角是一把温暖的尼龙弦吉他，钢琴只做很轻的空气与和声托底。',
+};
+,
+  sourceText: '傍晚、巷口、小路、灯慢慢亮起来。全曲只保留一把温暖的尼龙弦吉他，自己把旋律与步伐轻轻带出来。',
 };
