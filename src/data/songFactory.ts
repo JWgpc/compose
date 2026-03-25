@@ -7,6 +7,7 @@ import { testDemo4SongScore } from './test-demo4-song-score.ts';
 import { testDemo5SongScore } from './test-demo5-song-score.ts';
 import { testDemo6SongScore } from './test-demo6-song-score.ts';
 import { testDemo7SongScore } from './test-demo7-song-score.ts';
+import { testDemo8SongScore } from './test-demo8-song-score.ts';
 import { clamp, noteName, uid } from '../utils.ts';
 import {
   SONG_SCORE_ACCENT,
@@ -276,6 +277,10 @@ export function createSongScore(presetId, overrides = {}) {
 
   if (presetId === 'test-demo7' && Object.keys(overrides).length === 0) {
     return structuredClone(testDemo7SongScore);
+  }
+
+  if (presetId === 'test-demo8' && Object.keys(overrides).length === 0) {
+    return structuredClone(testDemo8SongScore);
   }
 
   const template = sectionTemplates[preset.sectionTemplate] || sectionTemplates['Mainstream Pop'];

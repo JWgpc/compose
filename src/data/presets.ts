@@ -119,6 +119,23 @@ export const quickPresets = [
     hookSummary: 'A frontier arrangement demo focused on piano lead, cello foundation, and flute replies',
   },
   {
+    id: 'test-demo8',
+    label: '测试demo8',
+    title: '灵昕',
+    style: 'Childhood Spring Piano',
+    mood: 'Fresh / Joyful / Growing',
+    bpm: 108,
+    key: 'D',
+    mode: 'Major',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Ballad',
+    phraseLength: 4,
+    chorusLift: 'Higher Register',
+    theme: '童年、春天、春雨与新生：在一场细雨后，看见万物苏醒，也感觉自己在慢慢长大',
+    lyricIdea: 'instrumental spring childhood theme',
+    hookSummary: 'A piano-led spring story about rain, new leaves, childhood joy, and quiet growth',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -206,6 +223,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-00000000',
+    title: '测试demo8',
+    subtitle: 'Childhood Spring Piano · 108 BPM · rain, growth, and bright morning light',
+    presetId: 'test-demo8',
+  },
   {
     id: 'recent-0000000',
     title: '测试demo7',
