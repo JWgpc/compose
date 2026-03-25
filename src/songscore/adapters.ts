@@ -219,6 +219,36 @@ export function getProjectNotes(project) {
     .filter(Boolean);
 }
 
+export function getProjectTracks(project) {
+  const songScore = getSongScore(project);
+  const noteCountByTrackId = new Map();
+
+  getProjectNotes(project).forEach((note) => {
+    if (!note.trackId) {
+      return;
+    }
+
+    noteCountByTrackId.set(note.trackId, (noteCountByTrackId.get(note.trackId) || 0) + 1);
+  });
+
+  const declaredTracks = Array.isArray(songScore.tracks) ? songScore.tracks : [];
+  const declaredTrackIds = new Set(declaredTracks.map((track) => track.id));
+  const inferredTracks = [...noteCountByTrackId.keys()]
+    .filter((trackId) => !declaredTrackIds.has(trackId))
+    .map((trackId) => ({
+      id: trackId,
+      name: trackId,
+      role: 'custom',
+      instrumentHint: '',
+      color: '#8ccfff',
+    }));
+
+  return [...declaredTracks, ...inferredTracks].map((track) => ({
+    ...track,
+    noteCount: noteCountByTrackId.get(track.id) || 0,
+  }));
+}
+
 export function getProjectNote(project, noteId) {
   return getProjectNotes(project).find((note) => note.id === noteId) || null;
 }

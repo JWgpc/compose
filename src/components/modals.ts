@@ -84,7 +84,7 @@ export function renderModal(state) {
           </label>
           <label class="field field--full">
             <span>${escapeHtml(t(lang, 'instrument'))}</span>
-            <input type="text" value="${escapeHtml(t(lang, 'exportUsesCurrentInstrument'))}" readonly />
+            <input type="text" value="${escapeHtml(t(lang, 'exportUsesTrackInstruments'))}" readonly />
           </label>
         </div>
         <div class="modal-footer">

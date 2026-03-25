@@ -1,6 +1,6 @@
 import './styles.css';
 import { createInitialState, renderApp } from './app.ts';
-import { createAudioPlayer, exportProjectToWav } from './audio/webAudioPlayer.ts';
+import { createAudioPlayer, exportProjectToWav, resolveInstrumentId } from './audio/webAudioPlayer.ts';
 import { createProject } from './data/songFactory.ts';
 import { persistLanguage, syncDocumentLanguage, t } from './i18n.ts';
 import {
@@ -260,7 +260,7 @@ function rebuildProject(presetId) {
   state.selectedNoteId = '';
   state.playheadBeat = 0;
   state.currentBar = 0;
-  state.selectedInstrumentId = getPreferredPreviewInstrument(state.project) || state.selectedInstrumentId;
+  state.selectedInstrumentId = resolveInstrumentId(getPreferredPreviewInstrument(state.project), state.selectedInstrumentId);
   state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
   state.lyricRollEnabled = state.hasLyrics;
   state.lyricPlaybackMode = 'mix';
@@ -273,7 +273,7 @@ function applyPreset(presetId) {
   state.selectedNoteId = '';
   state.playheadBeat = 0;
   state.currentBar = 0;
-  state.selectedInstrumentId = getPreferredPreviewInstrument(state.project) || state.selectedInstrumentId;
+  state.selectedInstrumentId = resolveInstrumentId(getPreferredPreviewInstrument(state.project), state.selectedInstrumentId);
   state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
   state.lyricRollEnabled = state.hasLyrics;
   state.lyricPlaybackMode = 'mix';
@@ -300,7 +300,7 @@ async function applyExport() {
   rerender();
 
   try {
-    const wavBlob = await exportProjectToWav(state.project, 'realistic-piano');
+    const wavBlob = await exportProjectToWav(state.project, state.selectedInstrumentId);
     const url = URL.createObjectURL(wavBlob);
     const a = document.createElement('a');
     a.href = url;
@@ -444,7 +444,31 @@ async function handleAction(action, source) {
 
   if (action === 'select-instrument') {
     state.selectedInstrumentId = source.value;
+    state.project.songScore.renderHints = state.project.songScore.renderHints || {};
+    state.project.songScore.renderHints.preferredPreviewInstrument = state.selectedInstrumentId;
     player.setInstrument(state.selectedInstrumentId);
+    await restartPlaybackIfNeeded();
+    if (!state.isPlaying) {
+      rerender();
+    }
+    return;
+  }
+
+  if (action === 'select-track-instrument') {
+    const trackId = source.dataset.trackId;
+    if (!trackId) {
+      return;
+    }
+
+    state.project.songScore.renderHints = state.project.songScore.renderHints || {};
+    state.project.songScore.renderHints.defaultInstruments = state.project.songScore.renderHints.defaultInstruments || {};
+
+    if (source.value) {
+      state.project.songScore.renderHints.defaultInstruments[trackId] = source.value;
+    } else {
+      delete state.project.songScore.renderHints.defaultInstruments[trackId];
+    }
+
     await restartPlaybackIfNeeded();
     if (!state.isPlaying) {
       rerender();
@@ -698,4 +722,3 @@ window.addEventListener('beforeunload', () => {
 });
 
 rerender();
-

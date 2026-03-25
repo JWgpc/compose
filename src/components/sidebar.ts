@@ -1,6 +1,10 @@
 import { controlOptions, quickPresets } from '../data/presets.ts';
-import { localizeValue, t } from '../i18n.ts';
+import { formatCount, localizeValue, t } from '../i18n.ts';
+import { getAvailableInstruments, resolveTrackInstrumentId } from '../audio/webAudioPlayer.ts';
+import { getProjectTracks } from '../songscore/adapters.ts';
 import { escapeHtml } from '../utils.ts';
+
+const availableInstruments = getAvailableInstruments();
 
 function renderOption(value, current, language) {
   return `<option value="${escapeHtml(value)}" ${value === current ? 'selected' : ''}>${escapeHtml(localizeValue(language, value))}</option>`;
@@ -30,6 +34,8 @@ function renderField(language, labelKey, name, type, value, options, className =
 export function renderSidebar(state) {
   const { settings } = state.project;
   const lang = state.language;
+  const projectTracks = getProjectTracks(state.project);
+  const assignedTrackInstruments = state.project.songScore.renderHints?.defaultInstruments || {};
   const essentialsFields = [
     renderField(lang, 'style', 'style', 'select', settings.style, controlOptions.style),
     renderField(lang, 'mood', 'mood', 'select', settings.mood, controlOptions.mood),
@@ -57,6 +63,35 @@ export function renderSidebar(state) {
         </button>
       `,
     )
+    .join('');
+  const trackRows = projectTracks
+    .map((track) => {
+      const selectedInstrumentId = assignedTrackInstruments[track.id] || '';
+      const resolvedInstrumentId = resolveTrackInstrumentId(state.project, track.id, state.selectedInstrumentId);
+      const resolvedInstrument = availableInstruments.find((instrument) => instrument.id === resolvedInstrumentId);
+      const instrumentOptions = [
+        `<option value="" ${selectedInstrumentId ? '' : 'selected'}>${escapeHtml(t(lang, 'trackInstrumentAuto'))}${resolvedInstrument ? ` · ${escapeHtml(t(lang, resolvedInstrument.labelKey))}` : ''}</option>`,
+        ...availableInstruments.map(
+          (instrument) =>
+            `<option value="${escapeHtml(instrument.id)}" ${selectedInstrumentId === instrument.id ? 'selected' : ''}>${escapeHtml(t(lang, instrument.labelKey))}</option>`,
+        ),
+      ].join('');
+      const hintText = selectedInstrumentId
+        ? t(lang, 'trackInstrumentAssignedHint')
+        : track.instrumentHint
+          ? `${t(lang, 'trackInstrumentFallbackHint')} ${track.instrumentHint}`
+          : t(lang, 'trackInstrumentFallbackOnly');
+
+      return `
+        <label class="field field--full track-instrument-field">
+          <span>${escapeHtml(track.name)} · ${formatCount(lang, track.noteCount, 'notesUnit')}</span>
+          <select data-action="select-track-instrument" data-track-id="${escapeHtml(track.id)}">
+            ${instrumentOptions}
+          </select>
+          <small class="helper-text helper-text--tight">${escapeHtml(hintText)}</small>
+        </label>
+      `;
+    })
     .join('');
 
   return `
@@ -121,6 +156,16 @@ export function renderSidebar(state) {
               <span class="sidebar-subheading">${escapeHtml(t(lang, 'settingsIdentity'))}</span>
               <div class="field-grid field-grid--dense">${identityFields}</div>
             </div>
+          </div>
+        </section>
+
+        <section class="sidebar-section sidebar-section--open">
+          <div class="sidebar-section__summary sidebar-section__summary--static">
+            <span class="sidebar-section__title">${escapeHtml(t(lang, 'trackInstruments'))}</span>
+          </div>
+          <div class="sidebar-section__content">
+            <p class="helper-text helper-text--tight">${escapeHtml(t(lang, 'trackInstrumentsHint'))}</p>
+            <div class="field-grid field-grid--dense track-instrument-grid">${trackRows}</div>
           </div>
         </section>
 

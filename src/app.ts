@@ -1,6 +1,6 @@
 import { renderLanding } from './components/landing.ts';
 import { renderComposer } from './components/composer.ts';
-import { DEFAULT_INSTRUMENT_ID } from './audio/webAudioPlayer.ts';
+import { DEFAULT_INSTRUMENT_ID, resolveInstrumentId } from './audio/webAudioPlayer.ts';
 import { quickPresets, recentProjects } from './data/presets.ts';
 import { createProject } from './data/songFactory.ts';
 import { getInitialLanguage } from './i18n.ts';
@@ -24,7 +24,7 @@ export function createInitialState() {
     loopEnabled: false,
     currentBar: 0,
     playheadBeat: 0,
-    selectedInstrumentId: getPreferredPreviewInstrument(project) || DEFAULT_INSTRUMENT_ID,
+    selectedInstrumentId: resolveInstrumentId(getPreferredPreviewInstrument(project), DEFAULT_INSTRUMENT_ID),
     hasLyrics,
     lyricRollEnabled: hasLyrics,
     lyricPlaybackMode: 'mix',

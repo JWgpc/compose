@@ -24,12 +24,12 @@ export function renderTransport(state) {
           ${state.hasLyrics ? `<button class="transport-button ${state.lyricPlaybackMode === 'solo' ? 'transport-button--active' : ''}" data-action="toggle-lyrics-solo">${state.lyricPlaybackMode === 'solo' ? t(lang, 'lyricsSolo') : t(lang, 'lyricsFollowSong')}</button>` : ''}
         </div>
         <label class="transport-select-group">
-          <span>${t(lang, 'instrument')}</span>
+          <span>${t(lang, 'previewFallbackInstrument')}</span>
           <select class="transport-select" data-action="select-instrument">
             ${instrumentOptions}
           </select>
         </label>
-        <p class="helper-text helper-text--tight">${t(lang, 'helperPlayInline')}</p>
+        <p class="helper-text helper-text--tight">${t(lang, 'helperPreviewFallbackInline')}</p>
       </div>
       <div class="transport-stack">
         <div class="transport-readout">
