@@ -121,33 +121,33 @@ const chords = [
 ];
 
 const leftHandPatterns = [
-  [{ offset: 0, midi: 50, duration: 2, velocity: 58 }, { offset: 2, midi: 57, duration: 2, velocity: 60 }],
-  [{ offset: 0, midi: 49, duration: 2, velocity: 58 }, { offset: 2, midi: 57, duration: 2, velocity: 60 }],
-  [{ offset: 0, midi: 47, duration: 2, velocity: 56 }, { offset: 2, midi: 54, duration: 2, velocity: 58 }],
-  [{ offset: 0, midi: 43, duration: 2, velocity: 56 }, { offset: 2, midi: 50, duration: 2, velocity: 58 }],
+  [{ offset: 0, midi: 50, duration: 4, velocity: 50 }],
+  [{ offset: 0, midi: 49, duration: 4, velocity: 50 }],
+  [{ offset: 0, midi: 47, duration: 4, velocity: 48 }],
+  [{ offset: 0, midi: 43, duration: 4, velocity: 48 }],
 
-  [{ offset: 0, midi: 50, duration: 1, velocity: 62 }, { offset: 1, midi: 57, duration: 1, velocity: 58 }, { offset: 2, midi: 62, duration: 1, velocity: 60 }, { offset: 3, midi: 57, duration: 1, velocity: 56 }],
-  [{ offset: 0, midi: 49, duration: 1, velocity: 62 }, { offset: 1, midi: 56, duration: 1, velocity: 58 }, { offset: 2, midi: 61, duration: 1, velocity: 60 }, { offset: 3, midi: 56, duration: 1, velocity: 56 }],
-  [{ offset: 0, midi: 47, duration: 1, velocity: 60 }, { offset: 1, midi: 54, duration: 1, velocity: 56 }, { offset: 2, midi: 59, duration: 1, velocity: 58 }, { offset: 3, midi: 54, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 43, duration: 1, velocity: 60 }, { offset: 1, midi: 50, duration: 1, velocity: 56 }, { offset: 2, midi: 55, duration: 1, velocity: 58 }, { offset: 3, midi: 50, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 54, duration: 1, velocity: 62 }, { offset: 1, midi: 61, duration: 1, velocity: 58 }, { offset: 2, midi: 66, duration: 1, velocity: 60 }, { offset: 3, midi: 61, duration: 1, velocity: 56 }],
-  [{ offset: 0, midi: 52, duration: 1, velocity: 60 }, { offset: 1, midi: 59, duration: 1, velocity: 56 }, { offset: 2, midi: 64, duration: 1, velocity: 58 }, { offset: 3, midi: 59, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 45, duration: 1, velocity: 62 }, { offset: 1, midi: 52, duration: 1, velocity: 58 }, { offset: 2, midi: 57, duration: 1, velocity: 60 }, { offset: 3, midi: 52, duration: 1, velocity: 56 }],
-  [{ offset: 0, midi: 50, duration: 4, velocity: 62, accent: 'medium' }],
+  [{ offset: 0, midi: 50, duration: 2, velocity: 54 }, { offset: 2, midi: 57, duration: 2, velocity: 52 }],
+  [{ offset: 0, midi: 49, duration: 2, velocity: 54 }, { offset: 2, midi: 56, duration: 2, velocity: 52 }],
+  [{ offset: 0, midi: 47, duration: 2, velocity: 52 }, { offset: 2, midi: 54, duration: 2, velocity: 50 }],
+  [{ offset: 0, midi: 43, duration: 4, velocity: 50 }],
+  [{ offset: 0, midi: 54, duration: 2, velocity: 54 }, { offset: 2, midi: 61, duration: 2, velocity: 52 }],
+  [{ offset: 0, midi: 52, duration: 2, velocity: 52 }, { offset: 2, midi: 59, duration: 2, velocity: 50 }],
+  [{ offset: 0, midi: 45, duration: 2, velocity: 54 }, { offset: 2, midi: 52, duration: 2, velocity: 52 }],
+  [{ offset: 0, midi: 50, duration: 4, velocity: 54, accent: 'medium' }],
 
-  [{ offset: 0, midi: 43, duration: 1, velocity: 64 }, { offset: 1, midi: 50, duration: 1, velocity: 60 }, { offset: 2, midi: 55, duration: 1, velocity: 62 }, { offset: 3, midi: 59, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 45, duration: 1, velocity: 64 }, { offset: 1, midi: 52, duration: 1, velocity: 60 }, { offset: 2, midi: 57, duration: 1, velocity: 62 }, { offset: 3, midi: 61, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 42, duration: 1, velocity: 64 }, { offset: 1, midi: 49, duration: 1, velocity: 60 }, { offset: 2, midi: 54, duration: 1, velocity: 62 }, { offset: 3, midi: 57, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 47, duration: 1, velocity: 64 }, { offset: 1, midi: 54, duration: 1, velocity: 60 }, { offset: 2, midi: 59, duration: 1, velocity: 62 }, { offset: 3, midi: 62, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 43, duration: 1, velocity: 64 }, { offset: 1, midi: 50, duration: 1, velocity: 60 }, { offset: 2, midi: 55, duration: 1, velocity: 62 }, { offset: 3, midi: 59, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 45, duration: 1, velocity: 64 }, { offset: 1, midi: 52, duration: 1, velocity: 60 }, { offset: 2, midi: 57, duration: 1, velocity: 62 }, { offset: 3, midi: 60, duration: 1, velocity: 60 }],
-  [{ offset: 0, midi: 45, duration: 1, velocity: 66 }, { offset: 1, midi: 52, duration: 1, velocity: 62 }, { offset: 2, midi: 57, duration: 1, velocity: 64 }, { offset: 3, midi: 61, duration: 1, velocity: 62 }],
-  [{ offset: 0, midi: 50, duration: 4, velocity: 68, accent: 'medium' }],
-
-  [{ offset: 0, midi: 47, duration: 2, velocity: 60 }, { offset: 2, midi: 54, duration: 2, velocity: 58 }],
-  [{ offset: 0, midi: 43, duration: 2, velocity: 58 }, { offset: 2, midi: 50, duration: 2, velocity: 56 }],
+  [{ offset: 0, midi: 43, duration: 2, velocity: 56 }, { offset: 2, midi: 50, duration: 2, velocity: 54 }],
+  [{ offset: 0, midi: 45, duration: 2, velocity: 56 }, { offset: 2, midi: 52, duration: 2, velocity: 54 }],
+  [{ offset: 0, midi: 42, duration: 2, velocity: 56 }, { offset: 2, midi: 49, duration: 2, velocity: 54 }],
+  [{ offset: 0, midi: 47, duration: 2, velocity: 58 }, { offset: 2, midi: 54, duration: 2, velocity: 56 }],
+  [{ offset: 0, midi: 43, duration: 2, velocity: 56 }, { offset: 2, midi: 50, duration: 2, velocity: 54 }],
+  [{ offset: 0, midi: 45, duration: 2, velocity: 56 }, { offset: 2, midi: 52, duration: 2, velocity: 54 }],
   [{ offset: 0, midi: 45, duration: 2, velocity: 58 }, { offset: 2, midi: 52, duration: 2, velocity: 56 }],
-  [{ offset: 0, midi: 50, duration: 4, velocity: 60, accent: 'medium' }],
+  [{ offset: 0, midi: 50, duration: 4, velocity: 58, accent: 'medium' }],
+
+  [{ offset: 0, midi: 47, duration: 4, velocity: 52 }],
+  [{ offset: 0, midi: 43, duration: 4, velocity: 50 }],
+  [{ offset: 0, midi: 45, duration: 4, velocity: 50 }],
+  [{ offset: 0, midi: 50, duration: 4, velocity: 52, accent: 'medium' }],
 ];
 
 const melodyPatterns = [
@@ -181,33 +181,33 @@ const melodyPatterns = [
 ];
 
 const flutePatterns = [
-  [{ offset: 1.5, midi: 86, duration: 1.5, velocity: 48 }, { offset: 3.5, midi: 88, duration: 0.5, velocity: 46 }],
-  [{ offset: 1.5, midi: 85, duration: 1.5, velocity: 48 }, { offset: 3.5, midi: 86, duration: 0.5, velocity: 46 }],
   [],
-  [{ offset: 2, midi: 83, duration: 2, velocity: 44 }],
-
-  [{ offset: 2.5, midi: 88, duration: 0.5, velocity: 52 }, { offset: 3, midi: 90, duration: 1, velocity: 54 }],
-  [{ offset: 2.5, midi: 90, duration: 0.5, velocity: 54 }, { offset: 3, midi: 93, duration: 1, velocity: 56 }],
-  [{ offset: 2.5, midi: 88, duration: 0.5, velocity: 54 }, { offset: 3, midi: 90, duration: 1, velocity: 56 }],
   [],
-  [{ offset: 2, midi: 90, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 93, duration: 0.5, velocity: 58 }, { offset: 3, midi: 95, duration: 1, velocity: 60 }],
-  [{ offset: 2, midi: 88, duration: 0.5, velocity: 54 }, { offset: 2.5, midi: 90, duration: 0.5, velocity: 56 }, { offset: 3, midi: 93, duration: 1, velocity: 58 }],
-  [{ offset: 2, midi: 86, duration: 0.5, velocity: 54 }, { offset: 2.5, midi: 88, duration: 0.5, velocity: 56 }, { offset: 3, midi: 90, duration: 1, velocity: 58 }],
-  [{ offset: 2, midi: 85, duration: 2, velocity: 52 }],
+  [],
+  [{ offset: 3, midi: 83, duration: 1, velocity: 38 }],
 
-  [{ offset: 2, midi: 90, duration: 0.5, velocity: 60 }, { offset: 2.5, midi: 93, duration: 0.5, velocity: 62 }, { offset: 3, midi: 97, duration: 1, velocity: 64 }],
-  [{ offset: 2, midi: 93, duration: 0.5, velocity: 62 }, { offset: 2.5, midi: 97, duration: 0.5, velocity: 64 }, { offset: 3, midi: 98, duration: 1, velocity: 66 }],
-  [{ offset: 2, midi: 90, duration: 0.5, velocity: 60 }, { offset: 2.5, midi: 93, duration: 0.5, velocity: 62 }, { offset: 3, midi: 97, duration: 1, velocity: 64 }],
-  [{ offset: 2, midi: 93, duration: 0.5, velocity: 62 }, { offset: 2.5, midi: 97, duration: 0.5, velocity: 64 }, { offset: 3, midi: 100, duration: 1, velocity: 66 }],
-  [{ offset: 2, midi: 93, duration: 0.5, velocity: 60 }, { offset: 2.5, midi: 97, duration: 0.5, velocity: 62 }, { offset: 3, midi: 98, duration: 1, velocity: 64 }],
-  [{ offset: 2, midi: 90, duration: 0.5, velocity: 58 }, { offset: 2.5, midi: 93, duration: 0.5, velocity: 60 }, { offset: 3, midi: 97, duration: 1, velocity: 62 }],
-  [{ offset: 2, midi: 93, duration: 0.5, velocity: 60 }, { offset: 2.5, midi: 97, duration: 0.5, velocity: 62 }, { offset: 3, midi: 102, duration: 1, velocity: 66 }],
-  [{ offset: 1.5, midi: 98, duration: 2.5, velocity: 58 }],
+  [],
+  [{ offset: 3, midi: 88, duration: 1, velocity: 40 }],
+  [],
+  [],
+  [{ offset: 3, midi: 90, duration: 1, velocity: 42 }],
+  [],
+  [],
+  [{ offset: 2.5, midi: 85, duration: 1.5, velocity: 38 }],
 
-  [{ offset: 2, midi: 90, duration: 2, velocity: 50 }],
-  [{ offset: 2, midi: 88, duration: 2, velocity: 48 }],
-  [{ offset: 2, midi: 90, duration: 2, velocity: 50 }],
-  [{ offset: 2, midi: 86, duration: 2, velocity: 46 }],
+  [],
+  [{ offset: 3, midi: 93, duration: 1, velocity: 44 }],
+  [],
+  [{ offset: 3, midi: 97, duration: 1, velocity: 46 }],
+  [],
+  [{ offset: 3, midi: 93, duration: 1, velocity: 42 }],
+  [],
+  [{ offset: 2.5, midi: 98, duration: 1.5, velocity: 40 }],
+
+  [],
+  [],
+  [],
+  [{ offset: 2.5, midi: 86, duration: 1.5, velocity: 36 }],
 ];
 
 let bar = 1;
@@ -279,12 +279,12 @@ export const testDemo8SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'sprout',
-      text: '主角是钢琴，像孩子蹲着看新芽；大提琴只是轻轻托住地面，长笛偶尔像风和鸟声探头。',
+      text: '主角是钢琴，像孩子蹲着看新芽；大提琴只负责一层很薄的暖底，不要活泼地跑，长笛只留极少几笔空气感。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'running',
-      text: '这一段要有“踩着水光往前跑”的轻快，不是冲刺，而是心亮起来以后脚步自然变快。',
+      text: '这一段的轻快主要靠钢琴自己完成，不靠配器热闹。像踩着湿石板路往前跑，脚步轻，心也亮。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
