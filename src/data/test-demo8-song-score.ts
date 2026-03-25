@@ -182,32 +182,32 @@ const melodyPatterns = [
 
 const flutePatterns = [
   [],
-  [{ offset: 0, midi: 71, duration: 4, velocity: 22 }],
+  [{ offset: 3.5, midi: 71, duration: 0.5, velocity: 18 }],
   [],
-  [{ offset: 0, midi: 69, duration: 4, velocity: 20 }],
+  [{ offset: 3.5, midi: 69, duration: 0.5, velocity: 16 }],
 
   [],
-  [{ offset: 0, midi: 74, duration: 4, velocity: 24 }],
+  [{ offset: 3, midi: 74, duration: 0.5, velocity: 20 }, { offset: 3.5, midi: 76, duration: 0.5, velocity: 18 }],
   [],
   [],
-  [{ offset: 0, midi: 76, duration: 4, velocity: 26 }],
+  [{ offset: 3.5, midi: 76, duration: 0.5, velocity: 20 }],
   [],
   [],
-  [{ offset: 0, midi: 73, duration: 4, velocity: 24 }],
+  [{ offset: 3, midi: 73, duration: 0.5, velocity: 18 }, { offset: 3.5, midi: 74, duration: 0.5, velocity: 16 }],
 
   [],
-  [{ offset: 0, midi: 78, duration: 4, velocity: 28 }],
+  [{ offset: 3, midi: 78, duration: 0.5, velocity: 22 }, { offset: 3.5, midi: 79, duration: 0.5, velocity: 20 }],
   [],
-  [{ offset: 0, midi: 81, duration: 4, velocity: 28 }],
+  [{ offset: 3.5, midi: 81, duration: 0.5, velocity: 22 }],
   [],
-  [{ offset: 0, midi: 78, duration: 4, velocity: 26 }],
+  [{ offset: 3, midi: 78, duration: 0.5, velocity: 20 }, { offset: 3.5, midi: 79, duration: 0.5, velocity: 18 }],
   [],
-  [{ offset: 0, midi: 81, duration: 4, velocity: 24 }],
+  [{ offset: 3.5, midi: 81, duration: 0.5, velocity: 18 }],
 
   [],
-  [{ offset: 0, midi: 74, duration: 4, velocity: 20 }],
+  [{ offset: 3.5, midi: 74, duration: 0.5, velocity: 16 }],
   [],
-  [{ offset: 0, midi: 71, duration: 4, velocity: 18 }],
+  [{ offset: 3.5, midi: 71, duration: 0.5, velocity: 14 }],
 ];
 
 let bar = 1;
@@ -279,7 +279,7 @@ export const testDemo8SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'sprout',
-      text: '主角就是钢琴本身。不要明显大提琴；长笛如果出现，也只能是低存在感、连续绵延的一层气息，像雨后空气和远处柔风。',
+      text: '主角就是钢琴本身。不要明显大提琴；长笛如果出现，只能是极少量、很轻、很短促的闪点，像雨后叶尖上的一点亮光。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
