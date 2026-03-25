@@ -65,6 +65,24 @@ const sampleBankCatalog = {
     leftUrl: new URL('../../download_voice/soft-piano-export/Soft Piano 1L.wav', import.meta.url).href,
     rightUrl: new URL('../../download_voice/soft-piano-export/Soft Piano 1R.wav', import.meta.url).href,
   },
+  'philharmonia-cello': {
+    samples: [45, 50, 55, 60, 65].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/cello/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
+  'philharmonia-flute': {
+    samples: [60, 67, 74, 81, 88].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/flute/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
+  'philharmonia-bass-drum': {
+    samples: [36, 43, 50].map((rootNote) => ({
+      rootNote,
+      url: new URL(`./samples/philharmonia/bass-drum/${rootNote}.mp3`, import.meta.url).href,
+    })),
+  },
 };
 
 const instrumentCatalog = [
@@ -122,6 +140,39 @@ const instrumentCatalog = [
     filterFrequency: 5400,
     filterQ: 0.7,
     reverbSend: 0.28,
+  },
+  {
+    id: 'philharmonia-cello',
+    labelKey: 'instrumentPhilharmoniaCello',
+    bankId: 'philharmonia-cello',
+    gain: 0.34,
+    attack: 0.018,
+    release: 0.95,
+    filterFrequency: 4600,
+    filterQ: 0.72,
+    reverbSend: 0.2,
+  },
+  {
+    id: 'philharmonia-flute',
+    labelKey: 'instrumentPhilharmoniaFlute',
+    bankId: 'philharmonia-flute',
+    gain: 0.26,
+    attack: 0.022,
+    release: 0.82,
+    filterFrequency: 7200,
+    filterQ: 0.58,
+    reverbSend: 0.26,
+  },
+  {
+    id: 'philharmonia-bass-drum',
+    labelKey: 'instrumentPhilharmoniaBassDrum',
+    bankId: 'philharmonia-bass-drum',
+    gain: 0.5,
+    attack: 0.002,
+    release: 1.8,
+    filterFrequency: 2400,
+    filterQ: 0.9,
+    reverbSend: 0.12,
   },
 ];
 
