@@ -180,34 +180,34 @@ const melodyPatterns = [
   [{ offset: 0, midi: 74, duration: 4, velocity: 66 }],
 ];
 
-const flutePatterns = [
+const mandolinPatterns = [
   [],
-  [{ offset: 3.5, midi: 71, duration: 0.5, velocity: 18 }],
+  [{ offset: 3.5, midi: 71, duration: 0.25, velocity: 26 }],
   [],
-  [{ offset: 3.5, midi: 69, duration: 0.5, velocity: 16 }],
+  [{ offset: 3.5, midi: 69, duration: 0.25, velocity: 24 }],
+
+  [{ offset: 3.5, midi: 74, duration: 0.25, velocity: 28 }],
+  [{ offset: 1.5, midi: 76, duration: 0.25, velocity: 28 }, { offset: 3.5, midi: 78, duration: 0.25, velocity: 26 }],
+  [{ offset: 3.5, midi: 74, duration: 0.25, velocity: 26 }],
+  [],
+  [{ offset: 3.5, midi: 78, duration: 0.25, velocity: 30 }],
+  [{ offset: 3.5, midi: 76, duration: 0.25, velocity: 28 }],
+  [{ offset: 1.5, midi: 74, duration: 0.25, velocity: 26 }, { offset: 3.5, midi: 76, duration: 0.25, velocity: 24 }],
+  [],
+
+  [{ offset: 3.5, midi: 78, duration: 0.25, velocity: 30 }],
+  [{ offset: 1.5, midi: 81, duration: 0.25, velocity: 32 }, { offset: 3.5, midi: 83, duration: 0.25, velocity: 30 }],
+  [{ offset: 3.5, midi: 78, duration: 0.25, velocity: 30 }],
+  [{ offset: 3.5, midi: 81, duration: 0.25, velocity: 32 }],
+  [{ offset: 3.5, midi: 78, duration: 0.25, velocity: 30 }],
+  [{ offset: 1.5, midi: 81, duration: 0.25, velocity: 30 }, { offset: 3.5, midi: 83, duration: 0.25, velocity: 28 }],
+  [{ offset: 3.5, midi: 81, duration: 0.25, velocity: 28 }],
+  [],
 
   [],
-  [{ offset: 3, midi: 74, duration: 0.5, velocity: 20 }, { offset: 3.5, midi: 76, duration: 0.5, velocity: 18 }],
+  [{ offset: 3.5, midi: 74, duration: 0.25, velocity: 22 }],
   [],
-  [],
-  [{ offset: 3.5, midi: 76, duration: 0.5, velocity: 20 }],
-  [],
-  [],
-  [{ offset: 3, midi: 73, duration: 0.5, velocity: 18 }, { offset: 3.5, midi: 74, duration: 0.5, velocity: 16 }],
-
-  [],
-  [{ offset: 3, midi: 78, duration: 0.5, velocity: 22 }, { offset: 3.5, midi: 79, duration: 0.5, velocity: 20 }],
-  [],
-  [{ offset: 3.5, midi: 81, duration: 0.5, velocity: 22 }],
-  [],
-  [{ offset: 3, midi: 78, duration: 0.5, velocity: 20 }, { offset: 3.5, midi: 79, duration: 0.5, velocity: 18 }],
-  [],
-  [{ offset: 3.5, midi: 81, duration: 0.5, velocity: 18 }],
-
-  [],
-  [{ offset: 3.5, midi: 74, duration: 0.5, velocity: 16 }],
-  [],
-  [{ offset: 3.5, midi: 71, duration: 0.5, velocity: 14 }],
+  [{ offset: 3.5, midi: 71, duration: 0.25, velocity: 20 }],
 ];
 
 let bar = 1;
@@ -225,11 +225,11 @@ melodyPatterns.slice(12, 20).forEach((pattern, index) => addPattern('rightHand',
 melodyPatterns.slice(20).forEach((pattern, index) => addPattern('rightHand', 'glow', 29 + index, pattern));
 
 bar = 1;
-flutePatterns.slice(0, 4).forEach((pattern) => addPattern('springLayer', 'rain', bar++, pattern));
-flutePatterns.slice(4, 12).forEach((pattern) => addPattern('springLayer', 'sprout', bar++, pattern));
-flutePatterns.slice(12, 20).forEach((pattern) => addPattern('springLayer', 'running', bar++, pattern));
-flutePatterns.slice(12, 20).forEach((pattern, index) => addPattern('springLayer', 'bloom', 21 + index, pattern));
-flutePatterns.slice(20).forEach((pattern, index) => addPattern('springLayer', 'glow', 29 + index, pattern));
+mandolinPatterns.slice(0, 4).forEach((pattern) => addPattern('springLayer', 'rain', bar++, pattern));
+mandolinPatterns.slice(4, 12).forEach((pattern) => addPattern('springLayer', 'sprout', bar++, pattern));
+mandolinPatterns.slice(12, 20).forEach((pattern) => addPattern('springLayer', 'running', bar++, pattern));
+mandolinPatterns.slice(12, 20).forEach((pattern, index) => addPattern('springLayer', 'bloom', 21 + index, pattern));
+mandolinPatterns.slice(20).forEach((pattern, index) => addPattern('springLayer', 'glow', 29 + index, pattern));
 
 export const testDemo8SongScore = {
   schemaVersion: SONG_SCORE_SCHEMA_VERSION,
@@ -242,7 +242,7 @@ export const testDemo8SongScore = {
     unitNoteLength: '1/8',
     genre: 'Childhood Spring Piano',
     mood: '童年 / 春雨 / 新生 / 喜悦 / 晨光',
-    tags: ['spring', 'childhood', 'rain', 'growth', 'piano-led', 'flute', 'cello', 'instrumental'],
+    tags: ['spring', 'childhood', 'rain', 'growth', 'piano-led', 'mandolin', 'guitar', 'instrumental'],
   },
   sections,
   tracks: [
@@ -279,7 +279,7 @@ export const testDemo8SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'sprout',
-      text: '主角就是钢琴本身。下面只留很轻的拨弦式脉搏，上面只留一点点曼陀铃似的亮光，不要厚重，也不要吹管感。',
+      text: '主角就是钢琴本身。下面是一层很轻的吉他式脉搏，上面只留一点点曼陀铃亮光，不要厚重，也不要吹管感。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
