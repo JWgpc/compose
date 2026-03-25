@@ -84,6 +84,36 @@ const sampleBankCatalog = {
       url: new URL(`./samples/philharmonia/guitar/${rootNote}.mp3`, import.meta.url).href,
     })),
   },
+  'kyster-nylon-guitar': {
+    samples: [
+      { rootNote: 38, fileName: '117720__kyster__low-d.wav' },
+      { rootNote: 45, fileName: '117708__kyster__a.wav' },
+      { rootNote: 47, fileName: '117709__kyster__b.wav' },
+      { rootNote: 48, fileName: '117711__kyster__c.wav' },
+      { rootNote: 50, fileName: '117713__kyster__d.wav' },
+      { rootNote: 52, fileName: '117714__kyster__e.wav' },
+      { rootNote: 53, fileName: '117716__kyster__f.wav' },
+      { rootNote: 55, fileName: '117718__kyster__g.wav' },
+      { rootNote: 57, fileName: '117683__kyster__1-oct-a.wav' },
+      { rootNote: 59, fileName: '117684__kyster__1-oct-b.wav' },
+      { rootNote: 60, fileName: '117686__kyster__1-oct-c.wav' },
+      { rootNote: 62, fileName: '117688__kyster__1-oct-d.wav' },
+      { rootNote: 64, fileName: '117689__kyster__1-oct-e.wav' },
+      { rootNote: 65, fileName: '117691__kyster__1-oct-f.wav' },
+      { rootNote: 67, fileName: '117693__kyster__1-oct-g.wav' },
+      { rootNote: 69, fileName: '117695__kyster__2-oct-a.wav' },
+      { rootNote: 71, fileName: '117696__kyster__2-oct-b.wav' },
+      { rootNote: 72, fileName: '117852__kyster__2-oct-c.wav' },
+      { rootNote: 74, fileName: '117700__kyster__2-oct-d.wav' },
+      { rootNote: 76, fileName: '117701__kyster__2-oct-e.wav' },
+      { rootNote: 77, fileName: '117703__kyster__2-oct-f.wav' },
+      { rootNote: 79, fileName: '117705__kyster__2-oct-g.wav' },
+      { rootNote: 88, fileName: '117706__kyster__3-oct-e.wav' },
+    ].map(({ rootNote, fileName }) => ({
+      rootNote,
+      url: new URL(`./samples/freesound/kyster-nylon-guitar/${fileName}`, import.meta.url).href,
+    })),
+  },
 };
 
 const instrumentCatalog = [
@@ -163,6 +193,17 @@ const instrumentCatalog = [
     filterFrequency: 7600,
     filterQ: 0.5,
     reverbSend: 0.12,
+  },
+  {
+    id: 'kyster-nylon-guitar',
+    labelKey: 'instrumentKysterNylonGuitar',
+    bankId: 'kyster-nylon-guitar',
+    gain: 0.34,
+    attack: 0.004,
+    release: 1.08,
+    filterFrequency: 7200,
+    filterQ: 0.48,
+    reverbSend: 0.11,
   },
 ];
 
