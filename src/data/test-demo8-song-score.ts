@@ -184,30 +184,30 @@ const flutePatterns = [
   [],
   [],
   [],
-  [{ offset: 3, midi: 83, duration: 1, velocity: 38 }],
+  [],
 
   [],
-  [{ offset: 3, midi: 88, duration: 1, velocity: 40 }],
+  [{ offset: 3, midi: 76, duration: 1, velocity: 30 }],
   [],
   [],
-  [{ offset: 3, midi: 90, duration: 1, velocity: 42 }],
+  [{ offset: 3, midi: 78, duration: 1, velocity: 32 }],
   [],
   [],
-  [{ offset: 2.5, midi: 85, duration: 1.5, velocity: 38 }],
+  [{ offset: 2.5, midi: 74, duration: 1.5, velocity: 30 }],
 
   [],
-  [{ offset: 3, midi: 93, duration: 1, velocity: 44 }],
+  [{ offset: 3, midi: 79, duration: 1, velocity: 34 }],
   [],
-  [{ offset: 3, midi: 97, duration: 1, velocity: 46 }],
+  [{ offset: 3, midi: 81, duration: 1, velocity: 34 }],
   [],
-  [{ offset: 3, midi: 93, duration: 1, velocity: 42 }],
+  [{ offset: 3, midi: 79, duration: 1, velocity: 32 }],
   [],
-  [{ offset: 2.5, midi: 98, duration: 1.5, velocity: 40 }],
+  [{ offset: 2.5, midi: 81, duration: 1.5, velocity: 30 }],
 
   [],
   [],
   [],
-  [{ offset: 2.5, midi: 86, duration: 1.5, velocity: 36 }],
+  [{ offset: 2.5, midi: 74, duration: 1.5, velocity: 28 }],
 ];
 
 let bar = 1;
@@ -279,12 +279,12 @@ export const testDemo8SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'sprout',
-      text: '主角是钢琴，像孩子蹲着看新芽；大提琴只负责一层很薄的暖底，不要活泼地跑，长笛只留极少几笔空气感。',
+      text: '主角就是钢琴本身。不要明显大提琴，也不要高而尖的长笛；如果留吹管，只能像很低很远的一点春天气息。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'running',
-      text: '这一段的轻快主要靠钢琴自己完成，不靠配器热闹。像踩着湿石板路往前跑，脚步轻，心也亮。',
+      text: '这一段的轻快完全靠钢琴自己完成，不靠外层配器热闹。像踩着湿石板路往前跑，脚步轻，心也亮。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
@@ -300,7 +300,7 @@ export const testDemo8SongScore = {
   renderHints: {
     defaultInstruments: {
       rightHand: 'realistic-piano',
-      leftHand: 'philharmonia-cello',
+      leftHand: 'realistic-piano',
       springLayer: 'philharmonia-flute',
     },
     preferredPreviewInstrument: 'realistic-piano',
