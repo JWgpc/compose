@@ -102,6 +102,23 @@ export const quickPresets = [
     hookSummary: 'A 48-bar ancient frontier war piece with xiao-like lead, horn calls, war drums, and broad battlefield motion',
   },
   {
+    id: 'test-demo7',
+    label: '测试demo7',
+    title: '边声试配',
+    style: 'Ancient Frontier Ensemble Demo',
+    mood: 'Layered / Dry Wind / Low-End Pulse',
+    bpm: 76,
+    key: 'D',
+    mode: 'Minor',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Ballad',
+    phraseLength: 4,
+    chorusLift: 'Bigger Arrangement',
+    theme: '在 demo6 的边塞骨架上，先验证钢琴、大提琴、长笛之间的分工与搭配是否自然',
+    lyricIdea: 'multi-instrument arrangement demo',
+    hookSummary: 'A frontier arrangement demo focused on piano lead, cello foundation, and flute replies',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -189,6 +206,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-0000000',
+    title: '测试demo7',
+    subtitle: 'Ancient Frontier Ensemble Demo · 76 BPM · piano + cello + flute layering test',
+    presetId: 'test-demo7',
+  },
   {
     id: 'recent-000000',
     title: '测试demo6',
