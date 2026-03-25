@@ -6,4 +6,6 @@ dist
 .pnpm-home
 node_modules
 .vite
+.sf2env
+.sf2env39
 pnpm-workspace.yaml
