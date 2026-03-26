@@ -178,96 +178,81 @@ const pianoLeadPatterns = [
 
 const guitarBedPatterns = [
   [
-    { offset: 0, midi: 55, duration: 1.6, velocity: 88 },
-    { offset: 2, midi: 67, duration: 1.2, velocity: 72 },
+    { offset: 0, midi: 55, duration: 3.8, velocity: 88 },
   ],
   [
-    { offset: 0, midi: 62, duration: 1.5, velocity: 84 },
-    { offset: 2, midi: 62, duration: 1.1, velocity: 70 },
+    { offset: 0, midi: 62, duration: 3.7, velocity: 84 },
   ],
   [
-    { offset: 0, midi: 64, duration: 1.6, velocity: 86 },
-    { offset: 2, midi: 64, duration: 1.2, velocity: 72 },
+    { offset: 0, midi: 64, duration: 3.8, velocity: 86 },
   ],
   [
-    { offset: 0, midi: 60, duration: 1.6, velocity: 82 },
-    { offset: 2, midi: 60, duration: 1.2, velocity: 68 },
+    { offset: 0, midi: 60, duration: 3.9, velocity: 82 },
   ],
 
   [
-    { offset: 0, midi: 55, duration: 1.2, velocity: 92 },
-    { offset: 2, midi: 67, duration: 1.0, velocity: 74 },
+    { offset: 0, midi: 55, duration: 3.2, velocity: 92 },
   ],
   [
-    { offset: 0, midi: 62, duration: 1.2, velocity: 88 },
-    { offset: 2, midi: 50, duration: 1.0, velocity: 72 },
+    { offset: 0, midi: 62, duration: 3.1, velocity: 88 },
   ],
   [
-    { offset: 0, midi: 64, duration: 1.2, velocity: 90 },
-    { offset: 2, midi: 52, duration: 1.0, velocity: 74 },
+    { offset: 0, midi: 64, duration: 3.2, velocity: 90 },
   ],
   [
-    { offset: 0, midi: 48, duration: 1.2, velocity: 86 },
-    { offset: 2, midi: 60, duration: 1.0, velocity: 70 },
+    { offset: 0, midi: 48, duration: 3.1, velocity: 86 },
   ],
 
   [
-    { offset: 0, midi: 55, duration: 1.2, velocity: 98, accent: 'strong' },
-    { offset: 1.5, midi: 67, duration: 0.9, velocity: 80 },
-    { offset: 3, midi: 55, duration: 0.8, velocity: 76 },
+    { offset: 0, midi: 55, duration: 2.8, velocity: 98, accent: 'strong' },
+    { offset: 2.9, midi: 67, duration: 1.0, velocity: 76 },
   ],
   [
-    { offset: 0, midi: 62, duration: 1.2, velocity: 94 },
-    { offset: 1.5, midi: 50, duration: 0.9, velocity: 78 },
-    { offset: 3, midi: 62, duration: 0.8, velocity: 74 },
+    { offset: 0, midi: 62, duration: 2.8, velocity: 94 },
+    { offset: 2.9, midi: 50, duration: 1.0, velocity: 74 },
   ],
   [
-    { offset: 0, midi: 64, duration: 1.2, velocity: 96 },
-    { offset: 1.5, midi: 52, duration: 0.9, velocity: 80 },
-    { offset: 3, midi: 64, duration: 0.8, velocity: 76 },
+    { offset: 0, midi: 64, duration: 2.8, velocity: 96 },
+    { offset: 2.9, midi: 52, duration: 1.0, velocity: 76 },
   ],
   [
-    { offset: 0, midi: 60, duration: 1.2, velocity: 92 },
-    { offset: 1.5, midi: 48, duration: 0.9, velocity: 78 },
-    { offset: 3, midi: 60, duration: 0.8, velocity: 72 },
+    { offset: 0, midi: 60, duration: 2.8, velocity: 92 },
+    { offset: 2.9, midi: 48, duration: 1.0, velocity: 72 },
   ],
 
   [
-    { offset: 0, midi: 55, duration: 1.1, velocity: 74 },
-    { offset: 2, midi: 67, duration: 0.8, velocity: 62 },
+    { offset: 0, midi: 55, duration: 3.0, velocity: 74 },
   ],
   [
-    { offset: 0, midi: 50, duration: 1.1, velocity: 70 },
-    { offset: 2, midi: 62, duration: 0.8, velocity: 60 },
+    { offset: 0, midi: 50, duration: 3.0, velocity: 70 },
   ],
   [
-    { offset: 0, midi: 60, duration: 1.1, velocity: 68 },
-    { offset: 2, midi: 60, duration: 0.8, velocity: 58 },
+    { offset: 0, midi: 60, duration: 3.2, velocity: 68 },
   ],
   [
-    { offset: 0, midi: 55, duration: 2.6, velocity: 64 },
+    { offset: 0, midi: 55, duration: 3.9, velocity: 64 },
   ],
 ];
 
 const guitarAccentPatterns = [
   [],
-  [{ offset: 3.25, midi: 50, duration: 0.22, velocity: 54 }],
   [],
-  [{ offset: 3.25, midi: 48, duration: 0.22, velocity: 52 }],
+  [],
+  [],
 
-  [{ offset: 1.5, midi: 55, duration: 0.24, velocity: 60 }, { offset: 3.25, midi: 67, duration: 0.2, velocity: 56 }],
-  [{ offset: 1.5, midi: 50, duration: 0.24, velocity: 58 }, { offset: 3.25, midi: 62, duration: 0.2, velocity: 54 }],
-  [{ offset: 1.5, midi: 52, duration: 0.24, velocity: 60 }, { offset: 3.25, midi: 64, duration: 0.2, velocity: 56 }],
-  [{ offset: 1.5, midi: 48, duration: 0.24, velocity: 58 }, { offset: 3.25, midi: 60, duration: 0.2, velocity: 54 }],
+  [{ offset: 3.25, midi: 67, duration: 0.35, velocity: 54 }],
+  [{ offset: 3.25, midi: 62, duration: 0.35, velocity: 52 }],
+  [{ offset: 3.25, midi: 64, duration: 0.35, velocity: 54 }],
+  [{ offset: 3.25, midi: 60, duration: 0.35, velocity: 50 }],
 
-  [{ offset: 1, midi: 67, duration: 0.22, velocity: 66 }, { offset: 2.75, midi: 55, duration: 0.2, velocity: 62 }],
-  [{ offset: 1, midi: 50, duration: 0.22, velocity: 64 }, { offset: 2.75, midi: 62, duration: 0.2, velocity: 60 }],
-  [{ offset: 1, midi: 52, duration: 0.22, velocity: 66 }, { offset: 2.75, midi: 64, duration: 0.2, velocity: 62 }],
-  [{ offset: 1, midi: 48, duration: 0.22, velocity: 62 }, { offset: 2.75, midi: 60, duration: 0.2, velocity: 58 }],
+  [{ offset: 1.5, midi: 67, duration: 0.3, velocity: 62 }],
+  [{ offset: 1.5, midi: 62, duration: 0.3, velocity: 60 }],
+  [{ offset: 1.5, midi: 64, duration: 0.3, velocity: 62 }],
+  [{ offset: 1.5, midi: 60, duration: 0.3, velocity: 58 }],
 
-  [{ offset: 2.75, midi: 67, duration: 0.18, velocity: 48 }],
-  [{ offset: 2.75, midi: 62, duration: 0.18, velocity: 46 }],
-  [{ offset: 2.75, midi: 60, duration: 0.18, velocity: 44 }],
+  [],
+  [],
+  [{ offset: 3.0, midi: 60, duration: 0.28, velocity: 42 }],
   [],
 ];
 
@@ -321,22 +306,22 @@ export const testDemo9SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.SECTION_DESCRIPTION,
       targetSectionId: 'porch',
-      text: '先用较长的和弦层把空气铺开，再用很少的短促回摆提醒这是吉他而不是 pad。',
+      text: '先让 full 和弦整段把尾韵放出来，不要急着截断；短回摆只在需要时轻轻提醒一下。'
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'lane',
-      text: '钢琴负责叙事；full 和弦负责底色；短 accent 只做脚步感和轻微回摆。',
+      text: '钢琴负责叙事；guitarBed 负责把长样本尾音铺开；accent 只保留少量脚步感和回摆。'
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'light',
-      text: '副歌把较长和弦层抬起来，accent 变规律一点，但仍旧不要把所有吉他都写成短点。',
+      text: '副歌把较长和弦层真正挂住，让尾韵叠起来；accent 只做很轻的推进，不再打断主和弦。'
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'home',
-      text: '尾声先收掉 accent，只留较长和弦尾韵，再让钢琴把最后一句说完。',
+      text: '尾声基本收掉 accent，只让较长和弦自然拖尾，最后把空间留给钢琴收句。'
     },
   ],
   renderHints: {
