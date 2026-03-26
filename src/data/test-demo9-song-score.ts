@@ -173,72 +173,9 @@ const pianoLeadPatterns = [
   ],
 ];
 
-const guitarBedPatterns = [
-  [
-    { offset: 0, midi: 55, duration: 3.6, velocity: 84 },
-  ],
-  [
-    { offset: 0.5, midi: 62, duration: 3.1, velocity: 78 },
-  ],
-  [
-    { offset: 0, midi: 64, duration: 3.4, velocity: 82 },
-  ],
-  [
-    { offset: 1.0, midi: 60, duration: 2.8, velocity: 76 },
-  ],
-
-  [
-    { offset: 0, midi: 55, duration: 2.6, velocity: 88 },
-    { offset: 2.75, midi: 55, duration: 1.0, velocity: 62 },
-  ],
-  [
-    { offset: 0.5, midi: 62, duration: 2.4, velocity: 84 },
-    { offset: 3.0, midi: 62, duration: 0.8, velocity: 60 },
-  ],
-  [
-    { offset: 0, midi: 64, duration: 2.6, velocity: 86 },
-    { offset: 2.75, midi: 64, duration: 1.0, velocity: 64 },
-  ],
-  [
-    { offset: 0.5, midi: 48, duration: 2.4, velocity: 82 },
-    { offset: 3.0, midi: 48, duration: 0.8, velocity: 58 },
-  ],
-
-  [
-    { offset: 0, midi: 55, duration: 2.2, velocity: 94, accent: 'strong' },
-    { offset: 1.75, midi: 67, duration: 1.6, velocity: 74 },
-  ],
-  [
-    { offset: 0.25, midi: 62, duration: 2.1, velocity: 90 },
-    { offset: 2.25, midi: 50, duration: 1.4, velocity: 70 },
-  ],
-  [
-    { offset: 0, midi: 64, duration: 2.2, velocity: 92 },
-    { offset: 1.75, midi: 52, duration: 1.6, velocity: 72 },
-  ],
-  [
-    { offset: 0.25, midi: 60, duration: 2.1, velocity: 88 },
-    { offset: 2.25, midi: 48, duration: 1.4, velocity: 68 },
-  ],
-
-  [
-    { offset: 0.5, midi: 55, duration: 2.6, velocity: 68 },
-  ],
-  [
-    { offset: 1.0, midi: 50, duration: 2.3, velocity: 64 },
-  ],
-  [
-    { offset: 0.5, midi: 60, duration: 2.8, velocity: 62 },
-  ],
-  [
-    { offset: 0, midi: 55, duration: 3.6, velocity: 58 },
-  ],
-];
-
 for (let bar = 1; bar <= 16; bar += 1) {
   const sectionId = bar <= 4 ? 'porch' : bar <= 8 ? 'lane' : bar <= 12 ? 'light' : 'home';
   addPattern('rightHand', sectionId, bar, pianoLeadPatterns[bar - 1]);
-  addPattern('guitarBed', sectionId, bar, guitarBedPatterns[bar - 1]);
 }
 
 export const testDemo9SongScore = {
@@ -250,9 +187,9 @@ export const testDemo9SongScore = {
     timeSignature: '4/4',
     key: 'G major',
     unitNoteLength: '1/8',
-    genre: 'Evening Piano & Nylon Chords',
+    genre: 'Evening Solo Piano',
     mood: '傍晚 / 温柔 / 放松 / 回家路上',
-    tags: ['piano', 'nylon-guitar', 'evening', 'homecoming', 'arrangement'],
+    tags: ['piano', 'evening', 'homecoming', 'solo-piano'],
   },
   sections,
   tracks: [
@@ -263,14 +200,6 @@ export const testDemo9SongScore = {
       instrumentHint: 'piano carries the main line and emotional contour',
       color: '#8ccfff',
     },
-    {
-      id: 'guitarBed',
-      name: 'Guitar Bed',
-      role: SONG_SCORE_TRACK_ROLE.CHORDS,
-      instrumentHint: 'full nylon chord swells provide the main warm harmonic bed',
-      color: '#ffd38c',
-    },
-
   ],
   chords,
   notes,
@@ -293,17 +222,16 @@ export const testDemo9SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'home',
-      text: '尾声基本收掉 accent，只让较长和弦自然拖尾，最后把空间留给钢琴收句。'
+      text: '尾声把句子收小，让最后的余温完全留在钢琴里。'
     },
   ],
   renderHints: {
     defaultInstruments: {
       rightHand: 'realistic-piano',
-      guitarBed: 'speedy-nylon-open-chords',
     },
     preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.06,
   },
   sourceFormat: 'story',
-  sourceText: '傍晚沿着熟悉的小路慢慢回家。钢琴负责把心里的话说出来；吉他只保留完整的 full chord 层，让和弦尾韵自然铺开，不再混入额外的短促装饰。',
+  sourceText: '傍晚沿着熟悉的小路慢慢回家。先不再勉强加别的乐器，只让钢琴把心里的话完整说出来，让旋律、呼吸和回家感都由钢琴自己成立。',
 };
