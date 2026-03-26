@@ -234,33 +234,10 @@ const guitarBedPatterns = [
   ],
 ];
 
-const guitarAccentPatterns = [
-  [],
-  [],
-  [],
-  [],
-
-  [{ offset: 3.25, midi: 67, duration: 0.35, velocity: 54 }],
-  [{ offset: 3.25, midi: 62, duration: 0.35, velocity: 52 }],
-  [{ offset: 3.25, midi: 64, duration: 0.35, velocity: 54 }],
-  [{ offset: 3.25, midi: 60, duration: 0.35, velocity: 50 }],
-
-  [{ offset: 1.5, midi: 67, duration: 0.3, velocity: 62 }],
-  [{ offset: 1.5, midi: 62, duration: 0.3, velocity: 60 }],
-  [{ offset: 1.5, midi: 64, duration: 0.3, velocity: 62 }],
-  [{ offset: 1.5, midi: 60, duration: 0.3, velocity: 58 }],
-
-  [],
-  [],
-  [{ offset: 3.0, midi: 60, duration: 0.28, velocity: 42 }],
-  [],
-];
-
 for (let bar = 1; bar <= 16; bar += 1) {
   const sectionId = bar <= 4 ? 'porch' : bar <= 8 ? 'lane' : bar <= 12 ? 'light' : 'home';
   addPattern('rightHand', sectionId, bar, pianoLeadPatterns[bar - 1]);
   addPattern('guitarBed', sectionId, bar, guitarBedPatterns[bar - 1]);
-  addPattern('guitarAccent', sectionId, bar, guitarAccentPatterns[bar - 1]);
 }
 
 export const testDemo9SongScore = {
@@ -292,13 +269,7 @@ export const testDemo9SongScore = {
       instrumentHint: 'full nylon chord swells provide the main warm harmonic bed',
       color: '#ffd38c',
     },
-    {
-      id: 'guitarAccent',
-      name: 'Guitar Accent',
-      role: SONG_SCORE_TRACK_ROLE.RHYTHM,
-      instrumentHint: 'short nylon accents and returns add motion without stealing focus',
-      color: '#ffb36b',
-    },
+
   ],
   chords,
   notes,
@@ -311,7 +282,7 @@ export const testDemo9SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'lane',
-      text: '钢琴负责叙事；guitarBed 负责把长样本尾音铺开；accent 只保留少量脚步感和回摆。'
+      text: '钢琴负责叙事；guitarBed 负责把长样本尾音铺开，整首先只保留这一层完整和弦。'
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
@@ -328,11 +299,10 @@ export const testDemo9SongScore = {
     defaultInstruments: {
       rightHand: 'realistic-piano',
       guitarBed: 'speedy-nylon-open-chords',
-      guitarAccent: 'speedy-nylon-extra-chords',
     },
     preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.06,
   },
   sourceFormat: 'story',
-  sourceText: '傍晚沿着熟悉的小路慢慢回家。钢琴负责把心里的话说出来；吉他分成两种功能：较长的和弦层负责温暖铺面，较短的装饰层只在合适的时候回摆、点亮和提醒步伐。',
+  sourceText: '傍晚沿着熟悉的小路慢慢回家。钢琴负责把心里的话说出来；吉他只保留完整的 full chord 层，让和弦尾韵自然铺开，不再混入额外的短促装饰。',
 };
