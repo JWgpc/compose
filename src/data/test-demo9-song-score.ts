@@ -196,39 +196,43 @@ const guitarPatterns = [
   ],
 ];
 
-const pianoPatterns = [
-  [{ offset: 0, midi: 43, duration: 1, velocity: 50 }, { offset: 1, midi: 50, duration: 1, velocity: 46 }, { offset: 2, midi: 55, duration: 1, velocity: 48 }, { offset: 3, midi: 62, duration: 1, velocity: 44 }],
-  [{ offset: 0, midi: 42, duration: 1, velocity: 50 }, { offset: 1, midi: 49, duration: 1, velocity: 46 }, { offset: 2, midi: 54, duration: 1, velocity: 48 }, { offset: 3, midi: 57, duration: 1, velocity: 44 }],
-  [{ offset: 0, midi: 40, duration: 1, velocity: 48 }, { offset: 1, midi: 47, duration: 1, velocity: 44 }, { offset: 2, midi: 52, duration: 1, velocity: 46 }, { offset: 3, midi: 59, duration: 1, velocity: 42 }],
-  [{ offset: 0, midi: 36, duration: 1, velocity: 48 }, { offset: 1, midi: 43, duration: 1, velocity: 44 }, { offset: 2, midi: 48, duration: 1, velocity: 46 }, { offset: 3, midi: 55, duration: 1, velocity: 42 }],
+const guitarBedPatterns = [
+  [{ offset: 0, midi: 55, duration: 0.75, velocity: 46 }, { offset: 0.75, midi: 59, duration: 0.75, velocity: 44 }, { offset: 1.5, midi: 62, duration: 0.75, velocity: 46 }, { offset: 2.5, midi: 67, duration: 1.5, velocity: 48 }],
+  [{ offset: 0, midi: 54, duration: 0.75, velocity: 46 }, { offset: 0.75, midi: 57, duration: 0.75, velocity: 44 }, { offset: 1.5, midi: 62, duration: 0.75, velocity: 46 }, { offset: 2.5, midi: 66, duration: 1.5, velocity: 48 }],
+  [{ offset: 0, midi: 52, duration: 0.75, velocity: 44 }, { offset: 0.75, midi: 55, duration: 0.75, velocity: 42 }, { offset: 1.5, midi: 59, duration: 0.75, velocity: 44 }, { offset: 2.5, midi: 62, duration: 1.5, velocity: 46 }],
+  [{ offset: 0, midi: 52, duration: 0.75, velocity: 44 }, { offset: 0.75, midi: 55, duration: 0.75, velocity: 42 }, { offset: 1.5, midi: 59, duration: 0.75, velocity: 44 }, { offset: 2.5, midi: 64, duration: 1.5, velocity: 46 }],
 
-  [{ offset: 0, midi: 43, duration: 0.5, velocity: 54 }, { offset: 0.5, midi: 50, duration: 0.5, velocity: 50 }, { offset: 1, midi: 55, duration: 0.5, velocity: 52 }, { offset: 1.5, midi: 62, duration: 0.5, velocity: 48 }, { offset: 2, midi: 55, duration: 0.5, velocity: 52 }, { offset: 2.5, midi: 50, duration: 0.5, velocity: 48 }, { offset: 3, midi: 55, duration: 1, velocity: 50 }],
-  [{ offset: 0, midi: 42, duration: 0.5, velocity: 54 }, { offset: 0.5, midi: 49, duration: 0.5, velocity: 50 }, { offset: 1, midi: 54, duration: 0.5, velocity: 52 }, { offset: 1.5, midi: 57, duration: 0.5, velocity: 48 }, { offset: 2, midi: 54, duration: 0.5, velocity: 52 }, { offset: 2.5, midi: 49, duration: 0.5, velocity: 48 }, { offset: 3, midi: 54, duration: 1, velocity: 50 }],
-  [{ offset: 0, midi: 40, duration: 0.5, velocity: 52 }, { offset: 0.5, midi: 47, duration: 0.5, velocity: 48 }, { offset: 1, midi: 52, duration: 0.5, velocity: 50 }, { offset: 1.5, midi: 59, duration: 0.5, velocity: 46 }, { offset: 2, midi: 52, duration: 0.5, velocity: 50 }, { offset: 2.5, midi: 47, duration: 0.5, velocity: 46 }, { offset: 3, midi: 52, duration: 1, velocity: 48 }],
-  [{ offset: 0, midi: 36, duration: 1, velocity: 50 }, { offset: 1, midi: 43, duration: 1, velocity: 46 }, { offset: 2, midi: 48, duration: 1, velocity: 48 }, { offset: 3, midi: 55, duration: 1, velocity: 44 }],
+  [{ offset: 0, midi: 55, duration: 0.5, velocity: 52 }, { offset: 0.5, midi: 59, duration: 0.5, velocity: 50 }, { offset: 1, midi: 62, duration: 0.5, velocity: 52 }, { offset: 1.5, midi: 67, duration: 0.5, velocity: 50 }, { offset: 2, midi: 62, duration: 0.5, velocity: 52 }, { offset: 2.5, midi: 59, duration: 0.5, velocity: 48 }, { offset: 3, midi: 67, duration: 1, velocity: 50 }],
+  [{ offset: 0, midi: 54, duration: 0.5, velocity: 52 }, { offset: 0.5, midi: 57, duration: 0.5, velocity: 50 }, { offset: 1, midi: 62, duration: 0.5, velocity: 52 }, { offset: 1.5, midi: 66, duration: 0.5, velocity: 50 }, { offset: 2, midi: 62, duration: 0.5, velocity: 52 }, { offset: 2.5, midi: 57, duration: 0.5, velocity: 48 }, { offset: 3, midi: 66, duration: 1, velocity: 50 }],
+  [{ offset: 0, midi: 52, duration: 0.5, velocity: 50 }, { offset: 0.5, midi: 55, duration: 0.5, velocity: 48 }, { offset: 1, midi: 59, duration: 0.5, velocity: 50 }, { offset: 1.5, midi: 62, duration: 0.5, velocity: 48 }, { offset: 2, midi: 59, duration: 0.5, velocity: 50 }, { offset: 2.5, midi: 55, duration: 0.5, velocity: 46 }, { offset: 3, midi: 62, duration: 1, velocity: 48 }],
+  [{ offset: 0, midi: 52, duration: 0.5, velocity: 50 }, { offset: 0.5, midi: 55, duration: 0.5, velocity: 48 }, { offset: 1, midi: 60, duration: 0.5, velocity: 50 }, { offset: 1.5, midi: 64, duration: 0.5, velocity: 48 }, { offset: 2, midi: 60, duration: 0.5, velocity: 50 }, { offset: 2.5, midi: 55, duration: 0.5, velocity: 46 }, { offset: 3, midi: 64, duration: 1, velocity: 48 }],
 
-  [{ offset: 0, midi: 43, duration: 0.5, velocity: 58 }, { offset: 0.5, midi: 50, duration: 0.5, velocity: 54 }, { offset: 1, midi: 55, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 62, duration: 0.5, velocity: 52 }, { offset: 2, midi: 55, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 50, duration: 0.5, velocity: 52 }, { offset: 3, midi: 55, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 42, duration: 0.5, velocity: 58 }, { offset: 0.5, midi: 49, duration: 0.5, velocity: 54 }, { offset: 1, midi: 54, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 57, duration: 0.5, velocity: 52 }, { offset: 2, midi: 54, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 49, duration: 0.5, velocity: 52 }, { offset: 3, midi: 54, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 40, duration: 0.5, velocity: 58 }, { offset: 0.5, midi: 47, duration: 0.5, velocity: 54 }, { offset: 1, midi: 52, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 59, duration: 0.5, velocity: 52 }, { offset: 2, midi: 52, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 47, duration: 0.5, velocity: 52 }, { offset: 3, midi: 52, duration: 1, velocity: 54 }],
-  [{ offset: 0, midi: 36, duration: 1, velocity: 54 }, { offset: 1, midi: 43, duration: 1, velocity: 50 }, { offset: 2, midi: 48, duration: 1, velocity: 52 }, { offset: 3, midi: 55, duration: 1, velocity: 48 }],
+  [{ offset: 0, midi: 55, duration: 0.5, velocity: 56 }, { offset: 0.5, midi: 59, duration: 0.5, velocity: 54 }, { offset: 1, midi: 62, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 67, duration: 0.5, velocity: 54 }, { offset: 2, midi: 62, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 59, duration: 0.5, velocity: 52 }, { offset: 3, midi: 67, duration: 1, velocity: 54 }],
+  [{ offset: 0, midi: 54, duration: 0.5, velocity: 56 }, { offset: 0.5, midi: 57, duration: 0.5, velocity: 54 }, { offset: 1, midi: 62, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 66, duration: 0.5, velocity: 54 }, { offset: 2, midi: 62, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 57, duration: 0.5, velocity: 52 }, { offset: 3, midi: 66, duration: 1, velocity: 54 }],
+  [{ offset: 0, midi: 52, duration: 0.5, velocity: 56 }, { offset: 0.5, midi: 55, duration: 0.5, velocity: 54 }, { offset: 1, midi: 59, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 62, duration: 0.5, velocity: 54 }, { offset: 2, midi: 59, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 55, duration: 0.5, velocity: 52 }, { offset: 3, midi: 62, duration: 1, velocity: 54 }],
+  [{ offset: 0, midi: 52, duration: 0.5, velocity: 56 }, { offset: 0.5, midi: 55, duration: 0.5, velocity: 54 }, { offset: 1, midi: 59, duration: 0.5, velocity: 56 }, { offset: 1.5, midi: 64, duration: 0.5, velocity: 54 }, { offset: 2, midi: 59, duration: 0.5, velocity: 56 }, { offset: 2.5, midi: 55, duration: 0.5, velocity: 52 }, { offset: 3, midi: 64, duration: 1, velocity: 54 }],
 
-  [{ offset: 0, midi: 47, duration: 1, velocity: 48 }, { offset: 1, midi: 55, duration: 1, velocity: 44 }, { offset: 2, midi: 59, duration: 1, velocity: 46 }, { offset: 3, midi: 62, duration: 1, velocity: 42 }],
-  [{ offset: 0, midi: 42, duration: 1, velocity: 48 }, { offset: 1, midi: 49, duration: 1, velocity: 44 }, { offset: 2, midi: 54, duration: 1, velocity: 46 }, { offset: 3, midi: 57, duration: 1, velocity: 42 }],
-  [{ offset: 0, midi: 36, duration: 1, velocity: 46 }, { offset: 1, midi: 43, duration: 1, velocity: 42 }, { offset: 2, midi: 48, duration: 1, velocity: 44 }, { offset: 3, midi: 55, duration: 1, velocity: 40 }],
-  [{ offset: 0, midi: 43, duration: 4, velocity: 42 }],
+  [{ offset: 0, midi: 59, duration: 0.75, velocity: 44 }, { offset: 0.75, midi: 62, duration: 0.75, velocity: 42 }, { offset: 1.5, midi: 67, duration: 0.75, velocity: 44 }, { offset: 2.5, midi: 71, duration: 1.5, velocity: 46 }],
+  [{ offset: 0, midi: 54, duration: 0.75, velocity: 44 }, { offset: 0.75, midi: 57, duration: 0.75, velocity: 42 }, { offset: 1.5, midi: 62, duration: 0.75, velocity: 44 }, { offset: 2.5, midi: 66, duration: 1.5, velocity: 46 }],
+  [{ offset: 0, midi: 52, duration: 0.75, velocity: 42 }, { offset: 0.75, midi: 55, duration: 0.75, velocity: 40 }, { offset: 1.5, midi: 59, duration: 0.75, velocity: 42 }, { offset: 2.5, midi: 64, duration: 1.5, velocity: 44 }],
+  [{ offset: 0, midi: 55, duration: 4, velocity: 40 }],
 ];
 
 for (let bar = 1; bar <= 4; bar += 1) {
-  addPattern('guitarLead', 'porch', bar, guitarPatterns[bar - 1]);
+  addPattern('rightHand', 'porch', bar, guitarPatterns[bar - 1]);
+  addPattern('guitarBed', 'porch', bar, guitarBedPatterns[bar - 1]);
 }
 for (let bar = 5; bar <= 8; bar += 1) {
-  addPattern('guitarLead', 'lane', bar, guitarPatterns[bar - 1]);
+  addPattern('rightHand', 'lane', bar, guitarPatterns[bar - 1]);
+  addPattern('guitarBed', 'lane', bar, guitarBedPatterns[bar - 1]);
 }
 for (let bar = 9; bar <= 12; bar += 1) {
-  addPattern('guitarLead', 'light', bar, guitarPatterns[bar - 1]);
+  addPattern('rightHand', 'light', bar, guitarPatterns[bar - 1]);
+  addPattern('guitarBed', 'light', bar, guitarBedPatterns[bar - 1]);
 }
 for (let bar = 13; bar <= 16; bar += 1) {
-  addPattern('guitarLead', 'home', bar, guitarPatterns[bar - 1]);
+  addPattern('rightHand', 'home', bar, guitarPatterns[bar - 1]);
+  addPattern('guitarBed', 'home', bar, guitarBedPatterns[bar - 1]);
 }
 
 export const testDemo9SongScore = {
@@ -247,10 +251,17 @@ export const testDemo9SongScore = {
   sections,
   tracks: [
     {
-      id: 'guitarLead',
-      name: 'Guitar Lead',
+      id: 'rightHand',
+      name: 'Right Hand',
       role: SONG_SCORE_TRACK_ROLE.MELODY,
-      instrumentHint: 'solo nylon guitar carries both tune and motion',
+      instrumentHint: 'piano lead carries the tune clearly and sings the hook',
+      color: '#8ccfff',
+    },
+    {
+      id: 'guitarBed',
+      name: 'Guitar Bed',
+      role: SONG_SCORE_TRACK_ROLE.CHORDS,
+      instrumentHint: 'nylon guitar arpeggios provide warm harmonic motion under the piano',
       color: '#ffd38c',
     },
   ],
@@ -260,32 +271,32 @@ export const testDemo9SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.SECTION_DESCRIPTION,
       targetSectionId: 'porch',
-      text: '先让尼龙弦把空气拨开，像傍晚刚坐到门前那一下。',
+      text: '先让吉他把和声空气拨开，钢琴再慢半步说出第一句。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'lane',
-      text: '主角始终是吉他。钢琴只铺底，不抢旋律，不抢音色身份。',
+      text: '主角改成钢琴旋律；吉他只负责温暖分解和弦与步伐感，不抢中高音线条。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
       targetSectionId: 'light',
-      text: '高潮不是变厚，而是让吉他唱得更亮、更像路灯一盏盏亮起来。',
+      text: '高潮把钢琴旋律抬亮一点就够了；吉他仍旧托底，像路灯一盏盏亮起来。',
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'home',
-      text: '尾声把力收回来，像抱着一点体温回家。',
+      text: '尾声先收钢琴，再让吉他留一点木质余温结束。',
     },
   ],
   renderHints: {
     defaultInstruments: {
-      guitarLead: 'kyster-nylon-guitar',
-      pianoBed: 'realistic-piano',
+      rightHand: 'realistic-piano',
+      guitarBed: 'kyster-nylon-guitar',
     },
-    preferredPreviewInstrument: 'kyster-nylon-guitar',
+    preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.07,
   },
   sourceFormat: 'story',
-  sourceText: '傍晚、巷口、小路、灯慢慢亮起来。主角是一把温暖的尼龙弦吉他，钢琴只做很轻的空气与和声托底。',
+  sourceText: '傍晚、巷口、小路、灯慢慢亮起来。主角改为钢琴主旋律，尼龙弦吉他只做温暖的分解和弦底色与步伐。',
 };
