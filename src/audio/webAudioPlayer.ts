@@ -44,9 +44,45 @@ const realisticPianoSamples = [
   },
 ];
 
+const speedyNylonOpenChordSamples = [
+  { rootNote: 45, fileName: '8449__speedy__a_full.wav' },
+  { rootNote: 48, fileName: '8468__speedy__c_full.wav' },
+  { rootNote: 50, fileName: '8476__speedy__d_full_ok.wav' },
+  { rootNote: 52, fileName: '8489__speedy__e_full.wav' },
+  { rootNote: 55, fileName: '8499__speedy__g_full.wav' },
+  { rootNote: 57, fileName: '8455__speedy__amin_full.wav' },
+  { rootNote: 60, fileName: '8465__speedy__cmj7_full.wav' },
+  { rootNote: 62, fileName: '8479__speedy__dadd2_full_ok.wav' },
+  { rootNote: 64, fileName: '8492__speedy__emin_full.wav' },
+  { rootNote: 67, fileName: '8496__speedy__g2_full.wav' },
+].map(({ rootNote, fileName }) => ({
+  rootNote,
+  url: new URL(`./samples/freesound/speedy-nylon-guitar-open-chords/${fileName}`, import.meta.url).href,
+}));
+
+const speedyNylonExtraChordSamples = [
+  { rootNote: 45, fileName: '8551__speedy__a7th.wav' },
+  { rootNote: 47, fileName: '8557__speedy__b7th.wav' },
+  { rootNote: 50, fileName: '8561__speedy__d7th.wav' },
+  { rootNote: 52, fileName: '8566__speedy__e7th.wav' },
+  { rootNote: 57, fileName: '8556__speedy__a7th_up.wav' },
+  { rootNote: 59, fileName: '8560__speedy__b7th_up.wav' },
+  { rootNote: 62, fileName: '8564__speedy__d7th_up.wav' },
+  { rootNote: 64, fileName: '8569__speedy__e7th_up.wav' },
+].map(({ rootNote, fileName }) => ({
+  rootNote,
+  url: new URL(`./samples/freesound/speedy-nylon-guitar-extra-open-chords/${fileName}`, import.meta.url).href,
+}));
+
 const sampleBankCatalog = {
   'realistic-piano': {
     samples: realisticPianoSamples,
+  },
+  'speedy-nylon-open-chords': {
+    samples: speedyNylonOpenChordSamples,
+  },
+  'speedy-nylon-extra-chords': {
+    samples: speedyNylonExtraChordSamples,
   },
 
   'kyster-nylon-guitar': {
@@ -93,7 +129,28 @@ const instrumentCatalog = [
     filterQ: 0.54,
     reverbSend: 0.19,
   },
-
+  {
+    id: 'speedy-nylon-open-chords',
+    labelKey: 'instrumentSpeedyNylonOpenChords',
+    bankId: 'speedy-nylon-open-chords',
+    gain: 0.4,
+    attack: 0.003,
+    release: 1.2,
+    filterFrequency: 7600,
+    filterQ: 0.45,
+    reverbSend: 0.12,
+  },
+  {
+    id: 'speedy-nylon-extra-chords',
+    labelKey: 'instrumentSpeedyNylonExtraChords',
+    bankId: 'speedy-nylon-extra-chords',
+    gain: 0.36,
+    attack: 0.003,
+    release: 1.15,
+    filterFrequency: 7400,
+    filterQ: 0.46,
+    reverbSend: 0.12,
+  },
   {
     id: 'kyster-nylon-guitar',
     labelKey: 'instrumentKysterNylonGuitar',
