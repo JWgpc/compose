@@ -284,6 +284,10 @@ export function createSongScore(presetId, overrides = {}) {
     return structuredClone(testDemo8SongScore);
   }
 
+  if (presetId === 'test-demo9' && Object.keys(overrides).length === 0) {
+    return structuredClone(testDemo9SongScore);
+  }
+
   const template = sectionTemplates[preset.sectionTemplate] || sectionTemplates['Mainstream Pop'];
   const sections = makeScoreSections(template);
   const notes = createNotes(sections, preset);

@@ -289,6 +289,3 @@ export const testDemo9SongScore = {
   sourceFormat: 'story',
   sourceText: '傍晚、巷口、小路、灯慢慢亮起来。主角是一把温暖的尼龙弦吉他，钢琴只做很轻的空气与和声托底。',
 };
-,
-  sourceText: '傍晚、巷口、小路、灯慢慢亮起来。全曲只保留一把温暖的尼龙弦吉他，自己把旋律与步伐轻轻带出来。',
-};
