@@ -48,42 +48,7 @@ const sampleBankCatalog = {
   'realistic-piano': {
     samples: realisticPianoSamples,
   },
-  'philharmonia-cello': {
-    samples: [45, 50, 55, 60, 65].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/cello/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
-  'philharmonia-flute': {
-    samples: [60, 67, 74, 81, 88].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/flute/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
-  'philharmonia-bass-drum': {
-    samples: [36, 43, 50].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/bass-drum/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
-  'philharmonia-mandolin': {
-    samples: [60, 67, 74, 81, 88].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/mandolin/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
-  'philharmonia-violin': {
-    samples: [57, 62, 69, 74, 81].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/violin/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
-  'philharmonia-guitar': {
-    samples: [40, 45, 50, 55, 60].map((rootNote) => ({
-      rootNote,
-      url: new URL(`./samples/philharmonia/guitar/${rootNote}.mp3`, import.meta.url).href,
-    })),
-  },
+
   'kyster-nylon-guitar': {
     samples: [
       { rootNote: 38, fileName: '117720__kyster__low-d.wav' },
@@ -128,72 +93,7 @@ const instrumentCatalog = [
     filterQ: 0.54,
     reverbSend: 0.19,
   },
-  {
-    id: 'philharmonia-cello',
-    labelKey: 'instrumentPhilharmoniaCello',
-    bankId: 'philharmonia-cello',
-    gain: 0.52,
-    attack: 0.016,
-    release: 0.98,
-    filterFrequency: 5000,
-    filterQ: 0.68,
-    reverbSend: 0.16,
-  },
-  {
-    id: 'philharmonia-flute',
-    labelKey: 'instrumentPhilharmoniaFlute',
-    bankId: 'philharmonia-flute',
-    gain: 0.58,
-    attack: 0.018,
-    release: 0.84,
-    filterFrequency: 8600,
-    filterQ: 0.46,
-    reverbSend: 0.18,
-  },
-  {
-    id: 'philharmonia-bass-drum',
-    labelKey: 'instrumentPhilharmoniaBassDrum',
-    bankId: 'philharmonia-bass-drum',
-    gain: 0.66,
-    attack: 0.002,
-    release: 1.9,
-    filterFrequency: 3000,
-    filterQ: 0.76,
-    reverbSend: 0.06,
-  },
-  {
-    id: 'philharmonia-mandolin',
-    labelKey: 'instrumentPhilharmoniaMandolin',
-    bankId: 'philharmonia-mandolin',
-    gain: 0.42,
-    attack: 0.003,
-    release: 0.9,
-    filterFrequency: 9000,
-    filterQ: 0.42,
-    reverbSend: 0.1,
-  },
-  {
-    id: 'philharmonia-violin',
-    labelKey: 'instrumentPhilharmoniaViolin',
-    bankId: 'philharmonia-violin',
-    gain: 0.4,
-    attack: 0.01,
-    release: 1.1,
-    filterFrequency: 8200,
-    filterQ: 0.46,
-    reverbSend: 0.16,
-  },
-  {
-    id: 'philharmonia-guitar',
-    labelKey: 'instrumentPhilharmoniaGuitar',
-    bankId: 'philharmonia-guitar',
-    gain: 0.38,
-    attack: 0.005,
-    release: 1.02,
-    filterFrequency: 7600,
-    filterQ: 0.5,
-    reverbSend: 0.12,
-  },
+
   {
     id: 'kyster-nylon-guitar',
     labelKey: 'instrumentKysterNylonGuitar',

@@ -300,8 +300,8 @@ export const testDemo8SongScore = {
   renderHints: {
     defaultInstruments: {
       rightHand: 'realistic-piano',
-      leftHand: 'philharmonia-guitar',
-      springLayer: 'philharmonia-mandolin',
+      leftHand: 'kyster-nylon-guitar',
+      springLayer: 'kyster-nylon-guitar',
     },
     preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.08,

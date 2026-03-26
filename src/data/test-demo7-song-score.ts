@@ -391,8 +391,8 @@ export const testDemo7SongScore = {
   renderHints: {
     defaultInstruments: {
       rightHand: 'realistic-piano',
-      leftHand: 'philharmonia-cello',
-      warLayer: 'philharmonia-flute',
+      leftHand: 'realistic-piano',
+      warLayer: 'realistic-piano',
     },
     preferredPreviewInstrument: 'realistic-piano',
     humanizeAmount: 0.1,
