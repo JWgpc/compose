@@ -95,84 +95,81 @@ const chords = [
 
 const pianoLeadPatterns = [
   [
-    { offset: 0.5, midi: 67, duration: 1.5, velocity: 68 },
-    { offset: 2.5, midi: 71, duration: 1.0, velocity: 64 },
+    { offset: 0.5, midi: 67, duration: 2.0, velocity: 72 },
+    { offset: 2.75, midi: 71, duration: 1.0, velocity: 66 },
   ],
   [
-    { offset: 0.5, midi: 69, duration: 1.5, velocity: 66 },
-    { offset: 2.5, midi: 74, duration: 1.0, velocity: 64 },
+    { offset: 0.5, midi: 69, duration: 2.0, velocity: 70 },
+    { offset: 2.75, midi: 74, duration: 1.0, velocity: 66 },
   ],
   [
-    { offset: 0.5, midi: 71, duration: 1.5, velocity: 68 },
-    { offset: 2.5, midi: 76, duration: 1.0, velocity: 66 },
+    { offset: 0.25, midi: 71, duration: 2.0, velocity: 72 },
+    { offset: 2.5, midi: 76, duration: 1.25, velocity: 68 },
   ],
   [
-    { offset: 0.5, midi: 72, duration: 1.5, velocity: 66 },
-    { offset: 2.5, midi: 67, duration: 1.5, velocity: 62 },
-  ],
-
-  [
-    { offset: 0, midi: 71, duration: 1.0, velocity: 74 },
-    { offset: 1.5, midi: 74, duration: 0.5, velocity: 70 },
-    { offset: 2, midi: 76, duration: 1.0, velocity: 76 },
-    { offset: 3.5, midi: 74, duration: 0.5, velocity: 70 },
-  ],
-  [
-    { offset: 0, midi: 74, duration: 1.0, velocity: 74 },
-    { offset: 1.5, midi: 76, duration: 0.5, velocity: 70 },
-    { offset: 2, midi: 78, duration: 1.0, velocity: 76 },
-    { offset: 3.5, midi: 74, duration: 0.5, velocity: 70 },
-  ],
-  [
-    { offset: 0, midi: 76, duration: 1.0, velocity: 76 },
-    { offset: 1.5, midi: 79, duration: 0.5, velocity: 72 },
-    { offset: 2, midi: 83, duration: 1.0, velocity: 80 },
-    { offset: 3.5, midi: 79, duration: 0.5, velocity: 72 },
-  ],
-  [
-    { offset: 0, midi: 79, duration: 1.0, velocity: 74 },
-    { offset: 1.5, midi: 76, duration: 0.5, velocity: 68 },
-    { offset: 2, midi: 74, duration: 1.5, velocity: 70 },
+    { offset: 0.5, midi: 72, duration: 2.0, velocity: 70 },
+    { offset: 2.75, midi: 67, duration: 1.25, velocity: 64 },
   ],
 
   [
-    { offset: 0, midi: 74, duration: 1.0, velocity: 82 },
-    { offset: 1, midi: 79, duration: 1.0, velocity: 86 },
-    { offset: 2, midi: 83, duration: 1.0, velocity: 90, accent: 'strong' },
-    { offset: 3, midi: 79, duration: 1.0, velocity: 84 },
+    { offset: 0, midi: 71, duration: 1.25, velocity: 78 },
+    { offset: 1.5, midi: 74, duration: 0.75, velocity: 74 },
+    { offset: 2.25, midi: 76, duration: 1.25, velocity: 80 },
   ],
   [
-    { offset: 0, midi: 74, duration: 1.0, velocity: 80 },
-    { offset: 1, midi: 78, duration: 1.0, velocity: 84 },
-    { offset: 2, midi: 81, duration: 1.0, velocity: 88 },
-    { offset: 3, midi: 78, duration: 1.0, velocity: 82 },
+    { offset: 0, midi: 74, duration: 1.25, velocity: 78 },
+    { offset: 1.5, midi: 76, duration: 0.75, velocity: 74 },
+    { offset: 2.25, midi: 78, duration: 1.25, velocity: 80 },
   ],
   [
-    { offset: 0, midi: 76, duration: 1.0, velocity: 82 },
-    { offset: 1, midi: 79, duration: 1.0, velocity: 86 },
-    { offset: 2, midi: 83, duration: 1.0, velocity: 90 },
-    { offset: 3, midi: 88, duration: 1.0, velocity: 94, accent: 'strong' },
+    { offset: 0, midi: 76, duration: 1.25, velocity: 80 },
+    { offset: 1.5, midi: 79, duration: 0.75, velocity: 76 },
+    { offset: 2.25, midi: 83, duration: 1.25, velocity: 84 },
   ],
   [
-    { offset: 0, midi: 79, duration: 1.0, velocity: 80 },
-    { offset: 1, midi: 76, duration: 1.0, velocity: 76 },
-    { offset: 2, midi: 74, duration: 2.0, velocity: 74 },
+    { offset: 0, midi: 79, duration: 1.25, velocity: 78 },
+    { offset: 1.5, midi: 76, duration: 0.75, velocity: 72 },
+    { offset: 2.25, midi: 74, duration: 1.75, velocity: 74 },
   ],
 
   [
-    { offset: 0.5, midi: 74, duration: 1.5, velocity: 66 },
-    { offset: 2.5, midi: 71, duration: 1.0, velocity: 62 },
+    { offset: 0, midi: 74, duration: 1.0, velocity: 86 },
+    { offset: 1, midi: 79, duration: 1.0, velocity: 90 },
+    { offset: 2, midi: 83, duration: 1.0, velocity: 94, accent: 'strong' },
+    { offset: 3, midi: 79, duration: 1.0, velocity: 88 },
   ],
   [
-    { offset: 0.5, midi: 74, duration: 1.5, velocity: 64 },
-    { offset: 2.5, midi: 69, duration: 1.0, velocity: 60 },
+    { offset: 0, midi: 74, duration: 1.0, velocity: 84 },
+    { offset: 1, midi: 78, duration: 1.0, velocity: 88 },
+    { offset: 2, midi: 81, duration: 1.0, velocity: 92 },
+    { offset: 3, midi: 78, duration: 1.0, velocity: 86 },
   ],
   [
-    { offset: 0.5, midi: 72, duration: 1.5, velocity: 62 },
-    { offset: 2.5, midi: 67, duration: 1.5, velocity: 58 },
+    { offset: 0, midi: 76, duration: 1.0, velocity: 86 },
+    { offset: 1, midi: 79, duration: 1.0, velocity: 90 },
+    { offset: 2, midi: 83, duration: 1.0, velocity: 94 },
+    { offset: 3, midi: 88, duration: 1.0, velocity: 98, accent: 'strong' },
   ],
   [
-    { offset: 0.5, midi: 67, duration: 3.0, velocity: 56 },
+    { offset: 0, midi: 79, duration: 1.0, velocity: 84 },
+    { offset: 1, midi: 76, duration: 1.0, velocity: 80 },
+    { offset: 2, midi: 74, duration: 2.0, velocity: 78 },
+  ],
+
+  [
+    { offset: 0.5, midi: 74, duration: 2.0, velocity: 68 },
+    { offset: 2.75, midi: 71, duration: 1.0, velocity: 62 },
+  ],
+  [
+    { offset: 0.75, midi: 74, duration: 1.75, velocity: 66 },
+    { offset: 2.75, midi: 69, duration: 1.0, velocity: 60 },
+  ],
+  [
+    { offset: 0.5, midi: 72, duration: 2.0, velocity: 64 },
+    { offset: 2.75, midi: 67, duration: 1.25, velocity: 58 },
+  ],
+  [
+    { offset: 0.5, midi: 67, duration: 3.25, velocity: 58 },
   ],
 ];
 
@@ -286,7 +283,7 @@ export const testDemo9SongScore = {
     {
       type: SONG_SCORE_ANNOTATION_TYPE.ARRANGEMENT_HINT,
       targetSectionId: 'lane',
-      text: '钢琴负责叙事；guitarBed 负责把长样本尾音铺开，整首先只保留这一层完整和弦。'
+      text: '钢琴始终在前面说话；guitarBed 只是补和声和木质温度，不要和钢琴抢句子。'
     },
     {
       type: SONG_SCORE_ANNOTATION_TYPE.HOOK_HINT,
