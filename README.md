@@ -17,11 +17,13 @@ A desktop-first Song Creator prototype based on the planning docs in `docs/` and
 - `npm run dev` starts the Vite dev server at `http://127.0.0.1:5173`
 - `npm run build` creates a production build in `./dist`
 - `npm run preview` serves the production build at `http://127.0.0.1:4173`
+- `npm run import:vpo` re-imports the checked-in VPO subset from a local VPO 3 download
 
 ## Notes
 
 - The frontend now uses a standard Vite workflow instead of the previous custom build/dev/serve scripts
 - Audio sample assets stay in-repo and are referenced with `new URL(..., import.meta.url)`, so Vite can fingerprint and serve them correctly in both dev and production builds
+- The VPO integration is intentionally tiny: `scripts/import-vpo-samples.mjs` copies only the sample files needed for `cello-SOLO-sustain` and `flute-SOLO-sustain`, then regenerates `src/audio/vpoCatalog.ts`
 - The app remains framework-free browser code organized under `src/`; Vite is used for serving, asset handling, and production bundling
 
 ## Project structure

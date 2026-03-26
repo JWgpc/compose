@@ -1,4 +1,5 @@
 import { getPlayableNotes, getProjectSection, getProjectSections, getSongScoreSummary, getTempoBpm } from '../songscore/adapters.ts';
+import { vpoCelloSoloSustainSamples, vpoFluteSoloSustainSamples } from './vpoCatalog.ts';
 
 export const DEFAULT_INSTRUMENT_ID = 'realistic-piano';
 
@@ -115,6 +116,12 @@ const sampleBankCatalog = {
       url: new URL(`./samples/freesound/kyster-nylon-guitar/${fileName}`, import.meta.url).href,
     })),
   },
+  'vpo-cello-solo-sustain': {
+    samples: vpoCelloSoloSustainSamples,
+  },
+  'vpo-flute-solo-sustain': {
+    samples: vpoFluteSoloSustainSamples,
+  },
 };
 
 const instrumentCatalog = [
@@ -161,6 +168,28 @@ const instrumentCatalog = [
     filterFrequency: 7200,
     filterQ: 0.48,
     reverbSend: 0.11,
+  },
+  {
+    id: 'vpo-cello-solo-sustain',
+    labelKey: 'instrumentVpoCelloSoloSustain',
+    bankId: 'vpo-cello-solo-sustain',
+    gain: 0.28,
+    attack: 0.018,
+    release: 1.75,
+    filterFrequency: 5200,
+    filterQ: 0.72,
+    reverbSend: 0.2,
+  },
+  {
+    id: 'vpo-flute-solo-sustain',
+    labelKey: 'instrumentVpoFluteSoloSustain',
+    bankId: 'vpo-flute-solo-sustain',
+    gain: 0.22,
+    attack: 0.014,
+    release: 1.2,
+    filterFrequency: 6800,
+    filterQ: 0.38,
+    reverbSend: 0.22,
   },
 ];
 
