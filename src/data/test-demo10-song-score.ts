@@ -6,7 +6,8 @@ const battlePulseNotes = testDemo7SongScore.notes
   .map((note) => ({
     ...note,
     trackId: 'battlePulse',
-    velocity: Math.min(127, Math.round((note.velocity || 90) + 10)),
+    durationBeats: Math.min(note.durationBeats || 0.5, 0.38),
+    velocity: Math.min(127, Math.round((note.velocity || 90) + 14)),
   }));
 
 export const testDemo10SongScore = {
@@ -38,7 +39,7 @@ export const testDemo10SongScore = {
     {
       type: 'arrangement_hint',
       targetSectionId: 'battle',
-      text: '战斗段额外补回一层短促钢琴脉冲，只负责紧张推进感；cello 继续托底，但不要盖住钢琴。',
+      text: '战斗段额外补回一层更短、更硬的钢琴脉冲，只负责紧张推进感；cello 继续轻托底，不要把前景抹糊。',
     },
     ...testDemo7SongScore.annotations,
   ],
