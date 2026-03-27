@@ -174,7 +174,7 @@ const instrumentCatalog = [
     id: 'vpo-cello-solo-sustain',
     labelKey: 'instrumentVpoCelloSoloSustain',
     bankId: 'vpo-cello-solo-sustain',
-    gain: 0.24,
+    gain: 0.2,
     attack: 0.008,
     release: 1.55,
     filterFrequency: 6200,
