@@ -60,6 +60,8 @@ Minimum for expressive piano:
 Default approach:
 - left hand = broken chords, roots, fifths, wide spacing
 - right hand = melody, occasional doubled intervals on key beats
+- default instrument plan = `realistic-piano` only
+- optional support plan, when explicitly requested = add `vpo-cello-solo-sustain` and/or `vpo-flute-solo-sustain` without displacing piano from the lead role
 
 ## 5. Write chord lane first
 
@@ -117,6 +119,7 @@ Meta minimum:
 If working in the Song Creator prototype used here:
 - update the demo SongScore file under `src/data/`
 - wire it into the active preset if needed
+- only target currently-supported instruments in this repo: `realistic-piano`, `vpo-cello-solo-sustain`, `vpo-flute-solo-sustain`
 - build the app to confirm the score loads
 - if browser preview and exported audio disagree, trust the exported render first and debug preview separately before rewriting the arrangement
 - commit only the files changed for this score task

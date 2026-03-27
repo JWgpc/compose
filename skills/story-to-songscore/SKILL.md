@@ -42,11 +42,13 @@ Unless the user asks otherwise, produce a piano-focused arrangement with:
 - narrative section labels
 - annotations that explain the musical intent
 
-Current project rule: temporarily prefer **solo piano only**.
+Current project rule: use only the instruments that still exist in this repo.
 - Default instrument: `realistic-piano`
-- Do not add support instruments unless the user explicitly asks and the source is known to work well with the piano.
+- Supported extras, when explicitly requested: `vpo-cello-solo-sustain` and `vpo-flute-solo-sustain`
+- Do not write toward deleted/legacy sample banks or older guitar/strings libraries.
+- If the user does not explicitly ask for support instruments, keep the piece **solo piano only**.
+- When support instruments are requested, keep **piano as the clear lead** by default; cello/flute supports should reinforce, answer, or color the piano rather than replace it.
 - If an auxiliary instrument does not clearly improve the piano, remove it.
-- When support instruments are requested, keep **piano as the clear lead** by default; cello/flute/other supports should usually reinforce, answer, or color the piano rather than replace it.
 
 Favor clarity over complexity. A smaller coherent piece is better than an overcomplicated but muddy score.
 
@@ -58,7 +60,8 @@ Favor clarity over complexity. A smaller coherent piece is better than an overco
 - Use short bright figures for bells, clocks, music boxes, sparkles, or magical objects.
 - Let the ending harmony match the story ending: stable for closure, suspended for ambiguity.
 - If per-track instruments are available, assign by role rather than novelty: lead on piano first.
-- For now, prefer solving arrangement problems inside the piano writing before adding any new instrument.
+- In this project, that effectively means `realistic-piano` first, then optional VPO cello/flute only when needed.
+- Prefer solving arrangement problems inside the piano writing before adding any new instrument.
 - For gentle themes (spring, childhood, rain, growth, tenderness), keep the piece piano-led.
 - If a supporting instrument keeps sounding "too obvious," remove it before trying to tame it.
 - Treat auxiliary instruments as repair tools for gaps in the piano, not as co-leads.
@@ -79,7 +82,7 @@ Always ensure the final score has:
 When working in the local Song Creator prototype:
 - update the relevant SongScore file under `src/data/`
 - wire it into the active preset/demo entry if needed
-- for now, default `renderHints.defaultInstruments` to `realistic-piano` only unless the user explicitly wants an extra instrument test
+- for now, default `renderHints.defaultInstruments` to `realistic-piano` only unless the user explicitly wants an extra instrument test using `vpo-cello-solo-sustain` and/or `vpo-flute-solo-sustain`
 - use `preferredPreviewInstrument` as a fallback, not as a substitute for deliberate track roles
 - run a build to confirm importability
 - commit only the files changed for this score task
