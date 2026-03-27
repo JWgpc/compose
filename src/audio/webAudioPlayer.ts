@@ -174,13 +174,12 @@ const instrumentCatalog = [
     id: 'vpo-cello-solo-sustain',
     labelKey: 'instrumentVpoCelloSoloSustain',
     bankId: 'vpo-cello-solo-sustain',
-    gain: 0.17,
-    attack: 0.006,
-    release: 1.28,
-    filterFrequency: 7000,
-    filterQ: 0.46,
-    reverbSend: 0.04,
-    sampleStartOffset: 0.03,
+    gain: 0.3,
+    attack: 0.008,
+    release: 1.55,
+    filterFrequency: 6400,
+    filterQ: 0.58,
+    reverbSend: 0.1,
     playableRange: { min: 36, max: 72, mode: 'octave-fold' },
   },
   {
@@ -193,7 +192,6 @@ const instrumentCatalog = [
     filterFrequency: 9200,
     filterQ: 0.26,
     reverbSend: 0.1,
-    sampleStartOffset: 0.03,
     playableRange: { min: 60, max: 96, mode: 'octave-fold' },
   },
 ];
@@ -433,9 +431,7 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
   const pitchCompensation = getPitchCompensation(protectedPitch);
   const peakGain = instrument.gain * velocityBoost * pitchCompensation;
   const playbackRate = 2 ** ((protectedPitch - sample.rootNote) / 12);
-  const sampleStartOffset = Math.max(0, instrument.sampleStartOffset || 0);
-  const playableBufferDuration = Math.max(sample.buffer.duration - sampleStartOffset, 0.02);
-  const naturalDuration = playableBufferDuration / playbackRate;
+  const naturalDuration = sample.buffer.duration / playbackRate;
   const naturalEndTime = startTime + naturalDuration;
   const output = audioContext.createGain();
   const filter = audioContext.createBiquadFilter();
@@ -470,7 +466,7 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
     sendGain.connect(buses.reverbInput);
   }
 
-  source.start(startTime, sampleStartOffset);
+  source.start(startTime, 0);
   source.stop(Math.max(endTime + 0.02, attackEnd + 0.04));
 
   const voice = { sources: [source], output, filter, sendGain, endTime };
