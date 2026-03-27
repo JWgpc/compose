@@ -180,7 +180,7 @@ const instrumentCatalog = [
     filterFrequency: 7000,
     filterQ: 0.46,
     reverbSend: 0.04,
-    sampleStartOffset: 0.014,
+    sampleStartOffset: 0.03,
     playableRange: { min: 36, max: 72, mode: 'octave-fold' },
   },
   {
@@ -193,7 +193,7 @@ const instrumentCatalog = [
     filterFrequency: 9200,
     filterQ: 0.26,
     reverbSend: 0.1,
-    sampleStartOffset: 0.01,
+    sampleStartOffset: 0.03,
     playableRange: { min: 60, max: 96, mode: 'octave-fold' },
   },
 ];
