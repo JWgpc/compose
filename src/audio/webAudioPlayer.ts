@@ -8,6 +8,7 @@ const LOOP_SCHEDULE_EARLY_MS = 250;
 const MIN_GAIN = 0.0001;
 const END_TAIL_PADDING_MS = 3800;
 const CHROMATIC_NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+const rangeProtectionWarnings = new Set();
 
 function createMyPianoFileName(noteName, octaveMarker = '', { prefix = '', lowercase = false } = {}) {
   const [letter, accidental = ''] = noteName.split('');
@@ -179,6 +180,7 @@ const instrumentCatalog = [
     filterFrequency: 5200,
     filterQ: 0.72,
     reverbSend: 0.2,
+    playableRange: { min: 36, max: 72, mode: 'octave-fold' },
   },
   {
     id: 'vpo-flute-solo-sustain',
@@ -190,6 +192,7 @@ const instrumentCatalog = [
     filterFrequency: 6800,
     filterQ: 0.38,
     reverbSend: 0.22,
+    playableRange: { min: 60, max: 96, mode: 'octave-fold' },
   },
 ];
 
@@ -333,6 +336,45 @@ function pickNearestSample(samples, pitch) {
   }, null);
 }
 
+function midiToPitchName(midi) {
+  const octave = Math.floor(midi / 12) - 1;
+  return `${CHROMATIC_NOTE_NAMES[midi % 12]}${octave}`;
+}
+
+function protectInstrumentPitch(instrument, pitch) {
+  const playableRange = instrument?.playableRange;
+  if (!playableRange) {
+    return pitch;
+  }
+
+  const { min, max, mode = 'clamp' } = playableRange;
+  if (pitch >= min && pitch <= max) {
+    return pitch;
+  }
+
+  let protectedPitch = pitch;
+  if (mode === 'octave-fold') {
+    while (protectedPitch < min) {
+      protectedPitch += 12;
+    }
+    while (protectedPitch > max) {
+      protectedPitch -= 12;
+    }
+  }
+
+  protectedPitch = clamp(protectedPitch, min, max);
+
+  const warningKey = `${instrument.id}:${pitch}:${protectedPitch}`;
+  if (!rangeProtectionWarnings.has(warningKey) && typeof console !== 'undefined') {
+    rangeProtectionWarnings.add(warningKey);
+    console.warn(
+      `[audio] Range-protected ${instrument.id} note ${midiToPitchName(pitch)} (${pitch}) -> ${midiToPitchName(protectedPitch)} (${protectedPitch})`,
+    );
+  }
+
+  return protectedPitch;
+}
+
 function stopVoice(voice, time) {
   voice.sources.forEach((source) => {
     try {
@@ -379,15 +421,16 @@ function isOfflineContext(audioContext) {
 }
 
 function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startTime, durationSeconds) {
-  const sample = pickNearestSample(bank.samples, note.pitch);
+  const protectedPitch = protectInstrumentPitch(instrument, note.pitch);
+  const sample = pickNearestSample(bank.samples, protectedPitch);
   if (!sample?.buffer) {
     return null;
   }
 
   const velocityBoost = note.emphasis === 'hook' ? 1.15 : note.emphasis === 'contrast' ? 0.92 : 1;
-  const pitchCompensation = getPitchCompensation(note.pitch);
+  const pitchCompensation = getPitchCompensation(protectedPitch);
   const peakGain = instrument.gain * velocityBoost * pitchCompensation;
-  const playbackRate = 2 ** ((note.pitch - sample.rootNote) / 12);
+  const playbackRate = 2 ** ((protectedPitch - sample.rootNote) / 12);
   const naturalDuration = sample.buffer.duration / playbackRate;
   const naturalEndTime = startTime + naturalDuration;
   const output = audioContext.createGain();
@@ -397,7 +440,7 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
 
   filter.type = 'lowpass';
   filter.frequency.setValueAtTime(
-    clamp(instrument.filterFrequency * 2 ** ((note.pitch - 60) / 30), 1600, 12000),
+    clamp(instrument.filterFrequency * 2 ** ((protectedPitch - 60) / 30), 1600, 12000),
     startTime,
   );
   filter.Q.setValueAtTime(instrument.filterQ, startTime);
