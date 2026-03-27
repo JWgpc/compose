@@ -180,6 +180,7 @@ const instrumentCatalog = [
     filterFrequency: 7000,
     filterQ: 0.46,
     reverbSend: 0.04,
+    sampleStartOffset: 0.008,
     playableRange: { min: 36, max: 72, mode: 'octave-fold' },
   },
   {
@@ -192,6 +193,7 @@ const instrumentCatalog = [
     filterFrequency: 9200,
     filterQ: 0.26,
     reverbSend: 0.1,
+    sampleStartOffset: 0.006,
     playableRange: { min: 60, max: 96, mode: 'octave-fold' },
   },
 ];
@@ -431,7 +433,9 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
   const pitchCompensation = getPitchCompensation(protectedPitch);
   const peakGain = instrument.gain * velocityBoost * pitchCompensation;
   const playbackRate = 2 ** ((protectedPitch - sample.rootNote) / 12);
-  const naturalDuration = sample.buffer.duration / playbackRate;
+  const sampleStartOffset = Math.max(0, instrument.sampleStartOffset || 0);
+  const playableBufferDuration = Math.max(sample.buffer.duration - sampleStartOffset, 0.02);
+  const naturalDuration = playableBufferDuration / playbackRate;
   const naturalEndTime = startTime + naturalDuration;
   const output = audioContext.createGain();
   const filter = audioContext.createBiquadFilter();
@@ -466,7 +470,7 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
     sendGain.connect(buses.reverbInput);
   }
 
-  source.start(startTime, 0);
+  source.start(startTime, sampleStartOffset);
   source.stop(Math.max(endTime + 0.02, attackEnd + 0.04));
 
   const voice = { sources: [source], output, filter, sendGain, endTime };
