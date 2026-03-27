@@ -153,6 +153,23 @@ export const quickPresets = [
     hookSummary: 'A warm nylon-guitar evening sketch with a relaxed walk-home feel',
   },
   {
+    id: 'test-demo10',
+    label: 'VPO试音版',
+    title: 'VPO试音版',
+    style: 'VPO Audition Demo',
+    mood: 'Clear / Layered / Obvious',
+    bpm: 76,
+    key: 'D',
+    mode: 'Minor',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Ballad',
+    phraseLength: 4,
+    chorusLift: 'Bigger Arrangement',
+    theme: '明确试听 VPO cello 和 flute 是否真的进来了，让它们的存在足够明显',
+    lyricIdea: 'instrumental VPO audition demo',
+    hookSummary: 'A clear piano + VPO cello + VPO flute audition version for checking the timbre mapping',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -240,6 +257,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-0000000000',
+    title: 'VPO试音版',
+    subtitle: 'VPO Audition Demo · 76 BPM · obvious cello + flute check',
+    presetId: 'test-demo10',
+  },
   {
     id: 'recent-000000000',
     title: '测试demo9',
