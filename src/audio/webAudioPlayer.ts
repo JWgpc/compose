@@ -46,76 +46,9 @@ const realisticPianoSamples = [
   },
 ];
 
-const speedyNylonOpenChordSamples = [
-  { rootNote: 45, fileName: '8449__speedy__a_full.wav' },
-  { rootNote: 48, fileName: '8468__speedy__c_full.wav' },
-  { rootNote: 50, fileName: '8476__speedy__d_full_ok.wav' },
-  { rootNote: 52, fileName: '8489__speedy__e_full.wav' },
-  { rootNote: 55, fileName: '8499__speedy__g_full.wav' },
-  { rootNote: 57, fileName: '8455__speedy__amin_full.wav' },
-  { rootNote: 60, fileName: '8465__speedy__cmj7_full.wav' },
-  { rootNote: 62, fileName: '8479__speedy__dadd2_full_ok.wav' },
-  { rootNote: 64, fileName: '8492__speedy__emin_full.wav' },
-  { rootNote: 67, fileName: '8496__speedy__g2_full.wav' },
-].map(({ rootNote, fileName }) => ({
-  rootNote,
-  url: new URL(`./samples/freesound/speedy-nylon-guitar-open-chords/${fileName}`, import.meta.url).href,
-}));
-
-const speedyNylonExtraChordSamples = [
-  { rootNote: 45, fileName: '8551__speedy__a7th.wav' },
-  { rootNote: 47, fileName: '8557__speedy__b7th.wav' },
-  { rootNote: 50, fileName: '8561__speedy__d7th.wav' },
-  { rootNote: 52, fileName: '8566__speedy__e7th.wav' },
-  { rootNote: 57, fileName: '8556__speedy__a7th_up.wav' },
-  { rootNote: 59, fileName: '8560__speedy__b7th_up.wav' },
-  { rootNote: 62, fileName: '8564__speedy__d7th_up.wav' },
-  { rootNote: 64, fileName: '8569__speedy__e7th_up.wav' },
-].map(({ rootNote, fileName }) => ({
-  rootNote,
-  url: new URL(`./samples/freesound/speedy-nylon-guitar-extra-open-chords/${fileName}`, import.meta.url).href,
-}));
-
 const sampleBankCatalog = {
   'realistic-piano': {
     samples: realisticPianoSamples,
-  },
-  'speedy-nylon-open-chords': {
-    samples: speedyNylonOpenChordSamples,
-  },
-  'speedy-nylon-extra-chords': {
-    samples: speedyNylonExtraChordSamples,
-  },
-
-  'kyster-nylon-guitar': {
-    samples: [
-      { rootNote: 38, fileName: '117720__kyster__low-d.wav' },
-      { rootNote: 45, fileName: '117708__kyster__a.wav' },
-      { rootNote: 47, fileName: '117709__kyster__b.wav' },
-      { rootNote: 48, fileName: '117711__kyster__c.wav' },
-      { rootNote: 50, fileName: '117713__kyster__d.wav' },
-      { rootNote: 52, fileName: '117714__kyster__e.wav' },
-      { rootNote: 53, fileName: '117716__kyster__f.wav' },
-      { rootNote: 55, fileName: '117718__kyster__g.wav' },
-      { rootNote: 57, fileName: '117683__kyster__1-oct-a.wav' },
-      { rootNote: 59, fileName: '117684__kyster__1-oct-b.wav' },
-      { rootNote: 60, fileName: '117686__kyster__1-oct-c.wav' },
-      { rootNote: 62, fileName: '117688__kyster__1-oct-d.wav' },
-      { rootNote: 64, fileName: '117689__kyster__1-oct-e.wav' },
-      { rootNote: 65, fileName: '117691__kyster__1-oct-f.wav' },
-      { rootNote: 67, fileName: '117693__kyster__1-oct-g.wav' },
-      { rootNote: 69, fileName: '117695__kyster__2-oct-a.wav' },
-      { rootNote: 71, fileName: '117696__kyster__2-oct-b.wav' },
-      { rootNote: 72, fileName: '117852__kyster__2-oct-c.wav' },
-      { rootNote: 74, fileName: '117700__kyster__2-oct-d.wav' },
-      { rootNote: 76, fileName: '117701__kyster__2-oct-e.wav' },
-      { rootNote: 77, fileName: '117703__kyster__2-oct-f.wav' },
-      { rootNote: 79, fileName: '117705__kyster__2-oct-g.wav' },
-      { rootNote: 88, fileName: '117706__kyster__3-oct-e.wav' },
-    ].map(({ rootNote, fileName }) => ({
-      rootNote,
-      url: new URL(`./samples/freesound/kyster-nylon-guitar/${fileName}`, import.meta.url).href,
-    })),
   },
   'vpo-cello-solo-sustain': {
     samples: vpoCelloSoloSustainSamples,
@@ -136,39 +69,6 @@ const instrumentCatalog = [
     filterFrequency: 6600,
     filterQ: 0.54,
     reverbSend: 0.19,
-  },
-  {
-    id: 'speedy-nylon-open-chords',
-    labelKey: 'instrumentSpeedyNylonOpenChords',
-    bankId: 'speedy-nylon-open-chords',
-    gain: 0.4,
-    attack: 0.003,
-    release: 1.2,
-    filterFrequency: 7600,
-    filterQ: 0.45,
-    reverbSend: 0.12,
-  },
-  {
-    id: 'speedy-nylon-extra-chords',
-    labelKey: 'instrumentSpeedyNylonExtraChords',
-    bankId: 'speedy-nylon-extra-chords',
-    gain: 0.36,
-    attack: 0.003,
-    release: 1.15,
-    filterFrequency: 7400,
-    filterQ: 0.46,
-    reverbSend: 0.12,
-  },
-  {
-    id: 'kyster-nylon-guitar',
-    labelKey: 'instrumentKysterNylonGuitar',
-    bankId: 'kyster-nylon-guitar',
-    gain: 0.34,
-    attack: 0.004,
-    release: 1.08,
-    filterFrequency: 7200,
-    filterQ: 0.48,
-    reverbSend: 0.11,
   },
   {
     id: 'vpo-cello-solo-sustain',
