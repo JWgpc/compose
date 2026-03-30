@@ -764,13 +764,6 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
 
     await context.resume();
 
-    const projectTrackInstrumentIds = getProjectTrackInstrumentIds(project, previewInstrumentId);
-    await Promise.all(
-      [...new Set(Object.values(projectTrackInstrumentIds).map((instrumentId) => getInstrumentById(instrumentId).bankId))].map((bankId) =>
-        loadSampleBank(context, bankId),
-      ),
-    );
-
     const totalBeats = project.totalBars * 4;
     const sections = getProjectSections(project);
     const selectedSection = getProjectSection(project, options.selectedSectionId) || sections[0];

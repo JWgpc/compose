@@ -18,6 +18,7 @@ if (!root) {
 }
 const state = createInitialState();
 let toastTimer = null;
+let activeProjectRequestId = 0;
 let scrollSyncLocked = false;
 const uiState = {
   arrangementScrollLeft: 0,
@@ -45,7 +46,39 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
+function parseRoute(hash = window.location.hash) {
+  const normalizedHash = hash.startsWith('#') ? hash.slice(1) : hash;
+  const route = normalizedHash || '/';
+
+  if (route === '/' || route === '') {
+    return { screen: SCREEN.LANDING, presetId: null };
+  }
+
+  const songMatch = route.match(/^\/song\/([^/?#]+)/);
+  if (songMatch) {
+    return { screen: SCREEN.WORKSPACE, presetId: decodeURIComponent(songMatch[1]) };
+  }
+
+  return { screen: SCREEN.LANDING, presetId: null };
+}
+
+function buildSongRoute(presetId) {
+  return `#/song/${encodeURIComponent(presetId)}`;
+}
+
+function navigateTo(hash) {
+  if (window.location.hash === hash) {
+    void syncRoute();
+    return;
+  }
+
+  window.location.hash = hash;
+}
+
 function getTotalBeats() {
+  if (!state.project) {
+    return 0;
+  }
   return getSongScoreSummary(state.project).totalBeats;
 }
 
@@ -254,30 +287,51 @@ async function restartPlaybackIfNeeded() {
   await startPlayback();
 }
 
-function rebuildProject(presetId) {
-  state.project = createProject(presetId || state.project.presetId, state.project.settings);
-  state.selectedSectionId = getProjectSections(state.project)[0].id;
+function applyProject(project) {
+  state.project = project;
+  state.selectedSectionId = getProjectSections(project)[0]?.id || '';
   state.selectedNoteId = '';
   state.playheadBeat = 0;
   state.currentBar = 0;
-  state.selectedInstrumentId = resolveInstrumentId(getPreferredPreviewInstrument(state.project), state.selectedInstrumentId);
-  state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
+  state.selectedInstrumentId = resolveInstrumentId(getPreferredPreviewInstrument(project), state.selectedInstrumentId);
+  state.hasLyrics = getProjectLyricNotes(project).length > 0;
   state.lyricRollEnabled = state.hasLyrics;
   state.lyricPlaybackMode = 'mix';
   stopPlayback();
 }
 
-function applyPreset(presetId) {
-  state.project = createProject(presetId);
-  state.selectedSectionId = getProjectSections(state.project)[0].id;
+async function rebuildProject(presetId) {
+  if (!state.project) {
+    return;
+  }
+
+  const nextProject = await createProject(presetId || state.project.presetId, state.project.settings);
+  applyProject(nextProject);
+}
+
+async function loadProjectForPreset(presetId) {
+  const requestId = ++activeProjectRequestId;
+  state.isProjectLoading = true;
+  state.project = null;
+  state.selectedSectionId = '';
   state.selectedNoteId = '';
   state.playheadBeat = 0;
   state.currentBar = 0;
-  state.selectedInstrumentId = resolveInstrumentId(getPreferredPreviewInstrument(state.project), state.selectedInstrumentId);
-  state.hasLyrics = getProjectLyricNotes(state.project).length > 0;
-  state.lyricRollEnabled = state.hasLyrics;
-  state.lyricPlaybackMode = 'mix';
   stopPlayback();
+  rerender();
+
+  const project = await createProject(presetId);
+  if (requestId !== activeProjectRequestId) {
+    return;
+  }
+
+  applyProject(project);
+  state.isProjectLoading = false;
+  rerender();
+}
+
+async function applyPreset(presetId) {
+  navigateTo(buildSongRoute(presetId));
 }
 
 function duplicateSelectedSection() {
@@ -344,17 +398,44 @@ function getActionName(source) {
   return source.dataset.action || source.getAttribute('data-action') || '';
 }
 
-async function handleAction(action, source) {
-  if (action === 'go-home') {
+async function syncRoute() {
+  const route = parseRoute();
+
+  if (route.screen === SCREEN.LANDING) {
     stopPlayback();
     state.screen = SCREEN.LANDING;
     state.activeModal = MODAL.NONE;
+    state.isProjectLoading = false;
     rerender();
     return;
   }
 
+  state.screen = SCREEN.WORKSPACE;
+  state.activeModal = MODAL.NONE;
+
+  if (!route.presetId) {
+    state.isProjectLoading = false;
+    rerender();
+    return;
+  }
+
+  if (state.project?.presetId === route.presetId && !state.isProjectLoading) {
+    rerender();
+    return;
+  }
+
+  await loadProjectForPreset(route.presetId);
+}
+
+async function handleAction(action, source) {
+  if (action === 'go-home') {
+    navigateTo('#/');
+    return;
+  }
+
   if (action === 'start-scratch') {
-    applyPreset('mainstream-pop');
+    const project = await createProject('mainstream-pop');
+    applyProject(project);
     state.project.title = t(state.language, 'untitledSong');
     state.project.settings.title = t(state.language, 'untitledSong');
     state.project.songScore.meta.title = t(state.language, 'untitledSong');
@@ -371,14 +452,16 @@ async function handleAction(action, source) {
   }
 
   if (action === 'open-preset' || action === 'apply-preset') {
-    applyPreset(source.dataset.presetId);
-    state.screen = SCREEN.WORKSPACE;
-    rerender();
+    await applyPreset(source.dataset.presetId);
+    return;
+  }
+
+  if (!state.project) {
     return;
   }
 
   if (action === 'generate-song') {
-    rebuildProject(state.project.presetId);
+    await rebuildProject(state.project.presetId);
     state.screen = SCREEN.WORKSPACE;
     showToast(t(state.language, 'generateToast'));
     rerender();
@@ -716,9 +799,13 @@ function bindEvents() {
   }
 }
 
+window.addEventListener('hashchange', () => {
+  void syncRoute();
+});
+
 window.addEventListener('beforeunload', () => {
   stopPlayback();
   player.dispose();
 });
 
-rerender();
+void syncRoute();

@@ -1,16 +1,4 @@
 import { quickPresets } from './presets.ts';
-import { firstLightSongScore } from './first-light-song-score.ts';
-import { testDemo1SongScore } from './test-demo1-song-score.ts';
-import { testDemo2SongScore } from './test-demo2-song-score.ts';
-import { testDemo3SongScore } from './test-demo3-song-score.ts';
-import { testDemo4SongScore } from './test-demo4-song-score.ts';
-import { testDemo5SongScore } from './test-demo5-song-score.ts';
-import { testDemo6SongScore } from './test-demo6-song-score.ts';
-import { testDemo7SongScore } from './test-demo7-song-score.ts';
-import { testDemo8SongScore } from './test-demo8-song-score.ts';
-import { testDemo9SongScore } from './test-demo9-song-score.ts';
-import { testDemo10SongScore } from './test-demo10-song-score.ts';
-import { testDemo11SongScore } from './test-demo11-song-score.ts';
 import { clamp, noteName, uid } from '../utils.ts';
 import {
   SONG_SCORE_ACCENT,
@@ -20,6 +8,21 @@ import {
   SONG_SCORE_TRACK_ROLE,
 } from '../songscore/model.ts';
 import { getTotalBarsFromSongScore } from '../songscore/adapters.ts';
+
+const staticSongScoreLoaders = {
+  'mainstream-pop': () => import('./first-light-song-score.ts').then((module) => module.firstLightSongScore),
+  'test-demo1': () => import('./test-demo1-song-score.ts').then((module) => module.testDemo1SongScore),
+  'test-demo2': () => import('./test-demo2-song-score.ts').then((module) => module.testDemo2SongScore),
+  'test-demo3': () => import('./test-demo3-song-score.ts').then((module) => module.testDemo3SongScore),
+  'test-demo4': () => import('./test-demo4-song-score.ts').then((module) => module.testDemo4SongScore),
+  'test-demo5': () => import('./test-demo5-song-score.ts').then((module) => module.testDemo5SongScore),
+  'test-demo6': () => import('./test-demo6-song-score.ts').then((module) => module.testDemo6SongScore),
+  'test-demo7': () => import('./test-demo7-song-score.ts').then((module) => module.testDemo7SongScore),
+  'test-demo8': () => import('./test-demo8-song-score.ts').then((module) => module.testDemo8SongScore),
+  'test-demo9': () => import('./test-demo9-song-score.ts').then((module) => module.testDemo9SongScore),
+  'test-demo10': () => import('./test-demo10-song-score.ts').then((module) => module.testDemo10SongScore),
+  'test-demo11': () => import('./test-demo11-song-score.ts').then((module) => module.testDemo11SongScore),
+};
 
 const pitchMaps = {
   bright: [62, 64, 67, 69, 71, 74],
@@ -247,55 +250,24 @@ function presetById(id) {
   return quickPresets.find((preset) => preset.id === id) || quickPresets[0];
 }
 
-export function createSongScore(presetId, overrides = {}) {
+async function loadStaticSongScore(presetId) {
+  const loader = staticSongScoreLoaders[presetId];
+  if (!loader) {
+    return null;
+  }
+
+  const songScore = await loader();
+  return structuredClone(songScore);
+}
+
+export async function createSongScore(presetId, overrides = {}) {
   const preset = { ...presetById(presetId), ...overrides };
 
-  if (presetId === 'mainstream-pop' && Object.keys(overrides).length === 0) {
-    return structuredClone(firstLightSongScore);
-  }
-
-  if (presetId === 'test-demo1' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo1SongScore);
-  }
-
-  if (presetId === 'test-demo2' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo2SongScore);
-  }
-
-  if (presetId === 'test-demo3' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo3SongScore);
-  }
-
-  if (presetId === 'test-demo4' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo4SongScore);
-  }
-
-  if (presetId === 'test-demo5' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo5SongScore);
-  }
-
-  if (presetId === 'test-demo6' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo6SongScore);
-  }
-
-  if (presetId === 'test-demo7' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo7SongScore);
-  }
-
-  if (presetId === 'test-demo8' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo8SongScore);
-  }
-
-  if (presetId === 'test-demo9' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo9SongScore);
-  }
-
-  if (presetId === 'test-demo10' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo10SongScore);
-  }
-
-  if (presetId === 'test-demo11' && Object.keys(overrides).length === 0) {
-    return structuredClone(testDemo11SongScore);
+  if (Object.keys(overrides).length === 0) {
+    const staticSongScore = await loadStaticSongScore(presetId);
+    if (staticSongScore) {
+      return staticSongScore;
+    }
   }
 
   const template = sectionTemplates[preset.sectionTemplate] || sectionTemplates['Mainstream Pop'];
@@ -373,9 +345,9 @@ export function createSongScore(presetId, overrides = {}) {
   };
 }
 
-export function createProject(presetId, overrides = {}) {
+export async function createProject(presetId, overrides = {}) {
   const preset = { ...presetById(presetId), ...overrides };
-  const songScore = createSongScore(presetId, overrides);
+  const songScore = await createSongScore(presetId, overrides);
   const totalBars = getTotalBarsFromSongScore(songScore);
 
   return {
