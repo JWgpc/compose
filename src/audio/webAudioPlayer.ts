@@ -5,6 +5,8 @@ export const DEFAULT_INSTRUMENT_ID = 'realistic-piano';
 
 const PRE_ROLL_SECONDS = 0.05;
 const LOOP_SCHEDULE_EARLY_MS = 250;
+const SAMPLE_LOAD_CONCURRENCY = 3;
+const PLAYBACK_SCHEDULE_WINDOW_BEATS = 16;
 const MIN_GAIN = 0.0001;
 const END_TAIL_PADDING_MS = 3800;
 const CHROMATIC_NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -171,6 +173,61 @@ function createImpulseResponse(audioContext, durationSeconds = 1.8) {
   return impulse;
 }
 
+function decodeAudioBuffer(audioContext, arrayBuffer) {
+  return new Promise((resolve, reject) => {
+    const result = audioContext.decodeAudioData(arrayBuffer.slice(0), resolve, reject);
+    if (result && result.then) {
+      result.then(resolve).catch(reject);
+    }
+  });
+}
+
+async function loadSampleIntoEntry(audioContext, sample) {
+  if (sample.buffer) {
+    return sample;
+  }
+
+  if (sample.promise) {
+    await sample.promise;
+    return sample;
+  }
+
+  sample.promise = (async () => {
+    const response = await fetch(sample.url);
+    if (!response.ok) {
+      throw new Error(`Unable to load sample: ${sample.url}`);
+    }
+    const arrayBuffer = await response.arrayBuffer();
+    sample.buffer = await decodeAudioBuffer(audioContext, arrayBuffer);
+    return sample.buffer;
+  })();
+
+  try {
+    await sample.promise;
+    return sample;
+  } finally {
+    sample.promise = null;
+  }
+}
+
+async function runWithConcurrencyLimit(items, limit, worker) {
+  if (!items.length) {
+    return;
+  }
+
+  let cursor = 0;
+  const runnerCount = Math.min(limit, items.length);
+  await Promise.all(
+    Array.from({ length: runnerCount }, async () => {
+      while (cursor < items.length) {
+        const currentIndex = cursor;
+        cursor += 1;
+        await worker(items[currentIndex], currentIndex);
+      }
+    }),
+  );
+}
+
 async function loadSampleBank(audioContext, bankId) {
   const bankDefinition = sampleBankCatalog[bankId];
   if (!bankDefinition) {
@@ -188,44 +245,28 @@ async function loadSampleBank(audioContext, bankId) {
 
   const promise = (async () => {
     if (bankDefinition.samples) {
-      const loadedSamples = [];
-      const batchSize = 5;
-      for (let i = 0; i < bankDefinition.samples.length; i += batchSize) {
-        const batch = bankDefinition.samples.slice(i, i + batchSize);
-        const results = await Promise.all(
-          batch.map(async (sample) => {
-            const response = await fetch(sample.url);
-            if (!response.ok) {
-              throw new Error(`Unable to load sample: ${sample.url}`);
-            }
-            const arrayBuffer = await response.arrayBuffer();
-            const buffer = await new Promise((resolve, reject) => {
-              const result = audioContext.decodeAudioData(arrayBuffer.slice(0), resolve, reject);
-              if (result && result.then) {
-                result.then(resolve).catch(reject);
-              }
-            });
-            return { ...sample, buffer };
-          })
-        );
-        loadedSamples.push(...results);
-      }
-      return { ...bankDefinition, samples: loadedSamples };
-    } else {
-      const [leftBuffer, rightBuffer] = await Promise.all([bankDefinition.leftUrl, bankDefinition.rightUrl].map(loadBuffer(audioContext)));
-      const frameCount = Math.max(leftBuffer.length, rightBuffer.length);
-      const stereoBuffer = audioContext.createBuffer(2, frameCount, audioContext.sampleRate);
-      stereoBuffer.copyToChannel(leftBuffer.getChannelData(0), 0, 0);
-      stereoBuffer.copyToChannel(rightBuffer.getChannelData(0), 1, 0);
       return {
-        samples: [
-          {
-            rootNote: bankDefinition.rootNote,
-            buffer: stereoBuffer,
-          },
-        ],
+        ...bankDefinition,
+        samples: bankDefinition.samples.map((sample) => ({ ...sample, buffer: null, promise: null })),
+        warmupPromise: null,
       };
     }
+
+    const [leftBuffer, rightBuffer] = await Promise.all([bankDefinition.leftUrl, bankDefinition.rightUrl].map(loadBuffer(audioContext)));
+    const frameCount = Math.max(leftBuffer.length, rightBuffer.length);
+    const stereoBuffer = audioContext.createBuffer(2, frameCount, audioContext.sampleRate);
+    stereoBuffer.copyToChannel(leftBuffer.getChannelData(0), 0, 0);
+    stereoBuffer.copyToChannel(rightBuffer.getChannelData(0), 1, 0);
+    return {
+      samples: [
+        {
+          rootNote: bankDefinition.rootNote,
+          buffer: stereoBuffer,
+          promise: null,
+        },
+      ],
+      warmupPromise: null,
+    };
   })().then((loaded) => {
     bankCache.set(bankId, loaded);
     return loaded;
@@ -242,13 +283,30 @@ function loadBuffer(audioContext) {
       throw new Error(`Unable to load sample: ${url}`);
     }
     const arrayBuffer = await response.arrayBuffer();
-    return new Promise((resolve, reject) => {
-      const result = audioContext.decodeAudioData(arrayBuffer.slice(0), resolve, reject);
-      if (result && result.then) {
-        result.then(resolve).catch(reject);
-      }
-    });
+    return decodeAudioBuffer(audioContext, arrayBuffer);
   };
+}
+
+async function preloadSampleBankEntries(audioContext, bank, requiredRootNotes = []) {
+  const requiredRootNoteSet = new Set(requiredRootNotes);
+  const requiredSamples = bank.samples.filter((sample) => requiredRootNoteSet.has(sample.rootNote) && !sample.buffer);
+
+  await runWithConcurrencyLimit(requiredSamples, SAMPLE_LOAD_CONCURRENCY, (sample) => loadSampleIntoEntry(audioContext, sample));
+
+  if (bank.warmupPromise) {
+    return;
+  }
+
+  const remainingSamples = bank.samples.filter((sample) => !requiredRootNoteSet.has(sample.rootNote) && !sample.buffer);
+  if (!remainingSamples.length) {
+    return;
+  }
+
+  bank.warmupPromise = runWithConcurrencyLimit(remainingSamples, SAMPLE_LOAD_CONCURRENCY, (sample) => loadSampleIntoEntry(audioContext, sample))
+    .catch((_error) => undefined)
+    .finally(() => {
+      bank.warmupPromise = null;
+    });
 }
 
 function pickNearestSample(samples, pitch) {
@@ -478,12 +536,35 @@ function getTrackInstrumentDefinitions(project, notes, fallbackInstrumentId = DE
   return instrumentByTrackId;
 }
 
-async function loadBanksForTrackInstruments(audioContext, instrumentByTrackId) {
+function collectRequiredSampleRootNotes(notes, instrumentByTrackId) {
+  const rootNotesByBankId = new Map();
+
+  notes.forEach((note) => {
+    const instrument = instrumentByTrackId.get(note.trackId || '');
+    if (!instrument) {
+      return;
+    }
+
+    const protectedPitch = protectInstrumentPitch(instrument, note.pitch);
+    const rootNotes = rootNotesByBankId.get(instrument.bankId) || new Set();
+    rootNotes.add(protectedPitch);
+    rootNotesByBankId.set(instrument.bankId, rootNotes);
+  });
+
+  return rootNotesByBankId;
+}
+
+async function loadBanksForTrackInstruments(audioContext, instrumentByTrackId, notes = []) {
   const bankByBankId = new Map();
+  const requiredRootNotesByBankId = collectRequiredSampleRootNotes(notes, instrumentByTrackId);
 
   await Promise.all(
     [...new Set([...instrumentByTrackId.values()].map((instrument) => instrument.bankId))].map(async (bankId) => {
-      bankByBankId.set(bankId, await loadSampleBank(audioContext, bankId));
+      const bank = await loadSampleBank(audioContext, bankId);
+      const requiredRootNotes = [...(requiredRootNotesByBankId.get(bankId) || new Set())].map((pitch) => pickNearestSample(bank.samples, pitch)?.rootNote)
+        .filter((rootNote) => typeof rootNote === 'number');
+      await preloadSampleBankEntries(audioContext, bank, requiredRootNotes);
+      bankByBankId.set(bankId, bank);
     }),
   );
 
@@ -577,7 +658,7 @@ async function renderProjectBuffer(project, fallbackInstrumentId, { loopEnabled 
     (note) => note.startBeat < renderEndBeat && note.startBeat + note.duration > renderStartBeat,
   );
   const instrumentByTrackId = getTrackInstrumentDefinitions(project, notes, fallbackInstrumentId);
-  const bankByBankId = await loadBanksForTrackInstruments(offlineContext, instrumentByTrackId);
+  const bankByBankId = await loadBanksForTrackInstruments(offlineContext, instrumentByTrackId, notes);
 
   notes.forEach((note) => {
     const clippedStartBeat = Math.max(note.startBeat, renderStartBeat);
@@ -713,7 +794,7 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
       (note) => note.startBeat < endBeat && note.startBeat + note.duration > startBeat,
     );
     const instrumentByTrackId = getTrackInstrumentDefinitions(project, notes, previewInstrumentId);
-    const bankByBankId = await loadBanksForTrackInstruments(audioContext, instrumentByTrackId);
+    const bankByBankId = await loadBanksForTrackInstruments(audioContext, instrumentByTrackId, notes);
 
     notes.forEach((note) => {
       const instrument = instrumentByTrackId.get(note.trackId || '') || getInstrumentById(resolveTrackInstrumentId(project, note.trackId, previewInstrumentId));
@@ -729,18 +810,31 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
     });
   }
 
-  function scheduleLoopCycle(project, startBeat, endBeat, startTime, token) {
+  async function schedulePlaybackWindow(project, startBeat, finalEndBeat, startTime, token) {
+    if (!playback || playback.token !== token || finalEndBeat <= startBeat) {
+      return;
+    }
+
+    const windowEndBeat = Math.min(startBeat + PLAYBACK_SCHEDULE_WINDOW_BEATS, finalEndBeat);
+    await scheduleRange(project, startBeat, windowEndBeat, startTime);
+
     if (!playback || playback.token !== token) {
       return;
     }
 
-    scheduleRange(project, startBeat, endBeat, startTime);
-    const segmentDurationMs = ((endBeat - startBeat) / playback.beatsPerSecond) * 1000;
-    const nextStartTime = startTime + (endBeat - startBeat) / playback.beatsPerSecond;
+    const windowDurationMs = ((windowEndBeat - startBeat) / playback.beatsPerSecond) * 1000;
+    const nextStartTime = startTime + (windowEndBeat - startBeat) / playback.beatsPerSecond;
+    const nextStartBeat = windowEndBeat >= finalEndBeat && playback.loopEnabled ? playback.loopStartBeat : windowEndBeat;
+    const nextFinalEndBeat = windowEndBeat >= finalEndBeat && playback.loopEnabled ? playback.loopEndBeat : finalEndBeat;
+
+    if (nextFinalEndBeat <= nextStartBeat) {
+      return;
+    }
+
     const timerId = window.setTimeout(() => {
       loopTimerIds.delete(timerId);
-      scheduleLoopCycle(project, playback.loopStartBeat, playback.loopEndBeat, nextStartTime, token);
-    }, Math.max(segmentDurationMs - LOOP_SCHEDULE_EARLY_MS, 0));
+      void schedulePlaybackWindow(project, nextStartBeat, nextFinalEndBeat, nextStartTime, token);
+    }, Math.max(windowDurationMs - LOOP_SCHEDULE_EARLY_MS, 0));
     loopTimerIds.add(timerId);
   }
 
@@ -794,11 +888,11 @@ export function createAudioPlayer({ onPosition, onEnded } = {}) {
     };
 
     const firstSegmentEndBeat = loopEnabled ? loopEndBeat : totalBeats;
-    await scheduleRange(project, startBeat, firstSegmentEndBeat, playback.playStartTime);
+    const firstWindowEndBeat = Math.min(startBeat + PLAYBACK_SCHEDULE_WINDOW_BEATS, firstSegmentEndBeat);
+    await scheduleRange(project, startBeat, firstWindowEndBeat, playback.playStartTime);
+    void schedulePlaybackWindow(project, firstWindowEndBeat, firstSegmentEndBeat, playback.playStartTime + (firstWindowEndBeat - startBeat) / playback.beatsPerSecond, token);
 
-    if (loopEnabled) {
-      scheduleLoopCycle(project, startBeat, firstSegmentEndBeat, playback.playStartTime, token);
-    } else {
+    if (!loopEnabled) {
       const durationMs = ((firstSegmentEndBeat - startBeat) / playback.beatsPerSecond) * 1000;
       finishTimerId = window.setTimeout(() => finalize('ended'), durationMs + END_TAIL_PADDING_MS);
     }
