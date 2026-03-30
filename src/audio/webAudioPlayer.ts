@@ -116,9 +116,9 @@ const instrumentCatalog = [
     id: 'vpo-bass-solo-sustain',
     labelKey: 'instrumentVpoBassSoloSustain',
     bankId: 'vpo-bass-solo-sustain',
-    gain: 0.38,
+    gain: 0.5,
     attack: 0.009,
-    release: 1.15,
+    release: 1.05,
     filterFrequency: 5200,
     filterQ: 0.72,
     reverbSend: 0.04,
@@ -359,7 +359,8 @@ function scheduleSampleVoice(audioContext, buses, instrument, bank, note, startT
 
   const velocityBoost = note.emphasis === 'hook' ? 1.15 : note.emphasis === 'contrast' ? 0.92 : 1;
   const pitchCompensation = getPitchCompensation(protectedPitch);
-  const peakGain = instrument.gain * velocityBoost * pitchCompensation;
+  const sampleCompensation = sample.gainCompensation || 1;
+  const peakGain = instrument.gain * velocityBoost * pitchCompensation * sampleCompensation;
   const playbackRate = 2 ** ((protectedPitch - sample.rootNote) / 12);
   const naturalDuration = sample.buffer.duration / playbackRate;
   const naturalEndTime = startTime + naturalDuration;

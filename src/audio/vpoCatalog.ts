@@ -57,16 +57,16 @@ export const vpoViolinSoloSustainSamples = [
 ];
 
 export const vpoBassSoloSustainSamples = [
-  { rootNote: 45, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_A1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 59, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_B2_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 49, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Csharp2_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 36, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_C1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 38, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_D1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 40, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_E1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 52, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_E2_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 30, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Fsharp0_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 42, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Fsharp1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 44, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Gsharp1_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 56, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Gsharp2_v3_rr1-PB-loop.wav', import.meta.url).href },
-  { rootNote: 31, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_G0_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 45, gainCompensation: 0.956, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_A1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 59, gainCompensation: 1.062, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_B2_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 49, gainCompensation: 4.318, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Csharp2_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 36, gainCompensation: 1.98, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_C1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 38, gainCompensation: 2.566, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_D1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 40, gainCompensation: 5.002, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_E1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 52, gainCompensation: 5.273, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_E2_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 30, gainCompensation: 3.069, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Fsharp0_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 42, gainCompensation: 3.821, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Fsharp1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 44, gainCompensation: 0.801, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Gsharp1_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 56, gainCompensation: 2.258, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_Gsharp2_v3_rr1-PB-loop.wav', import.meta.url).href },
+  { rootNote: 31, gainCompensation: 5.948, url: new URL('./samples/vpo/bass-solo-sustain/BKCtbss_SusVib_G0_v3_rr1-PB-loop.wav', import.meta.url).href },
 ];
