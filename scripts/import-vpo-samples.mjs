@@ -20,6 +20,18 @@ const instrumentConfigs = [
     sampleDir: 'flute-solo-sustain',
     sfzPath: 'Woodwinds/flute-SOLO-sustain.sfz',
   },
+  {
+    exportName: 'vpoViolinSoloSustainSamples',
+    instrumentId: 'vpo-violin-solo-sustain',
+    sampleDir: 'violin-solo-sustain',
+    sfzPath: 'Strings/1st-violin-SOLO-sustain.sfz',
+  },
+  {
+    exportName: 'vpoBassSoloSustainSamples',
+    instrumentId: 'vpo-bass-solo-sustain',
+    sampleDir: 'bass-solo-sustain',
+    sfzPath: 'Strings/bass-SOLO-sustain.sfz',
+  },
 ];
 
 const NOTE_OFFSETS = {
@@ -62,7 +74,10 @@ function parseMidiNote(value) {
 }
 
 function parseAssignments(line) {
-  return [...line.matchAll(/([A-Za-z0-9_]+)=([^\s]+)/g)].map(([, key, value]) => [key, value]);
+  return [...line.matchAll(/([A-Za-z0-9_]+)=("[^"]*"|.*?)(?=\s+[A-Za-z0-9_]+=|$)/g)].map(([, key, value]) => [
+    key,
+    value.trim().replace(/^"|"$/g, ''),
+  ]);
 }
 
 function parseSfzRegions(sourceText) {
@@ -72,7 +87,8 @@ function parseSfzRegions(sourceText) {
   let currentRegion = null;
 
   const flushRegion = () => {
-    if (!currentRegion?.sample || !currentRegion.pitch_keycenter) {
+    const rootValue = currentRegion?.pitch_keycenter ?? currentRegion?.key ?? currentRegion?.lokey;
+    if (!currentRegion?.sample || !rootValue) {
       currentRegion = null;
       return;
     }
@@ -84,7 +100,7 @@ function parseSfzRegions(sourceText) {
 
     regions.push({
       sample: currentRegion.sample,
-      rootNote: parseMidiNote(currentRegion.pitch_keycenter),
+      rootNote: parseMidiNote(rootValue),
     });
     currentRegion = null;
   };
@@ -130,6 +146,10 @@ function toPosixPath(value) {
   return value.split(path.sep).join('/');
 }
 
+function sanitizeTargetFileName(fileName) {
+  return fileName.replaceAll('#', 'sharp');
+}
+
 async function importInstrument(config) {
   const sfzAbsolutePath = path.join(vpoRoot, config.sfzPath);
   const sfzContent = await readFile(sfzAbsolutePath, 'utf8');
@@ -140,7 +160,7 @@ async function importInstrument(config) {
   const samples = [];
   for (const region of regions) {
     const sourceSamplePath = path.resolve(path.dirname(sfzAbsolutePath), region.sample.replaceAll('\\', path.sep));
-    const targetFileName = path.basename(sourceSamplePath);
+    const targetFileName = sanitizeTargetFileName(path.basename(sourceSamplePath));
     const targetSamplePath = path.join(outputDir, targetFileName);
     await copyFile(sourceSamplePath, targetSamplePath);
     samples.push({

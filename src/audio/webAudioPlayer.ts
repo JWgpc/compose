@@ -1,5 +1,5 @@
 import { getPlayableNotes, getProjectSection, getProjectSections, getSongScoreSummary, getTempoBpm } from '../songscore/adapters.ts';
-import { vpoCelloSoloSustainSamples, vpoFluteSoloSustainSamples } from './vpoCatalog.ts';
+import { vpoBassSoloSustainSamples, vpoCelloSoloSustainSamples, vpoFluteSoloSustainSamples, vpoViolinSoloSustainSamples } from './vpoCatalog.ts';
 
 export const DEFAULT_INSTRUMENT_ID = 'realistic-piano';
 
@@ -56,6 +56,12 @@ const sampleBankCatalog = {
   'vpo-flute-solo-sustain': {
     samples: vpoFluteSoloSustainSamples,
   },
+  'vpo-violin-solo-sustain': {
+    samples: vpoViolinSoloSustainSamples,
+  },
+  'vpo-bass-solo-sustain': {
+    samples: vpoBassSoloSustainSamples,
+  },
 };
 
 const instrumentCatalog = [
@@ -93,6 +99,30 @@ const instrumentCatalog = [
     filterQ: 0.26,
     reverbSend: 0.1,
     playableRange: { min: 60, max: 96, mode: 'octave-fold' },
+  },
+  {
+    id: 'vpo-violin-solo-sustain',
+    labelKey: 'instrumentVpoViolinSoloSustain',
+    bankId: 'vpo-violin-solo-sustain',
+    gain: 0.22,
+    attack: 0.007,
+    release: 1.2,
+    filterFrequency: 8800,
+    filterQ: 0.34,
+    reverbSend: 0.12,
+    playableRange: { min: 55, max: 103, mode: 'octave-fold' },
+  },
+  {
+    id: 'vpo-bass-solo-sustain',
+    labelKey: 'instrumentVpoBassSoloSustain',
+    bankId: 'vpo-bass-solo-sustain',
+    gain: 0.28,
+    attack: 0.009,
+    release: 1.45,
+    filterFrequency: 5200,
+    filterQ: 0.72,
+    reverbSend: 0.08,
+    playableRange: { min: 28, max: 67, mode: 'octave-fold' },
   },
 ];
 
