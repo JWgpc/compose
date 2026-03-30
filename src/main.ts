@@ -222,7 +222,7 @@ function syncSideColumnHeights() {
 
 function rerender() {
   captureScrollPositions();
-  syncDocumentLanguage(state.language, state.screen, state.project.title);
+  syncDocumentLanguage(state.language, state.screen, state.project?.title || 'Song Creator');
   root.innerHTML = renderApp(state);
   bindEvents();
   syncSideColumnHeights();
