@@ -170,6 +170,23 @@ export const quickPresets = [
     hookSummary: 'A clear piano + VPO cello + VPO flute audition version for checking the timbre mapping',
   },
   {
+    id: 'test-demo11',
+    label: 'VPO弦低试音版',
+    title: 'VPO小提琴低音提琴试音版',
+    style: 'VPO Violin Bass Audition Demo',
+    mood: 'Focused / Clear / Obvious',
+    bpm: 76,
+    key: 'D',
+    mode: 'Minor',
+    hookType: 'Melodic Hook',
+    sectionTemplate: 'Ballad',
+    phraseLength: 4,
+    chorusLift: 'Bigger Arrangement',
+    theme: '明确试听 VPO violin 和 bass 是否真的进来了，让它们的存在足够明显',
+    lyricIdea: 'instrumental VPO violin bass audition demo',
+    hookSummary: 'A clear piano + VPO violin + VPO bass audition version for checking the timbre mapping',
+  },
+  {
     id: 'mainstream-pop',
     label: 'First Light',
     title: '初霁 (First Light)',
@@ -257,6 +274,12 @@ export const quickPresets = [
 ];
 
 export const recentProjects = [
+  {
+    id: 'recent-00000000000',
+    title: 'VPO小提琴低音提琴试音版',
+    subtitle: 'VPO Violin Bass Audition Demo · 76 BPM · obvious violin + bass check',
+    presetId: 'test-demo11',
+  },
   {
     id: 'recent-0000000000',
     title: 'VPO试音版',
